@@ -1,35 +1,47 @@
 body { 
-	background-color: #b5a789;
+	background-color: #000000;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: small;
 	margin: 0px;
 }
 
 #main {
-	background: #efe5d0;
+	background: 	#efe5d0;
 	font-size: 105%;
 	padding: 15px;
 	margin: 0px 10px 10px 10px;
+
+        border-width:1px;
+        border-color:#000000;
+        border-style:dashed;
 }
 
 #sidebar {
-	background: #efe5d0 url(images/background.jpg);
+	background: #5F5A59;
 	font-size: 105%;
 	padding: 15px;
 	margin: 0px 10px 10px 10px;
+
+        border-width:1px;
+        border-color:#000000;
+        border-style:dashed;
 }
 
 #footer {
-	background-color: #675c47;
+	background-color: #5F5A59;
 	color: #efe5d0;
 	text-align: center;
 	padding: 15px;
 	margin: 10px;
 	font-size: 90%;
+
+        border-width:1px;
+        border-color:#000000;
+        border-style:dashed;
 }
 
 #header {
-	background-color: #675c47;
+	background: #5F5A59 url(images/background2.jpg);
 	margin: 10px;
 	height: 125px;
 }
@@ -39,11 +51,15 @@ body {
 	font-size: 105%;
 	padding: 15px;
 	margin: 0px 10px 10px 10px;
+
+        border-width:1px;
+        border-color:#000000;
+        border-style:dashed;
 }
 
 h1 {
 	font-size: 120%;
-	color: #954b4b;
+	color: #000000;
 }
 
 h2 {
@@ -52,14 +68,14 @@ h2 {
 
 
 a:link {
-	color: #b76666;
+	color: #000000;
 	text-decoration: none;
-	border-bottom: thin dotted #b76666;
+	border-bottom: thin dotted #000000;
 }
 a:visited {
-	color: #675c47;
+	color: #000000;
 	text-decoration: none;
-	border-bottom: thin dotted #675c47;
+	border-bottom: thin dotted #000000;
 }
 
 #sidebar {
