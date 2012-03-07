@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="dirs.html"><span>Directories</span></a></li>
@@ -91,7 +92,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">VLTIF Documentation</div>  </div>
 </div>
 <div class="contents">
-</div>
+<div class="textblock"><p>Currently, most image-based traffic monitoring systems use color cameras to detect vehicles using information collected from within the visible light spectrum. These systems are subject to many constraints: daylight-only tracking, severe degradation during inclement weather, and false readings. To overcome these limitations we propose the Visible Light Thermal Imaging Fusion (VLTIF) traffic monitoring and classification system. VLTIF is a system for the detection and classification of vehicles using a fusion of information gathered from both the visible light and infrared spectrums, made robust since thermal images of cars are highly invariant to time of day or weather. The VLTIF application will process raw traffic footage and output total vehicle count in aggregate and by specific traffic lane if desired. The intuitive, simple graphical user interface allows for efficient use by novice users. Future VLTIF capabilities will include classification of vehicle by type: truck, sedan, sports utility vehicle, and more.</p>
+<p>VLTIF, the Visible Light Thermal Imaging Fusion system is an application designed to detect and count vehicles in traffic video sequences using a fusion between thermal imaging and standard visible light spectrum cameras. <a class="el" href="class_vehicle.html">Vehicle</a> detection is an active and relevant research topic in Computer Vision and Image Processing. It is an essential ingredient in many traffic fields as much research has been focused on the optimization of traffic lights, enforcement of intersections, effectiveness of traffic reduction measures, and other traffic topics which rely on empirical evidence. Current vehicle detection techniques rely on standard visible light spectrum cameras only and have shown weaknesses in their detection accuracy. Whereas visible light cameras are sensitive to issues such as the time of day and reection from surfaces, fusing thermal imaging should greatly improve the robustness and performance over standard visible-color only systems. Our system will be stand-alone application which will take synchronized thermal imaging video and visible light video as input and will output the results of the traffic detection system. The detection results will include a labeled video showing detected traffic as well as a formatted file denoting detection times and locations. This is useful for validation as well as further processing by other systems. It will enable the user to open a video sequence and label traffic lanes as lines. This will allow the system not only to count cars, but to organize them by traffic lanes. Our system will include a Graphical User Interface (GUI) which will enable the user to select relevant parameters as well as begin processing of video. The user will first select a video file to process. One major component is to allow the user to draw the traffic lanes onto the video display. By selecting the locations of traffic lanes, users will be allowed to count, segment, and track traffic flow in individual lanes. Once the lanes are established, the user will then begin processing. The goal of our system is to reduce the complexity of traffic segmentation as much as possible. The user should have very little interaction with the system except to choose traffic lanes and begin processing. By reducing the complexity of our system into a "black box", we reduce the training time for novice users as well as reduce the likelihood for errors which occur from inappropriate configuration. This will require algorithms and techniques which are robust and light on variables. We have identified several techniques which will serve as a starting point to segmentation and clas- sification. These techniques include Mixture of Gaussian, Baysian Classifier, and Markov Models. Our techniques will also require developing techniques for fusing fundamentally different imaging techniques. </p>
+</div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
@@ -110,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Mar 6 2012 23:48:22 for VLTIF by
+    <li class="footer">Generated on Wed Mar 7 2012 00:16:48 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

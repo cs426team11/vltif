@@ -1,6 +1,13 @@
 var NAVTREE =
 [
   [ "VLTIF", "index.html", [
+    [ "Main Page", "index.html", null ],
+    [ "Modules", "modules.html", [
+      [ "Core", "group___core.html", null ],
+      [ "Feature", "group___feature.html", null ],
+      [ "Structures", "group___structures.html", null ],
+      [ "User_Interface", "group___user___interface.html", null ]
+    ] ],
     [ "Class List", "annotated.html", [
       [ "DetectorType", "class_detector_type.html", null ],
       [ "Enumerations", "class_enumerations.html", null ],
@@ -35,7 +42,9 @@ var NAVTREE =
     ] ],
     [ "Class Members", "functions.html", null ],
     [ "File List", "files.html", [
+      [ "src/intro.cpp", "intro_8cpp.html", null ],
       [ "src/main.cpp", "main_8cpp.html", null ],
+      [ "src/modules.cpp", "modules_8cpp.html", null ],
       [ "src/core/Enumerations.cpp", "_enumerations_8cpp.html", null ],
       [ "src/core/Enumerations.h", "_enumerations_8h.html", null ],
       [ "src/core/GeometryUtilities.cpp", "_geometry_utilities_8cpp.html", null ],
