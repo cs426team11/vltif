@@ -1,0 +1,94 @@
+\hypertarget{_video_utilities_8h}{
+\section{src/core/\-Video\-Utilities.h \-File \-Reference}
+\label{_video_utilities_8h}\index{src/core/\-Video\-Utilities.\-h@{src/core/\-Video\-Utilities.\-h}}
+}
+{\ttfamily \#include $<$cv.\-h$>$}\*
+{\ttfamily \#include $<$cvaux.\-h$>$}\*
+{\ttfamily \#include $<$highgui.\-h$>$}\*
+{\ttfamily \#include $<$algorithm$>$}\*
+{\ttfamily \#include $<$iostream$>$}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Mat \hyperlink{_video_utilities_8h_aacfdd655e380d7e6dd41743752492ca5}{median\-\_\-frame} (const string \&filename, const size\-\_\-t start\-\_\-frame)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_video_utilities_8h_aacfdd655e380d7e6dd41743752492ca5}{
+\index{\-Video\-Utilities.\-h@{\-Video\-Utilities.\-h}!median\-\_\-frame@{median\-\_\-frame}}
+\index{median\-\_\-frame@{median\-\_\-frame}!VideoUtilities.h@{\-Video\-Utilities.\-h}}
+\subsubsection[{median\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}\-Mat median\-\_\-frame (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{filename, }
+\item[{const size\-\_\-t}]{start\-\_\-frame}
+\end{DoxyParamCaption}
+)}}
+\label{_video_utilities_8h_aacfdd655e380d7e6dd41743752492ca5}
+
+
+\-Definition at line 3 of file \-Video\-Utilities.\-cpp.
+
+
+
+\-Referenced by lane\-\_\-manager().
+
+
+\begin{DoxyCode}
+                                                                    {
+
+    //
+    size_t frame_skip  = 20;
+    size_t frame_count = 100;
+    Mat frameOut;
+    size_t rows, cols;
+    
+    //open video and pull frames
+    VideoCapture cap(filename.c_str());
+    
+    vector<Mat> frames;
+    Mat tframe;
+    
+    //skip to position
+    for( size_t i=0; i<start_frame; i++)
+        cap >> tframe;
+    
+    rows = tframe.rows;
+    cols = tframe.cols;
+    
+    //insert frames
+    for( size_t i=0; i<frame_count; i++){
+        
+        cap >> tframe;
+        //skip junk frames
+        cvtColor( tframe, tframe, CV_BGR2GRAY);
+        frames.push_back(tframe.clone());
+        for(size_t j=0; j<frame_skip; j++)
+            cap >> tframe;
+    }
+    
+    //do median filtering on each pixel
+    cvtColor( tframe, tframe, CV_BGR2GRAY);
+    vector<uchar> pixels;
+    frameOut = Mat(Size(cols, rows), CV_8UC1);
+    for(size_t i=0; i<cols; i++){
+        for(size_t j=0; j<rows; j++){
+            
+            //clear buffer
+            pixels.clear();
+            
+            //add pixels to buffer
+            for(size_t k=0; k<frames.size(); k++)
+                pixels.push_back( frames[k].at<uchar>(j,i) );
+            
+            //sort buffer
+            sort( pixels.begin(), pixels.end());
+            
+            frameOut.at<uchar>(j,i) = pixels[pixels.size()/2];
+            
+        }
+    }
+    
+    return frameOut;
+}
+\end{DoxyCode}

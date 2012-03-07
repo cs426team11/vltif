@@ -1,0 +1,82 @@
+\hypertarget{class_vehicle_detection}{
+\section{\-Vehicle\-Detection \-Class \-Reference}
+\label{class_vehicle_detection}\index{\-Vehicle\-Detection@{\-Vehicle\-Detection}}
+}
+
+
+{\ttfamily \#include $<$\-Vehicle\-Detection.\-h$>$}
+
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ \hyperlink{class_vehicle}{\-Vehicle} $>$ \hyperlink{class_vehicle_detection_a6e3b1885268e7c1a9004b94643f0bb8c}{compute\-Candidates} (const \-Mat \&img)
+\item 
+static vector$<$ \hyperlink{class_vehicle}{\-Vehicle} $>$ \hyperlink{class_vehicle_detection_a64f0e8d9af6477caa45729b80b418a02}{classify\-Candidates} (const \-Mat \&img, vector$<$ \hyperlink{class_vehicle}{\-Vehicle} $>$const \&candidates)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 23 of file \-Vehicle\-Detection.\-h.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_vehicle_detection_a64f0e8d9af6477caa45729b80b418a02}{
+\index{\-Vehicle\-Detection@{\-Vehicle\-Detection}!classify\-Candidates@{classify\-Candidates}}
+\index{classify\-Candidates@{classify\-Candidates}!VehicleDetection@{\-Vehicle\-Detection}}
+\subsubsection[{classify\-Candidates}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf \-Vehicle} $>$ \-Vehicle\-Detection\-::classify\-Candidates (
+\begin{DoxyParamCaption}
+\item[{const \-Mat \&}]{img, }
+\item[{vector$<$ {\bf \-Vehicle} $>$const \&}]{candidates}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{class_vehicle_detection_a64f0e8d9af6477caa45729b80b418a02}
+
+
+\-Definition at line 20 of file \-Vehicle\-Detection.\-cpp.
+
+
+\begin{DoxyCode}
+                                                                               
+                             {
+    
+   //output list of vehicle candidates
+    vector<Vehicle> vehicles;
+
+
+
+    return vehicles;
+}\end{DoxyCode}
+\hypertarget{class_vehicle_detection_a6e3b1885268e7c1a9004b94643f0bb8c}{
+\index{\-Vehicle\-Detection@{\-Vehicle\-Detection}!compute\-Candidates@{compute\-Candidates}}
+\index{compute\-Candidates@{compute\-Candidates}!VehicleDetection@{\-Vehicle\-Detection}}
+\subsubsection[{compute\-Candidates}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf \-Vehicle} $>$ \-Vehicle\-Detection\-::compute\-Candidates (
+\begin{DoxyParamCaption}
+\item[{const \-Mat \&}]{img}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{class_vehicle_detection_a6e3b1885268e7c1a9004b94643f0bb8c}
+
+
+\-Definition at line 10 of file \-Vehicle\-Detection.\-cpp.
+
+
+\begin{DoxyCode}
+                                                                  {
+
+    //output list of vehicle candidates
+    vector<Vehicle> candidates;
+
+
+
+    return candidates;
+}
+\end{DoxyCode}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/feature/\hyperlink{_vehicle_detection_8h}{\-Vehicle\-Detection.\-h}\item 
+src/feature/\hyperlink{_vehicle_detection_8cpp}{\-Vehicle\-Detection.\-cpp}\end{DoxyCompactItemize}

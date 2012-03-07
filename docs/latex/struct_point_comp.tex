@@ -1,0 +1,74 @@
+\hypertarget{struct_point_comp}{
+\section{\-Point\-Comp \-Struct \-Reference}
+\label{struct_point_comp}\index{\-Point\-Comp@{\-Point\-Comp}}
+}
+
+
+{\ttfamily \#include $<$\-Point\-Tracker.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{struct_point_comp_aa281978127904ee40fc4b1cb03730c24}{operator()} (\-Point const \&a, \-Point const \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Functor which will compare two \-Open\-C\-V \-Points. \-Used for the set stl container. 
+\begin{DoxyParams}{\-Parameters}
+{\em a} & \-First point \\
+\hline
+{\em b} & \-Second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if point a is closer to the origin than b. 
+\end{DoxyReturn}
+
+
+\-Definition at line 29 of file \-Point\-Tracker.\-h.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{struct_point_comp_aa281978127904ee40fc4b1cb03730c24}{
+\index{\-Point\-Comp@{\-Point\-Comp}!operator()@{operator()}}
+\index{operator()@{operator()}!PointComp@{\-Point\-Comp}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}bool \-Point\-Comp\-::operator() (
+\begin{DoxyParamCaption}
+\item[{\-Point const \&}]{a, }
+\item[{\-Point const \&}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{struct_point_comp_aa281978127904ee40fc4b1cb03730c24}
+\-Function operator for the \-Point \-Comparison \-Structure 
+\begin{DoxyParams}{\-Parameters}
+{\em a} & \-First point \\
+\hline
+{\em b} & \-Second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The point which is nearest to the origin 
+\end{DoxyReturn}
+
+
+\-Definition at line 16 of file \-Point\-Tracker.\-cpp.
+
+
+
+\-References \-Point\-Distance\-L2().
+
+
+\begin{DoxyCode}
+                                                         {
+    return ( PointDistanceL2(a, Point(0,0)) < PointDistanceL2(b, Point(0,0))); 
+             
+}
+\end{DoxyCode}
+
+
+\-The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{_point_tracker_8h}{\-Point\-Tracker.\-h}\item 
+src/core/\hyperlink{_point_tracker_8cpp}{\-Point\-Tracker.\-cpp}\end{DoxyCompactItemize}

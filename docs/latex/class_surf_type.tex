@@ -1,0 +1,364 @@
+\hypertarget{class_surf_type}{
+\section{\-Surf\-Type \-Class \-Reference}
+\label{class_surf_type}\index{\-Surf\-Type@{\-Surf\-Type}}
+}
+
+
+{\ttfamily \#include $<$\-Surf\-Type.\-h$>$}
+
+\-Inheritance diagram for \-Surf\-Type\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_surf_type}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_surf_type_a80ca7aa3ad82c03decc277897750c81e}{\-Surf\-Type} ()
+\item 
+\hyperlink{class_surf_type_a7480fca87f8d4587c74d7509d5a2b7c0}{\-Surf\-Type} (const double ht, const int noct, const int noctlay, const int ext, const int up)
+\item 
+\hyperlink{class_surf_type_a47295e6b321f4b52388d6597ec005036}{\-Surf\-Type} (\hyperlink{class_s_u_r_f___p_a_r_a_m_s}{\-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S} const \&params)
+\item 
+\hyperlink{class_surf_type_aef8d1238dba6f3c84e5f99b9bcaa624b}{\-Surf\-Type} (const \hyperlink{class_surf_type}{\-Surf\-Type} \&orig)
+\item 
+virtual \hyperlink{class_surf_type_abf1d4b853f3c139f080a9f9c0e0c24f7}{$\sim$\-Surf\-Type} ()
+\item 
+virtual void \hyperlink{class_surf_type_a1acaf574d9ea2aeaac266a3b73ec4416}{compute\-\_\-frame} (const \-Mat \&img, vector$<$ \-Key\-Point $>$ \&keypoints, vector$<$ \hyperlink{class_lane}{\-Lane} $>$ const \&lanes) const 
+\item 
+virtual void \hyperlink{class_surf_type_a0385dc741fabe0e8e2f5f2171f8807d6}{reset\-\_\-detector} ()
+\item 
+virtual string \hyperlink{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}{is\-Type} () const 
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\-S\-U\-R\-F \hyperlink{class_surf_type_a0d929e792bddaf2abdaed0d5ce2a5389}{surf}
+\item 
+double \hyperlink{class_surf_type_afdda70856221656d1239c1a84e09180d}{hessian\-Threshold}
+\item 
+int \hyperlink{class_surf_type_a1f2c7c2d1bc455ea0292e3cb2cdb2945}{num\-Octaves}
+\item 
+int \hyperlink{class_surf_type_ac77d9983a92804e59aacb156d7b95ac1}{num\-Octave\-Layers}
+\item 
+bool \hyperlink{class_surf_type_a5be0768cb22a3835aae95d3407e0cfb9}{extended}
+\item 
+bool \hyperlink{class_surf_type_af741d37b95d0569d8cf31b3703ff0a86}{upright}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 34 of file \-Surf\-Type.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_surf_type_a80ca7aa3ad82c03decc277897750c81e}{
+\index{\-Surf\-Type@{\-Surf\-Type}!\-Surf\-Type@{\-Surf\-Type}}
+\index{\-Surf\-Type@{\-Surf\-Type}!SurfType@{\-Surf\-Type}}
+\subsubsection[{\-Surf\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Surf\-Type\-::\-Surf\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_surf_type_a80ca7aa3ad82c03decc277897750c81e}
+
+
+\-Definition at line 10 of file \-Surf\-Type.\-cpp.
+
+
+
+\-References hessian\-Threshold, and surf.
+
+
+\begin{DoxyCode}
+                   {
+    hessianThreshold = surf.hessianThreshold;
+    
+    surf = SURF(hessianThreshold, 4, 2, false, true);
+}
+\end{DoxyCode}
+\hypertarget{class_surf_type_a7480fca87f8d4587c74d7509d5a2b7c0}{
+\index{\-Surf\-Type@{\-Surf\-Type}!\-Surf\-Type@{\-Surf\-Type}}
+\index{\-Surf\-Type@{\-Surf\-Type}!SurfType@{\-Surf\-Type}}
+\subsubsection[{\-Surf\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Surf\-Type\-::\-Surf\-Type (
+\begin{DoxyParamCaption}
+\item[{const double}]{ht, }
+\item[{const int}]{noct, }
+\item[{const int}]{noctlay, }
+\item[{const int}]{ext, }
+\item[{const int}]{up}
+\end{DoxyParamCaption}
+)}}
+\label{class_surf_type_a7480fca87f8d4587c74d7509d5a2b7c0}
+
+
+\-Definition at line 23 of file \-Surf\-Type.\-cpp.
+
+
+
+\-References extended, hessian\-Threshold, num\-Octave\-Layers, num\-Octaves, surf, and upright.
+
+
+\begin{DoxyCode}
+                                                                               
+                         :
+hessianThreshold(ht), numOctaves(noct), numOctaveLayers(noctlay), extended(ext)
+      , upright(up)
+{
+    
+    surf = SURF(hessianThreshold, numOctaves, numOctaveLayers, extended, upright
+      );
+}
+\end{DoxyCode}
+\hypertarget{class_surf_type_a47295e6b321f4b52388d6597ec005036}{
+\index{\-Surf\-Type@{\-Surf\-Type}!\-Surf\-Type@{\-Surf\-Type}}
+\index{\-Surf\-Type@{\-Surf\-Type}!SurfType@{\-Surf\-Type}}
+\subsubsection[{\-Surf\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Surf\-Type\-::\-Surf\-Type (
+\begin{DoxyParamCaption}
+\item[{{\bf \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S} const \&}]{params}
+\end{DoxyParamCaption}
+)}}
+\label{class_surf_type_a47295e6b321f4b52388d6597ec005036}
+
+
+\-Definition at line 16 of file \-Surf\-Type.\-cpp.
+
+
+
+\-References extended, hessian\-Threshold, num\-Octave\-Layers, num\-Octaves, surf, and upright.
+
+
+\begin{DoxyCode}
+                                            :
+hessianThreshold(params.hessianThreshold), numOctaves(params.numOctaves), 
+numOctaveLayers(params.numOctaveLayers), extended(params.extended), upright(
+      params.upright)
+{
+    surf = SURF(hessianThreshold, numOctaves, numOctaveLayers, extended, upright
+      );  
+}
+\end{DoxyCode}
+\hypertarget{class_surf_type_aef8d1238dba6f3c84e5f99b9bcaa624b}{
+\index{\-Surf\-Type@{\-Surf\-Type}!\-Surf\-Type@{\-Surf\-Type}}
+\index{\-Surf\-Type@{\-Surf\-Type}!SurfType@{\-Surf\-Type}}
+\subsubsection[{\-Surf\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Surf\-Type\-::\-Surf\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Surf\-Type} \&}]{orig}
+\end{DoxyParamCaption}
+)}}
+\label{class_surf_type_aef8d1238dba6f3c84e5f99b9bcaa624b}
+
+
+\-Definition at line 30 of file \-Surf\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                                       {
+}
+\end{DoxyCode}
+\hypertarget{class_surf_type_abf1d4b853f3c139f080a9f9c0e0c24f7}{
+\index{\-Surf\-Type@{\-Surf\-Type}!$\sim$\-Surf\-Type@{$\sim$\-Surf\-Type}}
+\index{$\sim$\-Surf\-Type@{$\sim$\-Surf\-Type}!SurfType@{\-Surf\-Type}}
+\subsubsection[{$\sim$\-Surf\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Surf\-Type\-::$\sim$\-Surf\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_surf_type_abf1d4b853f3c139f080a9f9c0e0c24f7}
+
+
+\-Definition at line 33 of file \-Surf\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                    {
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_surf_type_a1acaf574d9ea2aeaac266a3b73ec4416}{
+\index{\-Surf\-Type@{\-Surf\-Type}!compute\-\_\-frame@{compute\-\_\-frame}}
+\index{compute\-\_\-frame@{compute\-\_\-frame}!SurfType@{\-Surf\-Type}}
+\subsubsection[{compute\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}void \-Surf\-Type\-::compute\-\_\-frame (
+\begin{DoxyParamCaption}
+\item[{const \-Mat \&}]{img, }
+\item[{vector$<$ \-Key\-Point $>$ \&}]{keypoints, }
+\item[{vector$<$ {\bf \-Lane} $>$ const \&}]{lanes}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_surf_type_a1acaf574d9ea2aeaac266a3b73ec4416}
+\-Run surf on the current frame and output the keypoints and their descriptors
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+\mbox{\tt in}  & {\em img} & \-Image to be evaluated \\
+\hline
+\mbox{\tt out}  & {\em keypoints} & \-Keypoints to be shown \\
+\hline
+\end{DoxyParams}
+
+
+\-Implements \hyperlink{class_detector_type_ad147fbbe562819244a3c92cf4dc5d999}{\-Detector\-Type}.
+
+
+
+\-Definition at line 36 of file \-Surf\-Type.\-cpp.
+
+
+
+\-References inside\-Lane(), and surf.
+
+
+\begin{DoxyCode}
+                                                                               
+                               {
+    
+    keypoints.clear();
+    vector<KeyPoint> points;
+    surf(img, Mat(), points);
+    
+    for( size_t i=0; i<points.size(); i++)
+        if( insideLane(points[i].pt, lanes) == true ){
+            keypoints.push_back(points[i]);
+        }
+    
+}
+\end{DoxyCode}
+\hypertarget{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}{
+\index{\-Surf\-Type@{\-Surf\-Type}!is\-Type@{is\-Type}}
+\index{is\-Type@{is\-Type}!SurfType@{\-Surf\-Type}}
+\subsubsection[{is\-Type}]{\setlength{\rightskip}{0pt plus 5cm}string \-Detector\-Type\-::is\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}virtual, inherited\mbox{]}}}}
+\label{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}
+
+
+\-Reimplemented in \hyperlink{class_sift_type_a792597ebf8e051e9fe9581bd95aff535}{\-Sift\-Type}.
+
+
+
+\-Definition at line 19 of file \-Detector\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                                 {
+    return "DetectorType";
+}
+\end{DoxyCode}
+\hypertarget{class_surf_type_a0385dc741fabe0e8e2f5f2171f8807d6}{
+\index{\-Surf\-Type@{\-Surf\-Type}!reset\-\_\-detector@{reset\-\_\-detector}}
+\index{reset\-\_\-detector@{reset\-\_\-detector}!SurfType@{\-Surf\-Type}}
+\subsubsection[{reset\-\_\-detector}]{\setlength{\rightskip}{0pt plus 5cm}void \-Surf\-Type\-::reset\-\_\-detector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_surf_type_a0385dc741fabe0e8e2f5f2171f8807d6}
+
+
+\-Implements \hyperlink{class_detector_type_a1115eaed51cec6ea0d4183edba767da0}{\-Detector\-Type}.
+
+
+
+\-Definition at line 49 of file \-Surf\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                             {
+    throw string("ERROR: not implemented yet");
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_surf_type_a5be0768cb22a3835aae95d3407e0cfb9}{
+\index{\-Surf\-Type@{\-Surf\-Type}!extended@{extended}}
+\index{extended@{extended}!SurfType@{\-Surf\-Type}}
+\subsubsection[{extended}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Surf\-Type\-::extended}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_surf_type_a5be0768cb22a3835aae95d3407e0cfb9}
+
+
+\-Definition at line 58 of file \-Surf\-Type.\-h.
+
+
+
+\-Referenced by \-Surf\-Type().
+
+\hypertarget{class_surf_type_afdda70856221656d1239c1a84e09180d}{
+\index{\-Surf\-Type@{\-Surf\-Type}!hessian\-Threshold@{hessian\-Threshold}}
+\index{hessian\-Threshold@{hessian\-Threshold}!SurfType@{\-Surf\-Type}}
+\subsubsection[{hessian\-Threshold}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Surf\-Type\-::hessian\-Threshold}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_surf_type_afdda70856221656d1239c1a84e09180d}
+
+
+\-Definition at line 55 of file \-Surf\-Type.\-h.
+
+
+
+\-Referenced by \-Surf\-Type().
+
+\hypertarget{class_surf_type_ac77d9983a92804e59aacb156d7b95ac1}{
+\index{\-Surf\-Type@{\-Surf\-Type}!num\-Octave\-Layers@{num\-Octave\-Layers}}
+\index{num\-Octave\-Layers@{num\-Octave\-Layers}!SurfType@{\-Surf\-Type}}
+\subsubsection[{num\-Octave\-Layers}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Surf\-Type\-::num\-Octave\-Layers}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_surf_type_ac77d9983a92804e59aacb156d7b95ac1}
+
+
+\-Definition at line 57 of file \-Surf\-Type.\-h.
+
+
+
+\-Referenced by \-Surf\-Type().
+
+\hypertarget{class_surf_type_a1f2c7c2d1bc455ea0292e3cb2cdb2945}{
+\index{\-Surf\-Type@{\-Surf\-Type}!num\-Octaves@{num\-Octaves}}
+\index{num\-Octaves@{num\-Octaves}!SurfType@{\-Surf\-Type}}
+\subsubsection[{num\-Octaves}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Surf\-Type\-::num\-Octaves}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_surf_type_a1f2c7c2d1bc455ea0292e3cb2cdb2945}
+
+
+\-Definition at line 56 of file \-Surf\-Type.\-h.
+
+
+
+\-Referenced by \-Surf\-Type().
+
+\hypertarget{class_surf_type_a0d929e792bddaf2abdaed0d5ce2a5389}{
+\index{\-Surf\-Type@{\-Surf\-Type}!surf@{surf}}
+\index{surf@{surf}!SurfType@{\-Surf\-Type}}
+\subsubsection[{surf}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-U\-R\-F {\bf \-Surf\-Type\-::surf}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_surf_type_a0d929e792bddaf2abdaed0d5ce2a5389}
+
+
+\-Definition at line 54 of file \-Surf\-Type.\-h.
+
+
+
+\-Referenced by compute\-\_\-frame(), and \-Surf\-Type().
+
+\hypertarget{class_surf_type_af741d37b95d0569d8cf31b3703ff0a86}{
+\index{\-Surf\-Type@{\-Surf\-Type}!upright@{upright}}
+\index{upright@{upright}!SurfType@{\-Surf\-Type}}
+\subsubsection[{upright}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Surf\-Type\-::upright}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_surf_type_af741d37b95d0569d8cf31b3703ff0a86}
+
+
+\-Definition at line 59 of file \-Surf\-Type.\-h.
+
+
+
+\-Referenced by \-Surf\-Type().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/structures/\hyperlink{_surf_type_8h}{\-Surf\-Type.\-h}\item 
+src/structures/\hyperlink{_surf_type_8cpp}{\-Surf\-Type.\-cpp}\end{DoxyCompactItemize}

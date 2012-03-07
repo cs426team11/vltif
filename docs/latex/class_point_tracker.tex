@@ -1,0 +1,297 @@
+\hypertarget{class_point_tracker}{
+\section{\-Point\-Tracker \-Class \-Reference}
+\label{class_point_tracker}\index{\-Point\-Tracker@{\-Point\-Tracker}}
+}
+
+
+{\ttfamily \#include $<$\-Point\-Tracker.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_point_tracker_a9604754cd19cab5f984e4b861c4049d4}{\-Point\-Tracker} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{class_tuple}{\-Tuple} $>$ \hyperlink{class_point_tracker_a48270ad5bc84c22c20d84435f85b63be}{update\-\_\-points} (vector$<$ \-Key\-Point $>$const \&list)
+\begin{DoxyCompactList}\small\item\em update the point positions \end{DoxyCompactList}\item 
+int \hyperlink{class_point_tracker_ac29873729216df07d202485caaab0f20}{point\-\_\-match} (\-Point2f const \&pt)
+\begin{DoxyCompactList}\small\item\em \-Point \-Match. \end{DoxyCompactList}\item 
+void \hyperlink{class_point_tracker_a6333fab2cae4b6e140cf99e0159dc5cc}{set\-\_\-point\-\_\-max\-\_\-life} (const int max\-\_\-life)
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+set$<$ \-Point, \hyperlink{struct_point_comp}{\-Point\-Comp} $>$ \hyperlink{class_point_tracker_a7a1f2bb3c992232a04c886cc5bc6c21f}{background\-\_\-list}
+\item 
+vector$<$ \hyperlink{class_tuple}{\-Tuple} $>$ \hyperlink{class_point_tracker_a3c396dbdf7e00c4cce3b371dd5cddd28}{point\-\_\-list}
+\item 
+double \hyperlink{class_point_tracker_a3cbc1fe8d39f2c8183654a67f914fa37}{\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E}
+\item 
+size\-\_\-t \hyperlink{class_point_tracker_aa32e4991c19d192737ae6d5db32a504a}{num\-\_\-frames}
+\item 
+size\-\_\-t \hyperlink{class_point_tracker_acb445ed3b433172cb10172db77ed702a}{\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class used to track and monitor the keypoints. 
+
+\-Definition at line 64 of file \-Point\-Tracker.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_point_tracker_a9604754cd19cab5f984e4b861c4049d4}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!\-Point\-Tracker@{\-Point\-Tracker}}
+\index{\-Point\-Tracker@{\-Point\-Tracker}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{\-Point\-Tracker}]{\setlength{\rightskip}{0pt plus 5cm}\-Point\-Tracker\-::\-Point\-Tracker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_point_tracker_a9604754cd19cab5f984e4b861c4049d4}
+
+
+default constructor 
+
+\-Default constructor for the point tracking structure 
+
+\-Definition at line 40 of file \-Point\-Tracker.\-cpp.
+
+
+
+\-References \-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S, \-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E, and num\-\_\-frames.
+
+
+\begin{DoxyCode}
+                           {
+    MIN_DISTANCE = 2.5;
+    num_frames = 0;
+    MAX_NUM_FRAMES = 50;
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_point_tracker_ac29873729216df07d202485caaab0f20}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!point\-\_\-match@{point\-\_\-match}}
+\index{point\-\_\-match@{point\-\_\-match}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{point\-\_\-match}]{\setlength{\rightskip}{0pt plus 5cm}int \-Point\-Tracker\-::point\-\_\-match (
+\begin{DoxyParamCaption}
+\item[{\-Point2f const \&}]{pt}
+\end{DoxyParamCaption}
+)}}
+\label{class_point_tracker_ac29873729216df07d202485caaab0f20}
+
+
+\-Point \-Match. 
+
+\-Check if a match exists between a point and the point list. \-Return the match index if found. 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & point to verify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+index of match, -\/1 if no match found. 
+\end{DoxyReturn}
+
+
+\-Definition at line 98 of file \-Point\-Tracker.\-cpp.
+
+
+
+\-References \-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E, point\-\_\-list, and \-Point\-Distance\-L2().
+
+
+
+\-Referenced by update\-\_\-points().
+
+
+\begin{DoxyCode}
+                                               {
+    
+    double dist;
+    for(size_t i=0; i<point_list.size(); i++){
+        
+        dist = PointDistanceL2( pt, point_list[i].centroid);
+        
+        if(dist < MIN_DISTANCE)
+            return i;
+    }
+    return -1;
+    
+}
+\end{DoxyCode}
+\hypertarget{class_point_tracker_a6333fab2cae4b6e140cf99e0159dc5cc}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!set\-\_\-point\-\_\-max\-\_\-life@{set\-\_\-point\-\_\-max\-\_\-life}}
+\index{set\-\_\-point\-\_\-max\-\_\-life@{set\-\_\-point\-\_\-max\-\_\-life}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{set\-\_\-point\-\_\-max\-\_\-life}]{\setlength{\rightskip}{0pt plus 5cm}void \-Point\-Tracker\-::set\-\_\-point\-\_\-max\-\_\-life (
+\begin{DoxyParamCaption}
+\item[{const int}]{max\-\_\-life}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_point_tracker_a6333fab2cae4b6e140cf99e0159dc5cc}
+
+
+\-Definition at line 75 of file \-Point\-Tracker.\-h.
+
+
+
+\-Referenced by init().
+
+
+\begin{DoxyCode}
+                                                 {
+        MAX_NUM_FRAMES = max_life;
+    }
+\end{DoxyCode}
+\hypertarget{class_point_tracker_a48270ad5bc84c22c20d84435f85b63be}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!update\-\_\-points@{update\-\_\-points}}
+\index{update\-\_\-points@{update\-\_\-points}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{update\-\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf \-Tuple} $>$ \-Point\-Tracker\-::update\-\_\-points (
+\begin{DoxyParamCaption}
+\item[{vector$<$ \-Key\-Point $>$const \&}]{list}
+\end{DoxyParamCaption}
+)}}
+\label{class_point_tracker_a48270ad5bc84c22c20d84435f85b63be}
+
+
+update the point positions 
+
+\-Update the points, adding new points and removing redundant ones.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em list} & of keypoints \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+revised list of point data structs 
+\end{DoxyReturn}
+
+
+\-Definition at line 52 of file \-Point\-Tracker.\-cpp.
+
+
+
+\-References \-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S, num\-\_\-frames, point\-\_\-list, and point\-\_\-match().
+
+
+
+\-Referenced by main().
+
+
+\begin{DoxyCode}
+                                                                     {
+    
+    int idx;
+    
+    //take the input list and check for collisions
+    for( size_t i=0; i<list.size(); i++){
+        
+        //check to see if a point matches
+        idx = point_match(list[i].pt);
+        
+        if( idx >= 0 ){
+            point_list[idx].found = true;
+            
+            point_list[idx].centroid.x = ((num_frames)/(double)(num_frames+1))*
+      point_list[idx].centroid.x + (1/(double)(num_frames+1))*list[i].pt.x;
+            point_list[idx].centroid.y = ((num_frames)/(double)(num_frames+1))*
+      point_list[idx].centroid.y + (1/(double)(num_frames+1))*list[i].pt.y;
+            continue;
+        }
+        //otherwise, add it to the list
+        else{
+            point_list.push_back(Tuple(list[i].pt));
+        }
+    }
+    
+    //iterate through point list, updating the strength of each point
+    for( int i=0; i<(int)point_list.size(); i++){
+        point_list[i].strength = (point_list[i].span*point_list[i].strength + 
+      point_list[i].found)/(double)(point_list[i].span+1);
+        point_list[i].found = 0;
+        point_list[i].span = min( point_list[i].span+1, MAX_NUM_FRAMES);
+        
+        
+        if( point_list[i].strength < 0.3 )
+            point_list.erase( point_list.begin() + i--);
+    }
+    
+    num_frames++;
+    if(num_frames > MAX_NUM_FRAMES)
+        num_frames = MAX_NUM_FRAMES;
+    
+    return point_list;
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_point_tracker_a7a1f2bb3c992232a04c886cc5bc6c21f}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!background\-\_\-list@{background\-\_\-list}}
+\index{background\-\_\-list@{background\-\_\-list}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{background\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}set$<$\-Point, {\bf \-Point\-Comp}$>$ {\bf \-Point\-Tracker\-::background\-\_\-list}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_point_tracker_a7a1f2bb3c992232a04c886cc5bc6c21f}
+
+
+\-Definition at line 81 of file \-Point\-Tracker.\-h.
+
+\hypertarget{class_point_tracker_acb445ed3b433172cb10172db77ed702a}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S@{\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S}}
+\index{\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S@{\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf \-Point\-Tracker\-::\-M\-A\-X\-\_\-\-N\-U\-M\-\_\-\-F\-R\-A\-M\-E\-S}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_point_tracker_acb445ed3b433172cb10172db77ed702a}
+
+
+\-Definition at line 86 of file \-Point\-Tracker.\-h.
+
+
+
+\-Referenced by \-Point\-Tracker(), and update\-\_\-points().
+
+\hypertarget{class_point_tracker_a3cbc1fe8d39f2c8183654a67f914fa37}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E@{\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E}}
+\index{\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E@{\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Point\-Tracker\-::\-M\-I\-N\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_point_tracker_a3cbc1fe8d39f2c8183654a67f914fa37}
+
+
+\-Definition at line 84 of file \-Point\-Tracker.\-h.
+
+
+
+\-Referenced by point\-\_\-match(), and \-Point\-Tracker().
+
+\hypertarget{class_point_tracker_aa32e4991c19d192737ae6d5db32a504a}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!num\-\_\-frames@{num\-\_\-frames}}
+\index{num\-\_\-frames@{num\-\_\-frames}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{num\-\_\-frames}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf \-Point\-Tracker\-::num\-\_\-frames}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_point_tracker_aa32e4991c19d192737ae6d5db32a504a}
+
+
+\-Definition at line 85 of file \-Point\-Tracker.\-h.
+
+
+
+\-Referenced by \-Point\-Tracker(), and update\-\_\-points().
+
+\hypertarget{class_point_tracker_a3c396dbdf7e00c4cce3b371dd5cddd28}{
+\index{\-Point\-Tracker@{\-Point\-Tracker}!point\-\_\-list@{point\-\_\-list}}
+\index{point\-\_\-list@{point\-\_\-list}!PointTracker@{\-Point\-Tracker}}
+\subsubsection[{point\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf \-Tuple}$>$ {\bf \-Point\-Tracker\-::point\-\_\-list}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_point_tracker_a3c396dbdf7e00c4cce3b371dd5cddd28}
+
+
+\-Definition at line 83 of file \-Point\-Tracker.\-h.
+
+
+
+\-Referenced by point\-\_\-match(), and update\-\_\-points().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{_point_tracker_8h}{\-Point\-Tracker.\-h}\item 
+src/core/\hyperlink{_point_tracker_8cpp}{\-Point\-Tracker.\-cpp}\end{DoxyCompactItemize}

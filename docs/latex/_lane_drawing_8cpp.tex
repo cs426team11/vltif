@@ -1,0 +1,331 @@
+\hypertarget{_lane_drawing_8cpp}{
+\section{src/ui/\-Lane\-Drawing.cpp \-File \-Reference}
+\label{_lane_drawing_8cpp}\index{src/ui/\-Lane\-Drawing.\-cpp@{src/ui/\-Lane\-Drawing.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}\-Lane\-Drawing.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_lane_drawing_8cpp_a78392c630aeb0feae9fd52eb3d996ddd}{lane\-\_\-manager} (\hyperlink{class_options}{\-Options} \&options)
+\item 
+vector$<$ \hyperlink{class_lane}{\-Lane} $>$ \hyperlink{_lane_drawing_8cpp_a6386e29bc38bcb8860ef396f27516cbd}{draw\-\_\-lanes} (const \-Mat \&avg\-\_\-frame)
+\item 
+vector$<$ \hyperlink{class_lane}{\-Lane} $>$ \hyperlink{_lane_drawing_8cpp_a4517d162c4d2aa6602db232af235563a}{load\-\_\-lanes} (const string \&filename, const string \&vidname, bool \&fail)
+\item 
+void \hyperlink{_lane_drawing_8cpp_a5b07456d470d272b7c0b949ef317b6c4}{save\-\_\-lanes} (const string \&filename, vector$<$ \hyperlink{class_lane}{\-Lane} $>$ \&lanes, const string \&vidname)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_lane_drawing_8cpp_a6386e29bc38bcb8860ef396f27516cbd}{
+\index{\-Lane\-Drawing.\-cpp@{\-Lane\-Drawing.\-cpp}!draw\-\_\-lanes@{draw\-\_\-lanes}}
+\index{draw\-\_\-lanes@{draw\-\_\-lanes}!LaneDrawing.cpp@{\-Lane\-Drawing.\-cpp}}
+\subsubsection[{draw\-\_\-lanes}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf \-Lane}$>$ draw\-\_\-lanes (
+\begin{DoxyParamCaption}
+\item[{const \-Mat \&}]{avg\-\_\-frame}
+\end{DoxyParamCaption}
+)}}
+\label{_lane_drawing_8cpp_a6386e29bc38bcb8860ef396f27516cbd}
+\-Make the user draw the lanes onto the median image
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em avg\-\_\-frame,median} & frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+list of lanes 
+\end{DoxyReturn}
+
+
+\-Definition at line 81 of file \-Lane\-Drawing.\-cpp.
+
+
+
+\-References \-Lane\-::add\-Vertex(), \-Lane\-::change\-Last(), \-Lane\-::clear(), \-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N, \-Lane\-::draw(), mouse\-\_\-flag, mouse\-Func(), p\-X, p\-Y, and \-Lane\-::size().
+
+
+
+\-Referenced by lane\-\_\-manager().
+
+
+\begin{DoxyCode}
+                                              {
+    
+    cout << "-> " << avg_frame.cols << " x " << avg_frame.rows << endl;
+    //start drawing loop
+    Mat tframe;
+    vector<Lane> existing_lanes;
+    Lane tempLane;
+
+    size_t prev_flag = mouse_flag;
+    namedWindow("Lane Drawing Phase");
+    setMouseCallback("Lane Drawing Phase", mouseFunc, 0);
+    char key;
+    
+    cout << "aaa" << endl;
+    
+    while (true) {
+
+        //clone original
+        tframe = avg_frame.clone();
+        
+        cvtColor(avg_frame, tframe, CV_GRAY2BGR);
+
+        //copy all exising polygons
+        for (size_t i = 0; i < existing_lanes.size(); i++){
+            existing_lanes[i].draw(tframe);
+            rectangle( tframe, existing_lanes[i].bbox().tl(), existing_lanes[i]
+      .bbox().br(), Scalar(220, 220, 0), 1);
+        }
+
+        //copy current polygon under investigation
+        if (mouse_flag == 1) {
+            mouse_flag = 0;
+            if (tempLane.size() > 0) {
+                tempLane.changeLast(Point(pX, pY));
+                tempLane.addVertex(Point(pX, pY));
+            }
+
+            if (tempLane.size() == 0) {
+                tempLane.addVertex(Point(pX, pY));
+                tempLane.addVertex(Point(pX, pY));
+            }
+        }
+        
+        tempLane.draw(tframe);
+        if (tempLane.size() > 1)
+            tempLane.changeLast(Point(pX, pY));
+        
+        imshow("Lane Drawing Phase", tframe);
+        key = waitKey(30);
+
+        if (key == 'q') {
+            break;
+        }
+        if (key == 'x') {
+            if (tempLane.size() >= 3) {
+                existing_lanes.push_back(tempLane);
+                existing_lanes.back().color = COLOR_GREEN;
+                existing_lanes.back().finalize();
+                tempLane.clear();
+            }
+        }
+    }
+    
+    destroyWindow("Lane Drawing Phase");
+    
+    return existing_lanes;
+}
+\end{DoxyCode}
+\hypertarget{_lane_drawing_8cpp_a78392c630aeb0feae9fd52eb3d996ddd}{
+\index{\-Lane\-Drawing.\-cpp@{\-Lane\-Drawing.\-cpp}!lane\-\_\-manager@{lane\-\_\-manager}}
+\index{lane\-\_\-manager@{lane\-\_\-manager}!LaneDrawing.cpp@{\-Lane\-Drawing.\-cpp}}
+\subsubsection[{lane\-\_\-manager}]{\setlength{\rightskip}{0pt plus 5cm}void lane\-\_\-manager (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Options} \&}]{options}
+\end{DoxyParamCaption}
+)}}
+\label{_lane_drawing_8cpp_a78392c630aeb0feae9fd52eb3d996ddd}
+\-Compute the \-Median \-Frame 
+
+\-Definition at line 5 of file \-Lane\-Drawing.\-cpp.
+
+
+
+\-References \-Options\-::avg\-Filename, draw\-\_\-lanes(), \-Options\-::lane\-Filename, \-Options\-::lanes, load\-\_\-lanes(), \-Options\-::load\-Avg\-Frame, \-Options\-::load\-Lanes, median\-\_\-frame(), save\-\_\-lanes(), \-Options\-::save\-Avg\-Frame, \-Options\-::save\-Lanes, \-Options\-::start\-\_\-frame, and \-Options\-::video\-\_\-filename.
+
+
+
+\-Referenced by main().
+
+
+\begin{DoxyCode}
+                                    {
+
+    Mat avg_frame;
+
+    //check to see if the lanes already exist, otherwise skip
+    if( options.loadLanes == true ){
+        if( bf::exists(bf::path(options.laneFilename))){
+            bool fail;
+            options.lanes = load_lanes(options.laneFilename, options.
+      video_filename, fail);
+            
+            if( fail == false )
+                return;
+        }
+    }
+    
+    /***********************/
+    /*    AVERAGE LANE     */
+    /***********************/
+    //load the average frame
+    bool frameExists = false;
+    if( options.loadAvgFrame == true ){
+        if(bf::exists(bf::path(options.avgFilename))){
+            avg_frame = imread(options.avgFilename, 0);
+            frameExists = true;
+        }
+        else{
+            avg_frame = median_frame(options.video_filename, options.start_frame
+      );
+        }
+    }
+    else{
+        avg_frame = median_frame(options.video_filename, options.start_frame);
+    }
+    
+    //save the average frame
+    if( options.saveAvgFrame == true && frameExists == false ){
+        imwrite( options.avgFilename.c_str(), avg_frame);
+    }
+    
+    /************************/
+    /*     LANE DRAWING     */
+    /************************/
+    //load data
+    bool laneExists = false;
+    bool fail;
+    if( options.loadLanes == true ){
+        if( bf::exists(bf::path(options.laneFilename))){
+            options.lanes = load_lanes(options.laneFilename, options.
+      video_filename, fail);
+            if( fail == true ){
+                laneExists = false;
+                options.lanes = draw_lanes( avg_frame );
+            }
+            else
+                laneExists = true;
+        }
+        else{
+            options.lanes = draw_lanes( avg_frame );
+        }
+    }
+    else{
+        options.lanes = draw_lanes( avg_frame );
+    }
+    
+    //save data
+    if( options.saveLanes == true && laneExists == false ){
+        save_lanes( options.laneFilename, options.lanes, options.video_filename
+      );
+    }
+    
+}
+\end{DoxyCode}
+\hypertarget{_lane_drawing_8cpp_a4517d162c4d2aa6602db232af235563a}{
+\index{\-Lane\-Drawing.\-cpp@{\-Lane\-Drawing.\-cpp}!load\-\_\-lanes@{load\-\_\-lanes}}
+\index{load\-\_\-lanes@{load\-\_\-lanes}!LaneDrawing.cpp@{\-Lane\-Drawing.\-cpp}}
+\subsubsection[{load\-\_\-lanes}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf \-Lane}$>$ load\-\_\-lanes (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{filename, }
+\item[{const string \&}]{vidname, }
+\item[{bool \&}]{fail}
+\end{DoxyParamCaption}
+)}}
+\label{_lane_drawing_8cpp_a4517d162c4d2aa6602db232af235563a}
+
+
+\-Definition at line 148 of file \-Lane\-Drawing.\-cpp.
+
+
+
+\-References \-Lane\-::add\-Vertex(), and \-Lane\-::clear().
+
+
+
+\-Referenced by lane\-\_\-manager().
+
+
+\begin{DoxyCode}
+                                                                               
+           {
+    
+    vector<Lane> lane_list;
+    Lane tLane;
+    Point pt;
+    
+    ifstream fin;
+    fin.open(filename.c_str());
+    
+    //load video filename
+    string fname;
+    fin >> fname;
+    if( vidname != fname ){
+        fail = true;
+        return lane_list;
+    }
+    else 
+        fail = false;
+    
+    
+    //load size of lanes
+    size_t lSize, npnts;
+    fin >> lSize;
+    
+    for(size_t i=0; i<lSize; i++){
+        
+        //clear lane
+        tLane.clear();
+        
+        //start loading points
+        fin >> npnts;
+        for(size_t j=0; j<npnts; j++){
+            fin >> pt.x >> pt.y;
+            tLane.addVertex(pt);
+        }
+        lane_list.push_back(tLane);
+        lane_list.back().finalize();
+        
+    }
+    
+    fin.close();
+    
+    return lane_list;
+}
+\end{DoxyCode}
+\hypertarget{_lane_drawing_8cpp_a5b07456d470d272b7c0b949ef317b6c4}{
+\index{\-Lane\-Drawing.\-cpp@{\-Lane\-Drawing.\-cpp}!save\-\_\-lanes@{save\-\_\-lanes}}
+\index{save\-\_\-lanes@{save\-\_\-lanes}!LaneDrawing.cpp@{\-Lane\-Drawing.\-cpp}}
+\subsubsection[{save\-\_\-lanes}]{\setlength{\rightskip}{0pt plus 5cm}void save\-\_\-lanes (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{filename, }
+\item[{vector$<$ {\bf \-Lane} $>$ \&}]{lanes, }
+\item[{const string \&}]{vidname}
+\end{DoxyParamCaption}
+)}}
+\label{_lane_drawing_8cpp_a5b07456d470d272b7c0b949ef317b6c4}
+
+
+\-Definition at line 193 of file \-Lane\-Drawing.\-cpp.
+
+
+
+\-Referenced by lane\-\_\-manager().
+
+
+\begin{DoxyCode}
+                                                                               
+            {
+    
+    //open stream
+    ofstream fout;
+    fout.open(filename.c_str());
+    fout << vidname << endl;
+    
+    fout << lanes.size() << endl;
+    vector<Point> pnts;
+    for( size_t i=0; i<lanes.size(); i++){
+        pnts = lanes[i].getVertices();
+        
+        fout << pnts.size() << " ";
+        for(size_t j=0; j<pnts.size(); j++)
+            fout << pnts[j].x << " " << pnts[j].y << " ";
+        fout << endl;
+    }
+    
+    //close stream
+    fout.close();
+    
+}\end{DoxyCode}

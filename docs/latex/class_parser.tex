@@ -1,0 +1,409 @@
+\hypertarget{class_parser}{
+\section{\-Parser \-Class \-Reference}
+\label{class_parser}\index{\-Parser@{\-Parser}}
+}
+
+
+{\ttfamily \#include $<$\-Parser.\-h$>$}
+
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_parser_ac030c871d4f36e475391c0d2c0b204a5}{parse\-\_\-config\-\_\-file} (int argc, char $\ast$$\ast$argv, \hyperlink{class_options}{\-Options} \&options, const string \&filename=\char`\"{}data/options.\-cfg\char`\"{})
+\item 
+static void \hyperlink{class_parser_ac37db3a8867432eab2abb457c68a62b6}{write\-\_\-configuration} (\hyperlink{class_options}{\-Options} \&options)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 33 of file \-Parser.\-h.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_parser_ac030c871d4f36e475391c0d2c0b204a5}{
+\index{\-Parser@{\-Parser}!parse\-\_\-config\-\_\-file@{parse\-\_\-config\-\_\-file}}
+\index{parse\-\_\-config\-\_\-file@{parse\-\_\-config\-\_\-file}!Parser@{\-Parser}}
+\subsubsection[{parse\-\_\-config\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void \-Parser\-::parse\-\_\-config\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{{\bf \-Options} \&}]{options, }
+\item[{const string \&}]{filename = {\ttfamily \char`\"{}data/options.cfg\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{class_parser_ac030c871d4f36e475391c0d2c0b204a5}
+\-D\-I\-S\-P\-L\-A\-Y \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S
+
+\-I\-N\-T\-E\-R\-E\-S\-T \-P\-O\-I\-N\-T \-H\-I\-S\-T\-O\-R\-Y \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S
+
+\-S\-I\-F\-T \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S
+
+\-S\-U\-R\-F \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S
+
+\-C\-O\-R\-E \-I\-N\-T\-E\-R\-E\-S\-T \-P\-O\-I\-N\-T \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S 
+
+\-Definition at line 12 of file \-Parser.\-cpp.
+
+
+
+\-References \-Options\-::avg\-Filename, \-Options\-::density\-\_\-window, \-Options\-::detector, \-Options\-::detector\-\_\-type, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::extended, \-Options\-::frame\-\_\-rate, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::hessian\-Threshold, \-Options\-::interest\-\_\-point\-\_\-max\-\_\-life, \-Options\-::lane\-Filename, \-Options\-::load\-Avg\-Frame, \-Options\-::load\-Lanes, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::num\-Octave\-Layers, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::num\-Octaves, \-Options\-::save\-Avg\-Frame, \-Options\-::save\-Lanes, \-Options\-::show, \-Options\-::\-S\-I\-F\-T\-\_\-lane\-\_\-crop, \-Options\-::sift\-Common\-Params, \-Options\-::sift\-Descriptor\-Params, \-Options\-::sift\-Detector\-Params, \-Options\-::start\-\_\-frame, \-Options\-::stop\-\_\-frame, \-Options\-::surf\-Params, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::upright, \-Options\-::video\-\_\-filename, and \-Options\-::video\-\_\-output\-\_\-filename.
+
+
+
+\-Referenced by main().
+
+
+\begin{DoxyCode}
+                                                                               
+                     {
+
+
+    //basic variables
+    string default_config_filename = "";
+    string show_video;
+    string SIFT_lane_crop;
+    int siftNumOctaves;
+    int siftNumOctaveLayers;
+    int siftFirstOctave;
+    int siftAngleMode;
+    bool SIFT_lc;
+    string saveFrame, loadFrame, avgFilename, saveLanes, loadLanes, 
+      lanesFilename;
+    int siftIsNormalize, siftRecalculateAngles;
+    double siftMagnification, siftThreshold, siftEdgeThreshold;
+
+    double surfHessianThreshold;
+    int surfNumOctaves, surfNumOctaveLayers, surfExtended, surfUpright;
+
+
+    /***********************/
+    /* CREATE PARSERS */
+    /***********************/
+    //create parser for generic use, command-line only
+    po::options_description generic("Allowed options");
+    //create parser for config file and command line related
+    po::options_description config_file("Configuration File");
+
+    /******************************/
+    /* ADD OPTIONS TO PARSERS     */
+    /******************************/
+    //construct generic options
+    generic.add_options()
+            ("help", "produce help message")
+            ("config,c", po::value<string > (&default_config_filename)->
+      default_value("data/options.cfg"),
+            "name of the configuration file ( default is data/options.cfg )");
+
+    /***********************************/
+    /* construct config file options   */
+    /***********************************/
+    config_file.add_options()
+
+            ("SHOW_VIDEO", po::value<string > (&show_video)->default_value("
+      false"), " SHow the video")
+            ("START_FRAME", po::value<size_t > (&options.start_frame)->
+      default_value(0), "Starting Location of Video")
+            ("STOP_FRAME", po::value<int>(&options.stop_frame)->default_value(-
+      1), "Starting Location of Video")
+            ("FRAME_RATE", po::value<size_t > (&options.frame_rate)->
+      default_value(25), "Starting frame rate")
+            ("VIDEO_FILENAME", po::value<string > (&options.video_filename)->
+      default_value("NONE"), "Name of video file to play")
+            ("VIDEO_OUTPUT_FILENAME", po::value<string > (&options.
+      video_output_filename)->default_value("out.avi"), "Name of output results")
+
+            //LANE DRAWING PARAMETERS
+            ("SAVE_AVERAGE_FRAME", po::value<string > (&saveFrame)->
+      default_value("false"), " Save Average Frame")
+            ("LOAD_AVERAGE_FRAME", po::value<string > (&loadFrame)->
+      default_value("false"), " Load Average Frame")
+            ("AVERAGE_FRAME_FILENAME", po::value<string > (&options.avgFilename
+      )->default_value("data/a.jpg"), "Name of average frame")
+            ("SAVE_LANES", po::value<string > (&saveLanes)->default_value("
+      false"), " Save Lane Data")
+            ("LOAD_LANES", po::value<string > (&loadLanes)->default_value("
+      false"), " Load Lane Data")
+            ("LANE_DATA_FILE", po::value<string > (&options.laneFilename)->
+      default_value("data/l.txt"), "Name of lane data file")
+
+
+            ("INTEREST_POINT_MAX_FRAME_LIFE", po::value<size_t > (&options.
+      interest_point_max_life)->default_value(50), "Max life of an interest point")
+
+            ("SIFT_LANE_CROP", po::value<string > (&SIFT_lane_crop)->
+      default_value("false"), "Crop lanes for SIFT Computation")
+            ("SIFT_NUM_OCTAVES", po::value<int>(&siftNumOctaves)->default_value
+      (3), "number of sift octaves")
+            ("SIFT_NUM_OCTAVE_LAYERS", po::value<int>(&siftNumOctaveLayers)->
+      default_value(4), "number of sift octave layers")
+            ("SIFT_FIRST_OCTAVE", po::value<int>(&siftFirstOctave)->
+      default_value(options.siftCommonParams.firstOctave), " First octave level, - means upsample
+      ")
+            ("SIFT_ANGLE_MODE", po::value<int>(&siftAngleMode)->default_value(
+      options.siftCommonParams.FIRST_ANGLE), " angle mode")
+            ("SIFT_ISNORMALIZE", po::value<int>(&siftIsNormalize)->
+      default_value(options.siftDescriptorParams.DEFAULT_IS_NORMALIZE), "whether or not to
+       normalize angles")
+            ("SIFT_RECALCULATE_ANGLES", po::value<int>(&siftRecalculateAngles)
+      ->default_value(options.siftDescriptorParams.GET_DEFAULT_MAGNIFICATION()), "
+      Whether or not to recalculate angles")
+            ("SIFT_MAGNIFICATION", po::value<double>(&siftMagnification)->
+      default_value(options.siftDescriptorParams.GET_DEFAULT_MAGNIFICATION()), "default
+       sift magnification")
+            ("SIFT_EDGE_THRESHOLD", po::value<double>(&siftEdgeThreshold)->
+      default_value(options.siftDetectorParams.GET_DEFAULT_EDGE_THRESHOLD()), "default
+       edge threshold")
+            ("SIFT_THRESHOLD", po::value<double>(&siftThreshold)->default_value
+      (options.siftDetectorParams.GET_DEFAULT_THRESHOLD()), "default threshold")
+
+
+            ("SURF_HESSIAN_THRESHOLD", po::value<double>(&surfHessianThreshold)
+      ->default_value(400), "Default Hessian Threshold")
+            ("SURF_NUM_OCTAVES", po::value<int>(&surfNumOctaves)->default_value
+      (4), "Default Number of Octaves")
+            ("SURF_NUM_OCTAVE_LAYERS", po::value<int>(&surfNumOctaveLayers)->
+      default_value(2), "Default Number of Octave Layers")
+            ("SURF_EXTENDED", po::value<int>(&surfExtended)->default_value(0), 
+      "Default Value of Extended")
+            ("SURF_UPRIGHT", po::value<int>(&surfUpright)->default_value(0), "
+      Default Upright Value")
+
+            ("DENSITY_WINDOW_WIDTH", po::value<int>(&options.density_window)->
+      default_value(51), "window size")
+            ("INTEREST_POINT_METHOD", po::value<string > (&options.detector_type
+      )->default_value("SIFT"), "Type of interest point detector to use");
+
+
+    /********************************************************************/
+    /*                                                  DO NOT
+       CHANGE!!!!!!!!!!!!!                              */
+    /********************************************************************/
+
+    //this is a new description to allow us to combine the command line and
+       config file
+    // inputs for use in the command-line only options. Should also contain
+       hidded once
+    // they become relevant
+    po::options_description cmdline_options;
+    cmdline_options.add(generic).add(config_file);
+
+    //this is a new description which will add hidden descriptions once the
+       hidden options
+    // are deemed necessary. Check multiple_sources.cpp in the boost program
+       options example
+    // code to learn how to integrate this
+    po::options_description config_file_options;
+    config_file_options.add(config_file);
+
+    //This is a new description which will show visible options not hidded.
+       This is important as
+    // will be what gets printed to the screen when the help gets called
+    po::options_description visible("Allowed options");
+    visible.add(generic).add(config_file);
+
+    //create variable map and map the command line arguements to it
+    po::variables_map vm;
+    po::store(po::parse_command_line(argc, argv, cmdline_options), vm);
+    po::notify(vm);
+
+    /****************************************/
+    /* CHECK FOR CONFIG FILE ARGUEMENTS */
+    /****************************************/
+    ifstream ifs(default_config_filename.c_str());
+    if (!ifs) {
+        cout << "can not open config file: " << default_config_filename << "\n"
+      ;
+        exit(0);
+    } else {
+        //if the filestream does exist, then load config arguements and parse
+        po::store(po::parse_config_file(ifs, config_file_options), vm);
+        po::notify(vm);
+    }
+    /**************************/
+    /* PRINT HELP OPTIONS */
+    /**************************/
+    if (vm.count("help")) {
+        cout << visible << "\n";
+        exit(0);
+    }
+
+
+    /******************************************************************/
+    /* CONVERT STRING INPUTS INTO APPROPRIATE CONFIG FILE OPTIONS */
+    /******************************************************************/
+    if (SIFT_lane_crop == "true")
+        options.SIFT_lane_crop = true;
+    else
+        options.SIFT_lane_crop = false;
+
+
+    //create sift common params
+    options.siftCommonParams.nOctaves = siftNumOctaves;
+    options.siftCommonParams.nOctaveLayers = siftNumOctaveLayers;
+    options.siftCommonParams.firstOctave = siftFirstOctave;
+    options.siftCommonParams.angleMode = siftAngleMode;
+
+    options.siftDescriptorParams.isNormalize = siftIsNormalize;
+    options.siftDescriptorParams.magnification = siftMagnification;
+    options.siftDescriptorParams.recalculateAngles = siftRecalculateAngles;
+
+    options.siftDetectorParams.edgeThreshold = siftEdgeThreshold;
+    options.siftDetectorParams.threshold = siftThreshold;
+
+    options.surfParams.hessianThreshold = surfHessianThreshold;
+    options.surfParams.numOctaves = surfNumOctaves;
+    options.surfParams.numOctaveLayers = surfNumOctaveLayers;
+    options.surfParams.extended = surfExtended;
+    options.surfParams.upright = surfUpright;
+
+
+    if (options.detector_type == "SIFT") { //using sift method
+        options.detector = new SiftType(options.SIFT_lane_crop, options.
+      siftCommonParams, options.siftDetectorParams, options.siftDescriptorParams);
+    } else if (options.detector_type == "SURF") {
+        options.detector = new SurfType(options.surfParams);
+    } else {
+        cout << "ERROR: Interest Point Detector Method unknown" << endl;
+        exit(0);
+
+    }
+
+
+    //check to make sure that video file exists
+    if (fs::exists(fs::path(options.video_filename)) != true) {
+        throw string("ERROR: video filename does not exist");
+    }
+
+    if (show_video == "true")
+        options.show = true;
+    else
+        options.show = false;
+
+
+    if (saveFrame == "true") options.saveAvgFrame = true;
+    else options.saveAvgFrame = false;
+    if (loadFrame == "true") options.loadAvgFrame = true;
+    else options.loadAvgFrame = false;
+    if (saveLanes == "true") options.saveLanes = true;
+    else options.saveLanes = false;
+    if (loadLanes == "true") options.loadLanes = true;
+    else options.loadLanes = false;
+
+}
+\end{DoxyCode}
+\hypertarget{class_parser_ac37db3a8867432eab2abb457c68a62b6}{
+\index{\-Parser@{\-Parser}!write\-\_\-configuration@{write\-\_\-configuration}}
+\index{write\-\_\-configuration@{write\-\_\-configuration}!Parser@{\-Parser}}
+\subsubsection[{write\-\_\-configuration}]{\setlength{\rightskip}{0pt plus 5cm}void \-Parser\-::write\-\_\-configuration (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Options} \&}]{options}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{class_parser_ac37db3a8867432eab2abb457c68a62b6}
+
+
+\-Definition at line 208 of file \-Parser.\-cpp.
+
+
+
+\-References \-Options\-::avg\-Filename, \-Enumerations\-::bool2string(), \-Options\-::density\-\_\-window, \-Options\-::detector\-\_\-type, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::extended, \-Options\-::frame\-\_\-rate, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::hessian\-Threshold, \-Options\-::interest\-\_\-point\-\_\-max\-\_\-life, \-Options\-::lane\-Filename, \-Options\-::load\-Avg\-Frame, \-Options\-::load\-Lanes, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::num\-Octave\-Layers, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::num\-Octaves, \-Options\-::save\-Avg\-Frame, \-Options\-::save\-Lanes, \-Options\-::show, \-Options\-::\-S\-I\-F\-T\-\_\-lane\-\_\-crop, \-Options\-::sift\-Common\-Params, \-Options\-::sift\-Descriptor\-Params, \-Options\-::sift\-Detector\-Params, \-Options\-::start\-\_\-frame, \-Options\-::stop\-\_\-frame, \-Options\-::surf\-Params, \-S\-U\-R\-F\-\_\-\-P\-A\-R\-A\-M\-S\-::upright, \-Options\-::video\-\_\-filename, and \-Options\-::video\-\_\-output\-\_\-filename.
+
+
+
+\-Referenced by main().
+
+
+\begin{DoxyCode}
+                                                 {
+
+    ofstream fout;
+    fout.open("data/_options.cfg");
+
+    //video options
+    fout << "SHOW_VIDEO     = " << Enumerations::bool2string(options.show) << 
+      endl;
+    fout << "START_FRAME    = " << options.start_frame << endl;
+    fout << "STOP_FRAME     = " << options.stop_frame << endl;
+    fout << "FRAME_RATE     = " << options.frame_rate << endl;
+    fout << endl;
+
+
+    fout << "VIDEO_FILENAME = " << options.video_filename << endl;
+    fout << "VIDEO_OUTPUT_FILENAME = " << options.video_output_filename << endl
+      ;
+    fout << endl;
+
+    //lane drawing parameters
+    fout << "SAVE_AVERAGE_FRAME     = " << Enumerations::bool2string(options.
+      saveAvgFrame) << endl;
+    fout << "LOAD_AVERAGE_FRAME     = " << Enumerations::bool2string(options.
+      loadAvgFrame) << endl;
+    fout << "AVERAGE_FRAME_FILENAME = " << options.avgFilename << endl;
+    fout << endl;
+    fout << "SAVE_LANES     = " << Enumerations::bool2string(options.saveLanes)
+       << endl;
+    fout << "LOAD_LANES     = " << Enumerations::bool2string(options.loadLanes)
+       << endl;
+    fout << "LANE_DATA_FILE = " << options.laneFilename << endl;
+    fout << endl;
+
+    //Interest point parameters
+    fout << "INTEREST_POINT_MAX_FRAME_LIFE = " << options.
+      interest_point_max_life << endl;
+    fout << "DENSITY_WINDOW_WIDTH          = " << options.density_window << 
+      endl;
+    fout << endl << endl;
+
+    fout << "INTEREST_POINT_METHOD = " << options.detector_type << endl;
+
+    fout << endl << endl;
+    fout << "#SIFT Parameters" << endl;
+    fout << "SIFT_LANE_CROP           = " << Enumerations::bool2string(options.
+      SIFT_lane_crop) << endl;
+    fout << "SIFT_NUM_OCTAVES         = " << options.siftCommonParams.nOctaves 
+      << endl;
+    fout << "SIFT_NUM_OCTAVE_LAYERS   = " << options.siftCommonParams.
+      nOctaveLayers << endl;
+    fout << "SIFT_FIRST_OCTAVE        = " << options.siftCommonParams.
+      firstOctave << endl;
+    fout << "SIFT_ANGLE_MODE          = " << options.siftCommonParams.angleMode
+       << endl;
+
+    fout << "SIFT_ISNORMALIZE         = " << options.siftDescriptorParams.
+      isNormalize << endl;
+    fout << "SIFT_RECALCULATE_ANGLES  = " << options.siftDescriptorParams.
+      recalculateAngles << endl;
+    fout << "SIFT_MAGNIFICATION       = " << options.siftDescriptorParams.
+      recalculateAngles << endl;
+    fout << "SIFT_EDGE_THRESHOLD      = " << options.siftDetectorParams.
+      edgeThreshold << endl;
+    fout << "SIFT_THRESHOLD           = " << options.siftDetectorParams.
+      threshold << endl;
+
+    fout << endl << endl;
+    fout << "#SURF PARAMETERS" << endl;
+    fout << "SURF_HESSIAN_THRESHOLD    = " << options.surfParams.
+      hessianThreshold << endl;
+    fout << "SURF_NUM_OCTAVES          = " << options.surfParams.numOctaves << 
+      endl;
+    fout << "SURF_NUM_OCTAVE_LAYERS    = " << options.surfParams.numOctaveLayers
+       << endl;
+    fout << "SURF_EXTENDED             = " << options.surfParams.extended << 
+      endl;
+    fout << "SURF_UPRIGHT              = " << options.surfParams.upright << 
+      endl;
+
+
+    fout.close();
+
+}
+\end{DoxyCode}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{_parser_8h}{\-Parser.\-h}\item 
+src/core/\hyperlink{_parser_8cpp}{\-Parser.\-cpp}\end{DoxyCompactItemize}

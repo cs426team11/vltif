@@ -1,0 +1,123 @@
+\hypertarget{_geometry_utilities_8cpp}{
+\section{src/core/\-Geometry\-Utilities.cpp \-File \-Reference}
+\label{_geometry_utilities_8cpp}\index{src/core/\-Geometry\-Utilities.\-cpp@{src/core/\-Geometry\-Utilities.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}\-Geometry\-Utilities.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Rect \hyperlink{_geometry_utilities_8cpp_a53e15875a9f64159754b6ff47c6fa21d}{expand\-Rect} (const \-Rect \&bbox, size\-\_\-t const \&dist, \-Size const \&img\-Size)
+\item 
+bool \hyperlink{_geometry_utilities_8cpp_a55817076dd372ab0b452a9939a4954ce}{points\-Equal} (\-Key\-Point const \&a, \-Key\-Point const \&b)
+\item 
+double \hyperlink{_geometry_utilities_8cpp_aa3ed27131855d94c914ae35b8422e8cf}{\-Point\-Distance\-L1} (const \-Point \&a, const \-Point \&b)
+\item 
+double \hyperlink{_geometry_utilities_8cpp_a930d52ae02753728aeccb15ba91c20bd}{\-Point\-Distance\-L2} (const \-Point \&a, const \-Point \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_geometry_utilities_8cpp_a53e15875a9f64159754b6ff47c6fa21d}{
+\index{\-Geometry\-Utilities.\-cpp@{\-Geometry\-Utilities.\-cpp}!expand\-Rect@{expand\-Rect}}
+\index{expand\-Rect@{expand\-Rect}!GeometryUtilities.cpp@{\-Geometry\-Utilities.\-cpp}}
+\subsubsection[{expand\-Rect}]{\setlength{\rightskip}{0pt plus 5cm}\-Rect expand\-Rect (
+\begin{DoxyParamCaption}
+\item[{const \-Rect \&}]{bbox, }
+\item[{size\-\_\-t const \&}]{dist, }
+\item[{\-Size const \&}]{img\-Size}
+\end{DoxyParamCaption}
+)}}
+\label{_geometry_utilities_8cpp_a53e15875a9f64159754b6ff47c6fa21d}
+
+
+\-Definition at line 3 of file \-Geometry\-Utilities.\-cpp.
+
+
+
+\-Referenced by \-Sift\-Type\-::compute\-\_\-frame().
+
+
+\begin{DoxyCode}
+                                                                            {
+    
+    int minX = std::max( bbox.tl().x-dist, (size_t)0);
+    int minY = std::max( bbox.tl().y-dist, (size_t)0);
+    int maxX = bbox.br().x+(2*dist);
+    int maxY = bbox.br().y+(2*dist);
+    if( maxX >= imgSize.width ) maxX = imgSize.width-1;
+    if( maxY >= imgSize.height) maxY = imgSize.height-1;
+    
+    
+    return Rect(minX, minY, maxX-minX, maxY-minY);
+}
+\end{DoxyCode}
+\hypertarget{_geometry_utilities_8cpp_aa3ed27131855d94c914ae35b8422e8cf}{
+\index{\-Geometry\-Utilities.\-cpp@{\-Geometry\-Utilities.\-cpp}!\-Point\-Distance\-L1@{\-Point\-Distance\-L1}}
+\index{\-Point\-Distance\-L1@{\-Point\-Distance\-L1}!GeometryUtilities.cpp@{\-Geometry\-Utilities.\-cpp}}
+\subsubsection[{\-Point\-Distance\-L1}]{\setlength{\rightskip}{0pt plus 5cm}double \-Point\-Distance\-L1 (
+\begin{DoxyParamCaption}
+\item[{const \-Point \&}]{a, }
+\item[{const \-Point \&}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{_geometry_utilities_8cpp_aa3ed27131855d94c914ae35b8422e8cf}
+
+
+\-Definition at line 23 of file \-Geometry\-Utilities.\-cpp.
+
+
+\begin{DoxyCode}
+                                                        {
+    return fabs((a.x-b.x) + (a.y-b.y)); 
+}
+\end{DoxyCode}
+\hypertarget{_geometry_utilities_8cpp_a930d52ae02753728aeccb15ba91c20bd}{
+\index{\-Geometry\-Utilities.\-cpp@{\-Geometry\-Utilities.\-cpp}!\-Point\-Distance\-L2@{\-Point\-Distance\-L2}}
+\index{\-Point\-Distance\-L2@{\-Point\-Distance\-L2}!GeometryUtilities.cpp@{\-Geometry\-Utilities.\-cpp}}
+\subsubsection[{\-Point\-Distance\-L2}]{\setlength{\rightskip}{0pt plus 5cm}double \-Point\-Distance\-L2 (
+\begin{DoxyParamCaption}
+\item[{const \-Point \&}]{a, }
+\item[{const \-Point \&}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{_geometry_utilities_8cpp_a930d52ae02753728aeccb15ba91c20bd}
+
+
+\-Definition at line 27 of file \-Geometry\-Utilities.\-cpp.
+
+
+
+\-Referenced by \-Point\-Comp\-::operator()(), and \-Point\-Tracker\-::point\-\_\-match().
+
+
+\begin{DoxyCode}
+                                                        {
+    return sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y)); 
+}\end{DoxyCode}
+\hypertarget{_geometry_utilities_8cpp_a55817076dd372ab0b452a9939a4954ce}{
+\index{\-Geometry\-Utilities.\-cpp@{\-Geometry\-Utilities.\-cpp}!points\-Equal@{points\-Equal}}
+\index{points\-Equal@{points\-Equal}!GeometryUtilities.cpp@{\-Geometry\-Utilities.\-cpp}}
+\subsubsection[{points\-Equal}]{\setlength{\rightskip}{0pt plus 5cm}bool points\-Equal (
+\begin{DoxyParamCaption}
+\item[{\-Key\-Point const \&}]{a, }
+\item[{\-Key\-Point const \&}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{_geometry_utilities_8cpp_a55817076dd372ab0b452a9939a4954ce}
+
+
+\-Definition at line 16 of file \-Geometry\-Utilities.\-cpp.
+
+
+
+\-Referenced by \-Sift\-Type\-::compute\-\_\-frame().
+
+
+\begin{DoxyCode}
+                                                       {
+    if( fabs(a.pt.x - b.pt.x) < 0.0001 )
+        if( fabs(a.pt.y - b.pt.y) < 0.0001 )
+            return true;
+    return false;
+}
+\end{DoxyCode}
