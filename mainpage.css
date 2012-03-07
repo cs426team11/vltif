@@ -80,18 +80,17 @@ a:visited {
 
 #sidebar {
 	float: right;
-	width: 180px;
-        height: 400px;
+	width: 280px;
 }
 
 #main {
-	margin-right: 230px;
-	margin-left: 230px;
+	margin-right: 330px;
+	margin-left: 330px;
 }
 
 #members {
 	float: left;
-	width: 180px;
+	width: 280px;
 }
 
 
