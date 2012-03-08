@@ -75,9 +75,9 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_affd642d537d96c03cb7fe8c8d46d37b4}
+\-Default lane constructor 
 
-
-\-Definition at line 10 of file \-Lane.\-cpp.
+\-Definition at line 13 of file \-Lane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -100,9 +100,14 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_a2ebccc1c188f1f4509f12f8c26732ed5}
+\-Add vertex to list 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & new point \\
+\hline
+\end{DoxyParams}
 
 
-\-Definition at line 30 of file \-Lane.\-cpp.
+\-Definition at line 41 of file \-Lane.\-cpp.
 
 
 
@@ -127,9 +132,12 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 ) const}}
 \label{class_lane_a766e891d06646b5d4179c1ba8ffe05a1}
+\-Return the bounding box of the lane \begin{DoxyReturn}{\-Returns}
+lane best fit rectangle 
+\end{DoxyReturn}
 
 
-\-Definition at line 113 of file \-Lane.\-cpp.
+\-Definition at line 162 of file \-Lane.\-cpp.
 
 
 
@@ -149,9 +157,14 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_aeb6b7a603dd2967f082741da570d5cd4}
+\-Adjust the last point 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & \\
+\hline
+\end{DoxyParams}
 
 
-\-Definition at line 35 of file \-Lane.\-cpp.
+\-Definition at line 50 of file \-Lane.\-cpp.
 
 
 
@@ -176,9 +189,9 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_a74015a1138e0cab2fcc8ff4e4dcecc81}
+\-Clear the list of vertices 
 
-
-\-Definition at line 101 of file \-Lane.\-cpp.
+\-Definition at line 140 of file \-Lane.\-cpp.
 
 
 
@@ -203,9 +216,14 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 ) const}}
 \label{class_lane_aa5d759585701af3deca218df97d39a57}
+\-Draw the lane onto the image 
+\begin{DoxyParams}{\-Parameters}
+{\em img} & image to draw \\
+\hline
+\end{DoxyParams}
 
 
-\-Definition at line 81 of file \-Lane.\-cpp.
+\-Definition at line 117 of file \-Lane.\-cpp.
 
 
 
@@ -245,9 +263,14 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_a7efd7d37e4b94e2af27ce8b8b5d344e7}
-\-Call when finished modifying 
+\-Call when finished modifying
 
-\-Definition at line 50 of file \-Lane.\-cpp.
+\-Convert the vertex list into a boost polygon \begin{DoxyReturn}{\-Returns}
+true if successful 
+\end{DoxyReturn}
+
+
+\-Definition at line 77 of file \-Lane.\-cpp.
 
 
 
@@ -289,9 +312,12 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 ) const}}
 \label{class_lane_a5338ac896ca262bb7ed2ea1b35b764ad}
+\-Get the number of vertices \begin{DoxyReturn}{\-Returns}
+vertex list 
+\end{DoxyReturn}
 
 
-\-Definition at line 45 of file \-Lane.\-cpp.
+\-Definition at line 68 of file \-Lane.\-cpp.
 
 
 
@@ -312,9 +338,17 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 ) const}}
 \label{class_lane_a00ad862ca66e457db8ccca02e9958b02}
+\-Check if point is inside lane 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & point to test \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the point is inside the polygon 
+\end{DoxyReturn}
 
 
-\-Definition at line 75 of file \-Lane.\-cpp.
+\-Definition at line 107 of file \-Lane.\-cpp.
 
 
 
@@ -336,9 +370,9 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_a560bf1ab27a296d68d9cd9c0ba7121a4}
+\-Pop the last vertex 
 
-
-\-Definition at line 109 of file \-Lane.\-cpp.
+\-Definition at line 154 of file \-Lane.\-cpp.
 
 
 
@@ -359,9 +393,9 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 )}}
 \label{class_lane_a7188a0e8dc49adb19f5a576c98e09742}
+\-Return the size of the vertex list 
 
-
-\-Definition at line 105 of file \-Lane.\-cpp.
+\-Definition at line 147 of file \-Lane.\-cpp.
 
 
 
@@ -386,9 +420,12 @@ $<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff
 \end{DoxyParamCaption}
 ) const}}
 \label{class_lane_a2571564ae2da44202f37d0d4ea3ddabc}
+\-Return the number of vertices \begin{DoxyReturn}{\-Returns}
+size of vertex list 
+\end{DoxyReturn}
 
 
-\-Definition at line 40 of file \-Lane.\-cpp.
+\-Definition at line 59 of file \-Lane.\-cpp.
 
 
 

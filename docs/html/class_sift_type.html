@@ -294,7 +294,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_sift_type_8cpp_source.html#l00035">35</a> of file <a class="el" href="_sift_type_8cpp_source.html">SiftType.cpp</a>.</p>
 
-<p>References <a class="el" href="_sift_type_8h_source.html#l00051">crop_lanes</a>, <a class="el" href="_mat_utilities_8cpp_source.html#l00004">cropSubImage()</a>, <a class="el" href="_geometry_utilities_8cpp_source.html#l00003">expandRect()</a>, <a class="el" href="_lane_8cpp_source.html#l00019">insideLane()</a>, <a class="el" href="_geometry_utilities_8cpp_source.html#l00016">pointsEqual()</a>, and <a class="el" href="_sift_type_8h_source.html#l00049">sift</a>.</p>
+<p>References <a class="el" href="_sift_type_8h_source.html#l00051">crop_lanes</a>, <a class="el" href="_mat_utilities_8cpp_source.html#l00004">cropSubImage()</a>, <a class="el" href="_geometry_utilities_8cpp_source.html#l00003">expandRect()</a>, <a class="el" href="_lane_8cpp_source.html#l00027">insideLane()</a>, <a class="el" href="_geometry_utilities_8cpp_source.html#l00016">pointsEqual()</a>, and <a class="el" href="_sift_type_8h_source.html#l00049">sift</a>.</p>
 <div class="fragment"><pre class="fragment">                                                                                                        {
         
     keypoints.clear();
@@ -311,7 +311,7 @@ Private Attributes</h2></td></tr>
             tpoints.clear();
             
             bbox = <a class="code" href="_geometry_utilities_8cpp.html#a53e15875a9f64159754b6ff47c6fa21d">expandRect</a>(lanes[i].bbox(), 50, Size(img.cols, img.rows));
-            subImg = <a class="code" href="_mat_utilities_8cpp.html#af9b235c6cce03c3503af841f107bedf5">cropSubImage</a>(img, bbox);
+            subImg = <a class="code" href="_mat_utilities_8cpp.html#af9b235c6cce03c3503af841f107bedf5" title="Crop Image into clone.">cropSubImage</a>(img, bbox);
             
             
             <a class="code" href="class_sift_type.html#a85fc34654bce309e88865979e2076eb3">sift</a>(subImg, Mat(), tpoints);
@@ -502,7 +502,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 00:16:50 for VLTIF by
+    <li class="footer">Generated on Wed Mar 7 2012 18:26:43 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

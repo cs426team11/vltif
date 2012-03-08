@@ -153,8 +153,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Default lane constructor </p>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00010">10</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00013">13</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">           :
    <a class="code" href="class_lane.html#ac3fee6f32d192cb671665b66511a02d0">color</a>(CV_RGB(50,255,50)),
    <a class="code" href="class_lane.html#aa614d556df980a9cf8974f77c69a1e10">thickness</a>(2),
@@ -179,8 +180,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Add vertex to list </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pt</td><td>new point </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00030">30</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00041">41</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 
@@ -204,8 +212,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Return the bounding box of the lane </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>lane best fit rectangle </dd></dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00113">113</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00162">162</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00072">m_bbox</a>.</p>
 <div class="fragment"><pre class="fragment">                    {
@@ -227,8 +237,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Adjust the last point </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pt</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00035">35</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00050">50</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 
@@ -252,8 +269,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Clear the list of vertices </p>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00101">101</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00140">140</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 
@@ -278,10 +296,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Draw the lane onto the image </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>image to draw </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00081">81</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00117">117</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
-<p>References <a class="el" href="_lane_8h_source.html#l00058">color</a>, <a class="el" href="_lane_8h_source.html#l00061">lineType</a>, <a class="el" href="_lane_8h_source.html#l00063">shift</a>, <a class="el" href="_lane_8cpp_source.html#l00105">size()</a>, <a class="el" href="_lane_8h_source.html#l00060">thickness</a>, and <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
+<p>References <a class="el" href="_lane_8h_source.html#l00058">color</a>, <a class="el" href="_lane_8h_source.html#l00061">lineType</a>, <a class="el" href="_lane_8h_source.html#l00063">shift</a>, <a class="el" href="_lane_8cpp_source.html#l00147">size()</a>, <a class="el" href="_lane_8h_source.html#l00060">thickness</a>, and <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 
 <p>Referenced by <a class="el" href="_lane_drawing_8cpp_source.html#l00081">draw_lanes()</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -318,9 +343,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Call when finished modifying </p>
+<p>Call when finished modifying</p>
+<p>Convert the vertex list into a boost polygon </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00050">50</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00077">77</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00072">m_bbox</a>, <a class="el" href="_lane_8h_source.html#l00071">poly</a>, and <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -362,8 +389,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Get the number of vertices </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>vertex list </dd></dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00045">45</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00068">68</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -386,8 +415,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Check if point is inside lane </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pt</td><td>point to test </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if the point is inside the polygon </dd></dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00075">75</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00107">107</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00071">poly</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -410,8 +447,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Pop the last vertex </p>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00109">109</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00154">154</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 <div class="fragment"><pre class="fragment">              {
@@ -433,12 +471,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Return the size of the vertex list </p>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00105">105</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00147">147</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00081">draw()</a>, and <a class="el" href="_lane_drawing_8cpp_source.html#l00081">draw_lanes()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00117">draw()</a>, and <a class="el" href="_lane_drawing_8cpp_source.html#l00081">draw_lanes()</a>.</p>
 <div class="fragment"><pre class="fragment">                 {
     <span class="keywordflow">return</span> <a class="code" href="class_lane.html#a77c7a2a168f611cebd7a8bccdf17dedb">vertices</a>.size();
 }
@@ -458,8 +497,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Return the number of vertices </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>size of vertex list </dd></dl>
 
-<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00040">40</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_lane_8cpp_source.html#l00059">59</a> of file <a class="el" href="_lane_8cpp_source.html">Lane.cpp</a>.</p>
 
 <p>References <a class="el" href="_lane_8h_source.html#l00070">vertices</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -483,7 +524,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00058">58</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00081">draw()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00117">draw()</a>.</p>
 
 </div>
 </div>
@@ -501,7 +542,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00061">61</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00081">draw()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00117">draw()</a>.</p>
 
 </div>
 </div>
@@ -518,7 +559,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00072">72</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00113">bbox()</a>, and <a class="el" href="_lane_8cpp_source.html#l00050">finalize()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00162">bbox()</a>, and <a class="el" href="_lane_8cpp_source.html#l00077">finalize()</a>.</p>
 
 </div>
 </div>
@@ -535,7 +576,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00071">71</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00050">finalize()</a>, and <a class="el" href="_lane_8cpp_source.html#l00075">isInside()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00077">finalize()</a>, and <a class="el" href="_lane_8cpp_source.html#l00107">isInside()</a>.</p>
 
 </div>
 </div>
@@ -553,7 +594,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00063">63</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00081">draw()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00117">draw()</a>.</p>
 
 </div>
 </div>
@@ -571,7 +612,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00060">60</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00081">draw()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00117">draw()</a>.</p>
 
 </div>
 </div>
@@ -588,7 +629,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_lane_8h_source.html#l00070">70</a> of file <a class="el" href="_lane_8h_source.html">Lane.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00030">addVertex()</a>, <a class="el" href="_lane_8cpp_source.html#l00035">changeLast()</a>, <a class="el" href="_lane_8cpp_source.html#l00101">clear()</a>, <a class="el" href="_lane_8cpp_source.html#l00081">draw()</a>, <a class="el" href="_lane_8cpp_source.html#l00050">finalize()</a>, <a class="el" href="_lane_8cpp_source.html#l00045">getVertices()</a>, <a class="el" href="_lane_8cpp_source.html#l00109">pop()</a>, <a class="el" href="_lane_8cpp_source.html#l00105">size()</a>, and <a class="el" href="_lane_8cpp_source.html#l00040">vertex_count()</a>.</p>
+<p>Referenced by <a class="el" href="_lane_8cpp_source.html#l00041">addVertex()</a>, <a class="el" href="_lane_8cpp_source.html#l00050">changeLast()</a>, <a class="el" href="_lane_8cpp_source.html#l00140">clear()</a>, <a class="el" href="_lane_8cpp_source.html#l00117">draw()</a>, <a class="el" href="_lane_8cpp_source.html#l00077">finalize()</a>, <a class="el" href="_lane_8cpp_source.html#l00068">getVertices()</a>, <a class="el" href="_lane_8cpp_source.html#l00154">pop()</a>, <a class="el" href="_lane_8cpp_source.html#l00147">size()</a>, and <a class="el" href="_lane_8cpp_source.html#l00059">vertex_count()</a>.</p>
 
 </div>
 </div>
@@ -616,7 +657,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 00:16:50 for VLTIF by
+    <li class="footer">Generated on Wed Mar 7 2012 18:26:42 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
