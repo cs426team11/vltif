@@ -108,259 +108,258 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_parser_8h.html">Parser.h</a>&quot;</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="_enumerations_8h.html">Enumerations.h</a>&quot;</span>
 <a name="l00010"></a>00010 
-<a name="l00011"></a>00011 
-<a name="l00012"></a><a class="code" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5">00012</a> <span class="keywordtype">void</span> <a class="code" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5">Parser::parse_config_file</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv, <a class="code" href="class_options.html">Options</a>&amp; options, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename) {
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015     <span class="comment">//basic variables</span>
-<a name="l00016"></a>00016     <span class="keywordtype">string</span> default_config_filename = <span class="stringliteral">&quot;&quot;</span>;
-<a name="l00017"></a>00017     <span class="keywordtype">string</span> show_video;
-<a name="l00018"></a>00018     <span class="keywordtype">string</span> SIFT_lane_crop;
-<a name="l00019"></a>00019     <span class="keywordtype">int</span> siftNumOctaves;
-<a name="l00020"></a>00020     <span class="keywordtype">int</span> siftNumOctaveLayers;
-<a name="l00021"></a>00021     <span class="keywordtype">int</span> siftFirstOctave;
-<a name="l00022"></a>00022     <span class="keywordtype">int</span> siftAngleMode;
-<a name="l00023"></a>00023     <span class="keywordtype">bool</span> SIFT_lc;
-<a name="l00024"></a>00024     <span class="keywordtype">string</span> saveFrame, loadFrame, avgFilename, saveLanes, loadLanes, lanesFilename;
-<a name="l00025"></a>00025     <span class="keywordtype">int</span> siftIsNormalize, siftRecalculateAngles;
-<a name="l00026"></a>00026     <span class="keywordtype">double</span> siftMagnification, siftThreshold, siftEdgeThreshold;
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028     <span class="keywordtype">double</span> surfHessianThreshold;
-<a name="l00029"></a>00029     <span class="keywordtype">int</span> surfNumOctaves, surfNumOctaveLayers, surfExtended, surfUpright;
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032     <span class="comment">/***********************/</span>
-<a name="l00033"></a>00033     <span class="comment">/* CREATE PARSERS */</span>
-<a name="l00034"></a>00034     <span class="comment">/***********************/</span>
-<a name="l00035"></a>00035     <span class="comment">//create parser for generic use, command-line only</span>
-<a name="l00036"></a>00036     po::options_description <span class="keyword">generic</span>(<span class="stringliteral">&quot;Allowed options&quot;</span>);
-<a name="l00037"></a>00037     <span class="comment">//create parser for config file and command line related</span>
-<a name="l00038"></a>00038     po::options_description config_file(<span class="stringliteral">&quot;Configuration File&quot;</span>);
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040     <span class="comment">/******************************/</span>
-<a name="l00041"></a>00041     <span class="comment">/* ADD OPTIONS TO PARSERS     */</span>
-<a name="l00042"></a>00042     <span class="comment">/******************************/</span>
-<a name="l00043"></a>00043     <span class="comment">//construct generic options</span>
-<a name="l00044"></a>00044     <span class="keyword">generic</span>.add_options()
-<a name="l00045"></a>00045             (<span class="stringliteral">&quot;help&quot;</span>, <span class="stringliteral">&quot;produce help message&quot;</span>)
-<a name="l00046"></a>00046             (<span class="stringliteral">&quot;config,c&quot;</span>, po::value&lt;string &gt; (&amp;default_config_filename)-&gt;default_value(<span class="stringliteral">&quot;data/options.cfg&quot;</span>),
-<a name="l00047"></a>00047             <span class="stringliteral">&quot;name of the configuration file ( default is data/options.cfg )&quot;</span>);
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049     <span class="comment">/***********************************/</span>
-<a name="l00050"></a>00050     <span class="comment">/* construct config file options   */</span>
-<a name="l00051"></a>00051     <span class="comment">/***********************************/</span>
-<a name="l00052"></a>00052     config_file.add_options()
-<a name="l00053"></a>00053 
-<a name="l00055"></a>00055             (<span class="stringliteral">&quot;SHOW_VIDEO&quot;</span>, po::value&lt;string &gt; (&amp;show_video)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; SHow the video&quot;</span>)
-<a name="l00056"></a>00056             (<span class="stringliteral">&quot;START_FRAME&quot;</span>, po::value&lt;size_t &gt; (&amp;options.<a class="code" href="class_options.html#ab9c7cf4df6590dfc009342a9ac562c8e">start_frame</a>)-&gt;default_value(0), <span class="stringliteral">&quot;Starting Location of Video&quot;</span>)
-<a name="l00057"></a>00057             (<span class="stringliteral">&quot;STOP_FRAME&quot;</span>, po::value&lt;int&gt;(&amp;options.<a class="code" href="class_options.html#a45c792c3812d45288b199e7eb8f74400">stop_frame</a>)-&gt;default_value(-1), <span class="stringliteral">&quot;Starting Location of Video&quot;</span>)
-<a name="l00058"></a>00058             (<span class="stringliteral">&quot;FRAME_RATE&quot;</span>, po::value&lt;size_t &gt; (&amp;options.<a class="code" href="class_options.html#a466a2a141ee2c3ecb3082566ede72ad3">frame_rate</a>)-&gt;default_value(25), <span class="stringliteral">&quot;Starting frame rate&quot;</span>)
-<a name="l00059"></a>00059             (<span class="stringliteral">&quot;VIDEO_FILENAME&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a>)-&gt;default_value(<span class="stringliteral">&quot;NONE&quot;</span>), <span class="stringliteral">&quot;Name of video file to play&quot;</span>)
-<a name="l00060"></a>00060             (<span class="stringliteral">&quot;VIDEO_OUTPUT_FILENAME&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a13788968dfa22a22acc91a75a7711fe6">video_output_filename</a>)-&gt;default_value(<span class="stringliteral">&quot;out.avi&quot;</span>), <span class="stringliteral">&quot;Name of output results&quot;</span>)
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062             <span class="comment">//LANE DRAWING PARAMETERS</span>
-<a name="l00063"></a>00063             (<span class="stringliteral">&quot;SAVE_AVERAGE_FRAME&quot;</span>, po::value&lt;string &gt; (&amp;saveFrame)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Save Average Frame&quot;</span>)
-<a name="l00064"></a>00064             (<span class="stringliteral">&quot;LOAD_AVERAGE_FRAME&quot;</span>, po::value&lt;string &gt; (&amp;loadFrame)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Load Average Frame&quot;</span>)
-<a name="l00065"></a>00065             (<span class="stringliteral">&quot;AVERAGE_FRAME_FILENAME&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a3c468be8f4b636ea332fcacac909ee4b">avgFilename</a>)-&gt;default_value(<span class="stringliteral">&quot;data/a.jpg&quot;</span>), <span class="stringliteral">&quot;Name of average frame&quot;</span>)
-<a name="l00066"></a>00066             (<span class="stringliteral">&quot;SAVE_LANES&quot;</span>, po::value&lt;string &gt; (&amp;saveLanes)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Save Lane Data&quot;</span>)
-<a name="l00067"></a>00067             (<span class="stringliteral">&quot;LOAD_LANES&quot;</span>, po::value&lt;string &gt; (&amp;loadLanes)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Load Lane Data&quot;</span>)
-<a name="l00068"></a>00068             (<span class="stringliteral">&quot;LANE_DATA_FILE&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a635b111055e083a91f228feff6fee1fc">laneFilename</a>)-&gt;default_value(<span class="stringliteral">&quot;data/l.txt&quot;</span>), <span class="stringliteral">&quot;Name of lane data file&quot;</span>)
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 
-<a name="l00072"></a>00072             (<span class="stringliteral">&quot;INTEREST_POINT_MAX_FRAME_LIFE&quot;</span>, po::value&lt;size_t &gt; (&amp;options.<a class="code" href="class_options.html#ad83ab0070ddb7097311ee3dd2cecabb3">interest_point_max_life</a>)-&gt;default_value(50), <span class="stringliteral">&quot;Max life of an interest point&quot;</span>)
-<a name="l00073"></a>00073 
-<a name="l00075"></a>00075             (<span class="stringliteral">&quot;SIFT_LANE_CROP&quot;</span>, po::value&lt;string &gt; (&amp;SIFT_lane_crop)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot;Crop lanes for SIFT Computation&quot;</span>)
-<a name="l00076"></a>00076             (<span class="stringliteral">&quot;SIFT_NUM_OCTAVES&quot;</span>, po::value&lt;int&gt;(&amp;siftNumOctaves)-&gt;default_value(3), <span class="stringliteral">&quot;number of sift octaves&quot;</span>)
-<a name="l00077"></a>00077             (<span class="stringliteral">&quot;SIFT_NUM_OCTAVE_LAYERS&quot;</span>, po::value&lt;int&gt;(&amp;siftNumOctaveLayers)-&gt;default_value(4), <span class="stringliteral">&quot;number of sift octave layers&quot;</span>)
-<a name="l00078"></a>00078             (<span class="stringliteral">&quot;SIFT_FIRST_OCTAVE&quot;</span>, po::value&lt;int&gt;(&amp;siftFirstOctave)-&gt;default_value(options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.firstOctave), <span class="stringliteral">&quot; First octave level, - means upsample&quot;</span>)
-<a name="l00079"></a>00079             (<span class="stringliteral">&quot;SIFT_ANGLE_MODE&quot;</span>, po::value&lt;int&gt;(&amp;siftAngleMode)-&gt;default_value(options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.FIRST_ANGLE), <span class="stringliteral">&quot; angle mode&quot;</span>)
-<a name="l00080"></a>00080             (<span class="stringliteral">&quot;SIFT_ISNORMALIZE&quot;</span>, po::value&lt;int&gt;(&amp;siftIsNormalize)-&gt;default_value(options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.DEFAULT_IS_NORMALIZE), <span class="stringliteral">&quot;whether or not to normalize angles&quot;</span>)
-<a name="l00081"></a>00081             (<span class="stringliteral">&quot;SIFT_RECALCULATE_ANGLES&quot;</span>, po::value&lt;int&gt;(&amp;siftRecalculateAngles)-&gt;default_value(options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.GET_DEFAULT_MAGNIFICATION()), <span class="stringliteral">&quot;Whether or not to recalculate angles&quot;</span>)
-<a name="l00082"></a>00082             (<span class="stringliteral">&quot;SIFT_MAGNIFICATION&quot;</span>, po::value&lt;double&gt;(&amp;siftMagnification)-&gt;default_value(options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.GET_DEFAULT_MAGNIFICATION()), <span class="stringliteral">&quot;default sift magnification&quot;</span>)
-<a name="l00083"></a>00083             (<span class="stringliteral">&quot;SIFT_EDGE_THRESHOLD&quot;</span>, po::value&lt;double&gt;(&amp;siftEdgeThreshold)-&gt;default_value(options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.GET_DEFAULT_EDGE_THRESHOLD()), <span class="stringliteral">&quot;default edge threshold&quot;</span>)
-<a name="l00084"></a>00084             (<span class="stringliteral">&quot;SIFT_THRESHOLD&quot;</span>, po::value&lt;double&gt;(&amp;siftThreshold)-&gt;default_value(options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.GET_DEFAULT_THRESHOLD()), <span class="stringliteral">&quot;default threshold&quot;</span>)
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 
-<a name="l00088"></a>00088             (<span class="stringliteral">&quot;SURF_HESSIAN_THRESHOLD&quot;</span>, po::value&lt;double&gt;(&amp;surfHessianThreshold)-&gt;default_value(400), <span class="stringliteral">&quot;Default Hessian Threshold&quot;</span>)
-<a name="l00089"></a>00089             (<span class="stringliteral">&quot;SURF_NUM_OCTAVES&quot;</span>, po::value&lt;int&gt;(&amp;surfNumOctaves)-&gt;default_value(4), <span class="stringliteral">&quot;Default Number of Octaves&quot;</span>)
-<a name="l00090"></a>00090             (<span class="stringliteral">&quot;SURF_NUM_OCTAVE_LAYERS&quot;</span>, po::value&lt;int&gt;(&amp;surfNumOctaveLayers)-&gt;default_value(2), <span class="stringliteral">&quot;Default Number of Octave Layers&quot;</span>)
-<a name="l00091"></a>00091             (<span class="stringliteral">&quot;SURF_EXTENDED&quot;</span>, po::value&lt;int&gt;(&amp;surfExtended)-&gt;default_value(0), <span class="stringliteral">&quot;Default Value of Extended&quot;</span>)
-<a name="l00092"></a>00092             (<span class="stringliteral">&quot;SURF_UPRIGHT&quot;</span>, po::value&lt;int&gt;(&amp;surfUpright)-&gt;default_value(0), <span class="stringliteral">&quot;Default Upright Value&quot;</span>)
+<a name="l00019"></a><a class="code" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5">00019</a> <span class="keywordtype">void</span> <a class="code" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5" title="Extract program configuration options from the file.">Parser::parse_config_file</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv, <a class="code" href="class_options.html">Options</a>&amp; options, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename) {
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022     <span class="comment">//basic variables</span>
+<a name="l00023"></a>00023     <span class="keywordtype">string</span> default_config_filename = <span class="stringliteral">&quot;&quot;</span>;
+<a name="l00024"></a>00024     <span class="keywordtype">string</span> show_video;
+<a name="l00025"></a>00025     <span class="keywordtype">string</span> SIFT_lane_crop;
+<a name="l00026"></a>00026     <span class="keywordtype">int</span> siftNumOctaves;
+<a name="l00027"></a>00027     <span class="keywordtype">int</span> siftNumOctaveLayers;
+<a name="l00028"></a>00028     <span class="keywordtype">int</span> siftFirstOctave;
+<a name="l00029"></a>00029     <span class="keywordtype">int</span> siftAngleMode;
+<a name="l00030"></a>00030     <span class="keywordtype">bool</span> SIFT_lc;
+<a name="l00031"></a>00031     <span class="keywordtype">string</span> saveFrame, loadFrame, avgFilename, saveLanes, loadLanes, lanesFilename;
+<a name="l00032"></a>00032     <span class="keywordtype">int</span> siftIsNormalize, siftRecalculateAngles;
+<a name="l00033"></a>00033     <span class="keywordtype">double</span> siftMagnification, siftThreshold, siftEdgeThreshold;
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035     <span class="keywordtype">double</span> surfHessianThreshold;
+<a name="l00036"></a>00036     <span class="keywordtype">int</span> surfNumOctaves, surfNumOctaveLayers, surfExtended, surfUpright;
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039     <span class="comment">/***********************/</span>
+<a name="l00040"></a>00040     <span class="comment">/* CREATE PARSERS */</span>
+<a name="l00041"></a>00041     <span class="comment">/***********************/</span>
+<a name="l00042"></a>00042     <span class="comment">//create parser for generic use, command-line only</span>
+<a name="l00043"></a>00043     po::options_description <span class="keyword">generic</span>(<span class="stringliteral">&quot;Allowed options&quot;</span>);
+<a name="l00044"></a>00044     <span class="comment">//create parser for config file and command line related</span>
+<a name="l00045"></a>00045     po::options_description config_file(<span class="stringliteral">&quot;Configuration File&quot;</span>);
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047     <span class="comment">/******************************/</span>
+<a name="l00048"></a>00048     <span class="comment">/* ADD OPTIONS TO PARSERS     */</span>
+<a name="l00049"></a>00049     <span class="comment">/******************************/</span>
+<a name="l00050"></a>00050     <span class="comment">//construct generic options</span>
+<a name="l00051"></a>00051     <span class="keyword">generic</span>.add_options()
+<a name="l00052"></a>00052             (<span class="stringliteral">&quot;help&quot;</span>, <span class="stringliteral">&quot;produce help message&quot;</span>)
+<a name="l00053"></a>00053             (<span class="stringliteral">&quot;config,c&quot;</span>, po::value&lt;string &gt; (&amp;default_config_filename)-&gt;default_value(<span class="stringliteral">&quot;data/options.cfg&quot;</span>),
+<a name="l00054"></a>00054             <span class="stringliteral">&quot;name of the configuration file ( default is data/options.cfg )&quot;</span>);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     <span class="comment">/***********************************/</span>
+<a name="l00057"></a>00057     <span class="comment">/* construct config file options   */</span>
+<a name="l00058"></a>00058     <span class="comment">/***********************************/</span>
+<a name="l00059"></a>00059     config_file.add_options()
+<a name="l00060"></a>00060 
+<a name="l00062"></a>00062             (<span class="stringliteral">&quot;SHOW_VIDEO&quot;</span>, po::value&lt;string &gt; (&amp;show_video)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; SHow the video&quot;</span>)
+<a name="l00063"></a>00063             (<span class="stringliteral">&quot;START_FRAME&quot;</span>, po::value&lt;size_t &gt; (&amp;options.<a class="code" href="class_options.html#ab9c7cf4df6590dfc009342a9ac562c8e">start_frame</a>)-&gt;default_value(0), <span class="stringliteral">&quot;Starting Location of Video&quot;</span>)
+<a name="l00064"></a>00064             (<span class="stringliteral">&quot;STOP_FRAME&quot;</span>, po::value&lt;int&gt;(&amp;options.<a class="code" href="class_options.html#a45c792c3812d45288b199e7eb8f74400">stop_frame</a>)-&gt;default_value(-1), <span class="stringliteral">&quot;Starting Location of Video&quot;</span>)
+<a name="l00065"></a>00065             (<span class="stringliteral">&quot;FRAME_RATE&quot;</span>, po::value&lt;size_t &gt; (&amp;options.<a class="code" href="class_options.html#a466a2a141ee2c3ecb3082566ede72ad3">frame_rate</a>)-&gt;default_value(25), <span class="stringliteral">&quot;Starting frame rate&quot;</span>)
+<a name="l00066"></a>00066             (<span class="stringliteral">&quot;VIDEO_FILENAME&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a>)-&gt;default_value(<span class="stringliteral">&quot;NONE&quot;</span>), <span class="stringliteral">&quot;Name of video file to play&quot;</span>)
+<a name="l00067"></a>00067             (<span class="stringliteral">&quot;VIDEO_OUTPUT_FILENAME&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a13788968dfa22a22acc91a75a7711fe6">video_output_filename</a>)-&gt;default_value(<span class="stringliteral">&quot;out.avi&quot;</span>), <span class="stringliteral">&quot;Name of output results&quot;</span>)
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069             <span class="comment">//LANE DRAWING PARAMETERS</span>
+<a name="l00070"></a>00070             (<span class="stringliteral">&quot;SAVE_AVERAGE_FRAME&quot;</span>, po::value&lt;string &gt; (&amp;saveFrame)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Save Average Frame&quot;</span>)
+<a name="l00071"></a>00071             (<span class="stringliteral">&quot;LOAD_AVERAGE_FRAME&quot;</span>, po::value&lt;string &gt; (&amp;loadFrame)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Load Average Frame&quot;</span>)
+<a name="l00072"></a>00072             (<span class="stringliteral">&quot;AVERAGE_FRAME_FILENAME&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a3c468be8f4b636ea332fcacac909ee4b">avgFilename</a>)-&gt;default_value(<span class="stringliteral">&quot;data/a.jpg&quot;</span>), <span class="stringliteral">&quot;Name of average frame&quot;</span>)
+<a name="l00073"></a>00073             (<span class="stringliteral">&quot;SAVE_LANES&quot;</span>, po::value&lt;string &gt; (&amp;saveLanes)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Save Lane Data&quot;</span>)
+<a name="l00074"></a>00074             (<span class="stringliteral">&quot;LOAD_LANES&quot;</span>, po::value&lt;string &gt; (&amp;loadLanes)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot; Load Lane Data&quot;</span>)
+<a name="l00075"></a>00075             (<span class="stringliteral">&quot;LANE_DATA_FILE&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a635b111055e083a91f228feff6fee1fc">laneFilename</a>)-&gt;default_value(<span class="stringliteral">&quot;data/l.txt&quot;</span>), <span class="stringliteral">&quot;Name of lane data file&quot;</span>)
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 
+<a name="l00079"></a>00079             (<span class="stringliteral">&quot;INTEREST_POINT_MAX_FRAME_LIFE&quot;</span>, po::value&lt;size_t &gt; (&amp;options.<a class="code" href="class_options.html#ad83ab0070ddb7097311ee3dd2cecabb3">interest_point_max_life</a>)-&gt;default_value(50), <span class="stringliteral">&quot;Max life of an interest point&quot;</span>)
+<a name="l00080"></a>00080 
+<a name="l00082"></a>00082             (<span class="stringliteral">&quot;SIFT_LANE_CROP&quot;</span>, po::value&lt;string &gt; (&amp;SIFT_lane_crop)-&gt;default_value(<span class="stringliteral">&quot;false&quot;</span>), <span class="stringliteral">&quot;Crop lanes for SIFT Computation&quot;</span>)
+<a name="l00083"></a>00083             (<span class="stringliteral">&quot;SIFT_NUM_OCTAVES&quot;</span>, po::value&lt;int&gt;(&amp;siftNumOctaves)-&gt;default_value(3), <span class="stringliteral">&quot;number of sift octaves&quot;</span>)
+<a name="l00084"></a>00084             (<span class="stringliteral">&quot;SIFT_NUM_OCTAVE_LAYERS&quot;</span>, po::value&lt;int&gt;(&amp;siftNumOctaveLayers)-&gt;default_value(4), <span class="stringliteral">&quot;number of sift octave layers&quot;</span>)
+<a name="l00085"></a>00085             (<span class="stringliteral">&quot;SIFT_FIRST_OCTAVE&quot;</span>, po::value&lt;int&gt;(&amp;siftFirstOctave)-&gt;default_value(options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.firstOctave), <span class="stringliteral">&quot; First octave level, - means upsample&quot;</span>)
+<a name="l00086"></a>00086             (<span class="stringliteral">&quot;SIFT_ANGLE_MODE&quot;</span>, po::value&lt;int&gt;(&amp;siftAngleMode)-&gt;default_value(options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.FIRST_ANGLE), <span class="stringliteral">&quot; angle mode&quot;</span>)
+<a name="l00087"></a>00087             (<span class="stringliteral">&quot;SIFT_ISNORMALIZE&quot;</span>, po::value&lt;int&gt;(&amp;siftIsNormalize)-&gt;default_value(options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.DEFAULT_IS_NORMALIZE), <span class="stringliteral">&quot;whether or not to normalize angles&quot;</span>)
+<a name="l00088"></a>00088             (<span class="stringliteral">&quot;SIFT_RECALCULATE_ANGLES&quot;</span>, po::value&lt;int&gt;(&amp;siftRecalculateAngles)-&gt;default_value(options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.GET_DEFAULT_MAGNIFICATION()), <span class="stringliteral">&quot;Whether or not to recalculate angles&quot;</span>)
+<a name="l00089"></a>00089             (<span class="stringliteral">&quot;SIFT_MAGNIFICATION&quot;</span>, po::value&lt;double&gt;(&amp;siftMagnification)-&gt;default_value(options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.GET_DEFAULT_MAGNIFICATION()), <span class="stringliteral">&quot;default sift magnification&quot;</span>)
+<a name="l00090"></a>00090             (<span class="stringliteral">&quot;SIFT_EDGE_THRESHOLD&quot;</span>, po::value&lt;double&gt;(&amp;siftEdgeThreshold)-&gt;default_value(options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.GET_DEFAULT_EDGE_THRESHOLD()), <span class="stringliteral">&quot;default edge threshold&quot;</span>)
+<a name="l00091"></a>00091             (<span class="stringliteral">&quot;SIFT_THRESHOLD&quot;</span>, po::value&lt;double&gt;(&amp;siftThreshold)-&gt;default_value(options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.GET_DEFAULT_THRESHOLD()), <span class="stringliteral">&quot;default threshold&quot;</span>)
+<a name="l00092"></a>00092 
 <a name="l00093"></a>00093 
-<a name="l00095"></a>00095             (<span class="stringliteral">&quot;DENSITY_WINDOW_WIDTH&quot;</span>, po::value&lt;int&gt;(&amp;options.<a class="code" href="class_options.html#adbdf2cb66ca801f754de4299fb6e499a">density_window</a>)-&gt;default_value(51), <span class="stringliteral">&quot;window size&quot;</span>)
-<a name="l00096"></a>00096             (<span class="stringliteral">&quot;INTEREST_POINT_METHOD&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a>)-&gt;default_value(<span class="stringliteral">&quot;SIFT&quot;</span>), <span class="stringliteral">&quot;Type of interest point detector to use&quot;</span>);
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099     <span class="comment">/********************************************************************/</span>
-<a name="l00100"></a>00100     <span class="comment">/*                                                  DO NOT CHANGE!!!!!!!!!!!!!                              */</span>
-<a name="l00101"></a>00101     <span class="comment">/********************************************************************/</span>
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103     <span class="comment">//this is a new description to allow us to combine the command line and config file</span>
-<a name="l00104"></a>00104     <span class="comment">// inputs for use in the command-line only options. Should also contain hidded once</span>
-<a name="l00105"></a>00105     <span class="comment">// they become relevant</span>
-<a name="l00106"></a>00106     po::options_description cmdline_options;
-<a name="l00107"></a>00107     cmdline_options.add(<span class="keyword">generic</span>).add(config_file);
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109     <span class="comment">//this is a new description which will add hidden descriptions once the hidden options</span>
-<a name="l00110"></a>00110     <span class="comment">// are deemed necessary. Check multiple_sources.cpp in the boost program options example</span>
-<a name="l00111"></a>00111     <span class="comment">// code to learn how to integrate this</span>
-<a name="l00112"></a>00112     po::options_description config_file_options;
-<a name="l00113"></a>00113     config_file_options.add(config_file);
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115     <span class="comment">//This is a new description which will show visible options not hidded. This is important as</span>
-<a name="l00116"></a>00116     <span class="comment">// will be what gets printed to the screen when the help gets called</span>
-<a name="l00117"></a>00117     po::options_description visible(<span class="stringliteral">&quot;Allowed options&quot;</span>);
-<a name="l00118"></a>00118     visible.add(<span class="keyword">generic</span>).add(config_file);
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120     <span class="comment">//create variable map and map the command line arguements to it</span>
-<a name="l00121"></a>00121     po::variables_map vm;
-<a name="l00122"></a>00122     po::store(po::parse_command_line(argc, argv, cmdline_options), vm);
-<a name="l00123"></a>00123     po::notify(vm);
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125     <span class="comment">/****************************************/</span>
-<a name="l00126"></a>00126     <span class="comment">/* CHECK FOR CONFIG FILE ARGUEMENTS */</span>
-<a name="l00127"></a>00127     <span class="comment">/****************************************/</span>
-<a name="l00128"></a>00128     ifstream ifs(default_config_filename.c_str());
-<a name="l00129"></a>00129     <span class="keywordflow">if</span> (!ifs) {
-<a name="l00130"></a>00130         cout &lt;&lt; <span class="stringliteral">&quot;can not open config file: &quot;</span> &lt;&lt; default_config_filename &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;
-<a name="l00131"></a>00131         exit(0);
-<a name="l00132"></a>00132     } <span class="keywordflow">else</span> {
-<a name="l00133"></a>00133         <span class="comment">//if the filestream does exist, then load config arguements and parse</span>
-<a name="l00134"></a>00134         po::store(po::parse_config_file(ifs, config_file_options), vm);
-<a name="l00135"></a>00135         po::notify(vm);
-<a name="l00136"></a>00136     }
-<a name="l00137"></a>00137     <span class="comment">/**************************/</span>
-<a name="l00138"></a>00138     <span class="comment">/* PRINT HELP OPTIONS */</span>
-<a name="l00139"></a>00139     <span class="comment">/**************************/</span>
-<a name="l00140"></a>00140     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">&quot;help&quot;</span>)) {
-<a name="l00141"></a>00141         cout &lt;&lt; visible &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;
-<a name="l00142"></a>00142         exit(0);
+<a name="l00095"></a>00095             (<span class="stringliteral">&quot;SURF_HESSIAN_THRESHOLD&quot;</span>, po::value&lt;double&gt;(&amp;surfHessianThreshold)-&gt;default_value(400), <span class="stringliteral">&quot;Default Hessian Threshold&quot;</span>)
+<a name="l00096"></a>00096             (<span class="stringliteral">&quot;SURF_NUM_OCTAVES&quot;</span>, po::value&lt;int&gt;(&amp;surfNumOctaves)-&gt;default_value(4), <span class="stringliteral">&quot;Default Number of Octaves&quot;</span>)
+<a name="l00097"></a>00097             (<span class="stringliteral">&quot;SURF_NUM_OCTAVE_LAYERS&quot;</span>, po::value&lt;int&gt;(&amp;surfNumOctaveLayers)-&gt;default_value(2), <span class="stringliteral">&quot;Default Number of Octave Layers&quot;</span>)
+<a name="l00098"></a>00098             (<span class="stringliteral">&quot;SURF_EXTENDED&quot;</span>, po::value&lt;int&gt;(&amp;surfExtended)-&gt;default_value(0), <span class="stringliteral">&quot;Default Value of Extended&quot;</span>)
+<a name="l00099"></a>00099             (<span class="stringliteral">&quot;SURF_UPRIGHT&quot;</span>, po::value&lt;int&gt;(&amp;surfUpright)-&gt;default_value(0), <span class="stringliteral">&quot;Default Upright Value&quot;</span>)
+<a name="l00100"></a>00100 
+<a name="l00102"></a>00102             (<span class="stringliteral">&quot;DENSITY_WINDOW_WIDTH&quot;</span>, po::value&lt;int&gt;(&amp;options.<a class="code" href="class_options.html#adbdf2cb66ca801f754de4299fb6e499a">density_window</a>)-&gt;default_value(51), <span class="stringliteral">&quot;window size&quot;</span>)
+<a name="l00103"></a>00103             (<span class="stringliteral">&quot;INTEREST_POINT_METHOD&quot;</span>, po::value&lt;string &gt; (&amp;options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a>)-&gt;default_value(<span class="stringliteral">&quot;SIFT&quot;</span>), <span class="stringliteral">&quot;Type of interest point detector to use&quot;</span>);
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106     <span class="comment">/********************************************************************/</span>
+<a name="l00107"></a>00107     <span class="comment">/*                                                  DO NOT CHANGE!!!!!!!!!!!!!                              */</span>
+<a name="l00108"></a>00108     <span class="comment">/********************************************************************/</span>
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="comment">//this is a new description to allow us to combine the command line and config file</span>
+<a name="l00111"></a>00111     <span class="comment">// inputs for use in the command-line only options. Should also contain hidded once</span>
+<a name="l00112"></a>00112     <span class="comment">// they become relevant</span>
+<a name="l00113"></a>00113     po::options_description cmdline_options;
+<a name="l00114"></a>00114     cmdline_options.add(<span class="keyword">generic</span>).add(config_file);
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116     <span class="comment">//this is a new description which will add hidden descriptions once the hidden options</span>
+<a name="l00117"></a>00117     <span class="comment">// are deemed necessary. Check multiple_sources.cpp in the boost program options example</span>
+<a name="l00118"></a>00118     <span class="comment">// code to learn how to integrate this</span>
+<a name="l00119"></a>00119     po::options_description config_file_options;
+<a name="l00120"></a>00120     config_file_options.add(config_file);
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122     <span class="comment">//This is a new description which will show visible options not hidded. This is important as</span>
+<a name="l00123"></a>00123     <span class="comment">// will be what gets printed to the screen when the help gets called</span>
+<a name="l00124"></a>00124     po::options_description visible(<span class="stringliteral">&quot;Allowed options&quot;</span>);
+<a name="l00125"></a>00125     visible.add(<span class="keyword">generic</span>).add(config_file);
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127     <span class="comment">//create variable map and map the command line arguements to it</span>
+<a name="l00128"></a>00128     po::variables_map vm;
+<a name="l00129"></a>00129     po::store(po::parse_command_line(argc, argv, cmdline_options), vm);
+<a name="l00130"></a>00130     po::notify(vm);
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132     <span class="comment">/****************************************/</span>
+<a name="l00133"></a>00133     <span class="comment">/* CHECK FOR CONFIG FILE ARGUEMENTS */</span>
+<a name="l00134"></a>00134     <span class="comment">/****************************************/</span>
+<a name="l00135"></a>00135     ifstream ifs(default_config_filename.c_str());
+<a name="l00136"></a>00136     <span class="keywordflow">if</span> (!ifs) {
+<a name="l00137"></a>00137         cout &lt;&lt; <span class="stringliteral">&quot;can not open config file: &quot;</span> &lt;&lt; default_config_filename &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00138"></a>00138         exit(0);
+<a name="l00139"></a>00139     } <span class="keywordflow">else</span> {
+<a name="l00140"></a>00140         <span class="comment">//if the filestream does exist, then load config arguements and parse</span>
+<a name="l00141"></a>00141         po::store(po::parse_config_file(ifs, config_file_options), vm);
+<a name="l00142"></a>00142         po::notify(vm);
 <a name="l00143"></a>00143     }
-<a name="l00144"></a>00144 
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146     <span class="comment">/******************************************************************/</span>
-<a name="l00147"></a>00147     <span class="comment">/* CONVERT STRING INPUTS INTO APPROPRIATE CONFIG FILE OPTIONS */</span>
-<a name="l00148"></a>00148     <span class="comment">/******************************************************************/</span>
-<a name="l00149"></a>00149     <span class="keywordflow">if</span> (SIFT_lane_crop == <span class="stringliteral">&quot;true&quot;</span>)
-<a name="l00150"></a>00150         options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a> = <span class="keyword">true</span>;
-<a name="l00151"></a>00151     <span class="keywordflow">else</span>
-<a name="l00152"></a>00152         options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a> = <span class="keyword">false</span>;
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155     <span class="comment">//create sift common params</span>
-<a name="l00156"></a>00156     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaves = siftNumOctaves;
-<a name="l00157"></a>00157     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaveLayers = siftNumOctaveLayers;
-<a name="l00158"></a>00158     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.firstOctave = siftFirstOctave;
-<a name="l00159"></a>00159     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.angleMode = siftAngleMode;
+<a name="l00144"></a>00144     <span class="comment">/**************************/</span>
+<a name="l00145"></a>00145     <span class="comment">/* PRINT HELP OPTIONS */</span>
+<a name="l00146"></a>00146     <span class="comment">/**************************/</span>
+<a name="l00147"></a>00147     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">&quot;help&quot;</span>)) {
+<a name="l00148"></a>00148         cout &lt;&lt; visible &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00149"></a>00149         exit(0);
+<a name="l00150"></a>00150     }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153     <span class="comment">/******************************************************************/</span>
+<a name="l00154"></a>00154     <span class="comment">/* CONVERT STRING INPUTS INTO APPROPRIATE CONFIG FILE OPTIONS */</span>
+<a name="l00155"></a>00155     <span class="comment">/******************************************************************/</span>
+<a name="l00156"></a>00156     <span class="keywordflow">if</span> (SIFT_lane_crop == <span class="stringliteral">&quot;true&quot;</span>)
+<a name="l00157"></a>00157         options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a> = <span class="keyword">true</span>;
+<a name="l00158"></a>00158     <span class="keywordflow">else</span>
+<a name="l00159"></a>00159         options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a> = <span class="keyword">false</span>;
 <a name="l00160"></a>00160 
-<a name="l00161"></a>00161     options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.isNormalize = siftIsNormalize;
-<a name="l00162"></a>00162     options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.magnification = siftMagnification;
-<a name="l00163"></a>00163     options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.recalculateAngles = siftRecalculateAngles;
-<a name="l00164"></a>00164 
-<a name="l00165"></a>00165     options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.edgeThreshold = siftEdgeThreshold;
-<a name="l00166"></a>00166     options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.threshold = siftThreshold;
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162     <span class="comment">//create sift common params</span>
+<a name="l00163"></a>00163     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaves = siftNumOctaves;
+<a name="l00164"></a>00164     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaveLayers = siftNumOctaveLayers;
+<a name="l00165"></a>00165     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.firstOctave = siftFirstOctave;
+<a name="l00166"></a>00166     options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.angleMode = siftAngleMode;
 <a name="l00167"></a>00167 
-<a name="l00168"></a>00168     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a83a24513b75d2b36aeab2f4734e44882">hessianThreshold</a> = surfHessianThreshold;
-<a name="l00169"></a>00169     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a4c3319c48159907cd93e52f12c5d6610">numOctaves</a> = surfNumOctaves;
-<a name="l00170"></a>00170     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#acec977f220c8e2632f7bd5a9761765b3">numOctaveLayers</a> = surfNumOctaveLayers;
-<a name="l00171"></a>00171     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#aa4fbcc5ff94b76c6e7acf8eff5528f89">extended</a> = surfExtended;
-<a name="l00172"></a>00172     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#af8ef2555b3dc9abbd8e151d60e420c7e">upright</a> = surfUpright;
-<a name="l00173"></a>00173 
+<a name="l00168"></a>00168     options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.isNormalize = siftIsNormalize;
+<a name="l00169"></a>00169     options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.magnification = siftMagnification;
+<a name="l00170"></a>00170     options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.recalculateAngles = siftRecalculateAngles;
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172     options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.edgeThreshold = siftEdgeThreshold;
+<a name="l00173"></a>00173     options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.threshold = siftThreshold;
 <a name="l00174"></a>00174 
-<a name="l00175"></a>00175     <span class="keywordflow">if</span> (options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a> == <span class="stringliteral">&quot;SIFT&quot;</span>) { <span class="comment">//using sift method</span>
-<a name="l00176"></a>00176         options.<a class="code" href="class_options.html#ad830e7ecedc377b3536ed4c2e013a2dd">detector</a> = <span class="keyword">new</span> <a class="code" href="class_sift_type.html">SiftType</a>(options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a>, options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>, options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>, options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>);
-<a name="l00177"></a>00177     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a> == <span class="stringliteral">&quot;SURF&quot;</span>) {
-<a name="l00178"></a>00178         options.<a class="code" href="class_options.html#ad830e7ecedc377b3536ed4c2e013a2dd">detector</a> = <span class="keyword">new</span> <a class="code" href="class_surf_type.html">SurfType</a>(options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>);
-<a name="l00179"></a>00179     } <span class="keywordflow">else</span> {
-<a name="l00180"></a>00180         cout &lt;&lt; <span class="stringliteral">&quot;ERROR: Interest Point Detector Method unknown&quot;</span> &lt;&lt; endl;
-<a name="l00181"></a>00181         exit(0);
-<a name="l00182"></a>00182 
-<a name="l00183"></a>00183     }
-<a name="l00184"></a>00184 
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186     <span class="comment">//check to make sure that video file exists</span>
-<a name="l00187"></a>00187     <span class="keywordflow">if</span> (fs::exists(fs::path(options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a>)) != <span class="keyword">true</span>) {
-<a name="l00188"></a>00188         <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;ERROR: video filename does not exist&quot;</span>);
-<a name="l00189"></a>00189     }
-<a name="l00190"></a>00190 
-<a name="l00191"></a>00191     <span class="keywordflow">if</span> (show_video == <span class="stringliteral">&quot;true&quot;</span>)
-<a name="l00192"></a>00192         options.<a class="code" href="class_options.html#a0daf1af70609b4d1d1ef633c459dcdbb">show</a> = <span class="keyword">true</span>;
-<a name="l00193"></a>00193     <span class="keywordflow">else</span>
-<a name="l00194"></a>00194         options.<a class="code" href="class_options.html#a0daf1af70609b4d1d1ef633c459dcdbb">show</a> = <span class="keyword">false</span>;
-<a name="l00195"></a>00195 
-<a name="l00196"></a>00196 
-<a name="l00197"></a>00197     <span class="keywordflow">if</span> (saveFrame == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#a72803ea5d520c02502a72885fc1d7d00">saveAvgFrame</a> = <span class="keyword">true</span>;
-<a name="l00198"></a>00198     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#a72803ea5d520c02502a72885fc1d7d00">saveAvgFrame</a> = <span class="keyword">false</span>;
-<a name="l00199"></a>00199     <span class="keywordflow">if</span> (loadFrame == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#a3a89b79a7b1e423ba934990b182fd887">loadAvgFrame</a> = <span class="keyword">true</span>;
-<a name="l00200"></a>00200     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#a3a89b79a7b1e423ba934990b182fd887">loadAvgFrame</a> = <span class="keyword">false</span>;
-<a name="l00201"></a>00201     <span class="keywordflow">if</span> (saveLanes == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#abbb026b8b9eb99f147913912e6a8b1b9">saveLanes</a> = <span class="keyword">true</span>;
-<a name="l00202"></a>00202     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#abbb026b8b9eb99f147913912e6a8b1b9">saveLanes</a> = <span class="keyword">false</span>;
-<a name="l00203"></a>00203     <span class="keywordflow">if</span> (loadLanes == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#a07cdcfd5edc191ee49ad01c71688789a">loadLanes</a> = <span class="keyword">true</span>;
-<a name="l00204"></a>00204     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#a07cdcfd5edc191ee49ad01c71688789a">loadLanes</a> = <span class="keyword">false</span>;
-<a name="l00205"></a>00205 
-<a name="l00206"></a>00206 }
-<a name="l00207"></a>00207 
-<a name="l00208"></a><a class="code" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6">00208</a> <span class="keywordtype">void</span> <a class="code" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6">Parser::write_configuration</a>(<a class="code" href="class_options.html">Options</a>&amp; options) {
-<a name="l00209"></a>00209 
-<a name="l00210"></a>00210     ofstream fout;
-<a name="l00211"></a>00211     fout.open(<span class="stringliteral">&quot;data/_options.cfg&quot;</span>);
+<a name="l00175"></a>00175     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a83a24513b75d2b36aeab2f4734e44882">hessianThreshold</a> = surfHessianThreshold;
+<a name="l00176"></a>00176     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a4c3319c48159907cd93e52f12c5d6610">numOctaves</a> = surfNumOctaves;
+<a name="l00177"></a>00177     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#acec977f220c8e2632f7bd5a9761765b3">numOctaveLayers</a> = surfNumOctaveLayers;
+<a name="l00178"></a>00178     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#aa4fbcc5ff94b76c6e7acf8eff5528f89">extended</a> = surfExtended;
+<a name="l00179"></a>00179     options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#af8ef2555b3dc9abbd8e151d60e420c7e">upright</a> = surfUpright;
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182     <span class="keywordflow">if</span> (options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a> == <span class="stringliteral">&quot;SIFT&quot;</span>) { <span class="comment">//using sift method</span>
+<a name="l00183"></a>00183         options.<a class="code" href="class_options.html#ad830e7ecedc377b3536ed4c2e013a2dd">detector</a> = <span class="keyword">new</span> <a class="code" href="class_sift_type.html">SiftType</a>(options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a>, options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>, options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>, options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>);
+<a name="l00184"></a>00184     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a> == <span class="stringliteral">&quot;SURF&quot;</span>) {
+<a name="l00185"></a>00185         options.<a class="code" href="class_options.html#ad830e7ecedc377b3536ed4c2e013a2dd">detector</a> = <span class="keyword">new</span> <a class="code" href="class_surf_type.html">SurfType</a>(options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>);
+<a name="l00186"></a>00186     } <span class="keywordflow">else</span> {
+<a name="l00187"></a>00187         cout &lt;&lt; <span class="stringliteral">&quot;ERROR: Interest Point Detector Method unknown&quot;</span> &lt;&lt; endl;
+<a name="l00188"></a>00188         exit(0);
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190     }
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193     <span class="comment">//check to make sure that video file exists</span>
+<a name="l00194"></a>00194     <span class="keywordflow">if</span> (fs::exists(fs::path(options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a>)) != <span class="keyword">true</span>) {
+<a name="l00195"></a>00195         <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;ERROR: video filename does not exist&quot;</span>);
+<a name="l00196"></a>00196     }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198     <span class="keywordflow">if</span> (show_video == <span class="stringliteral">&quot;true&quot;</span>)
+<a name="l00199"></a>00199         options.<a class="code" href="class_options.html#a0daf1af70609b4d1d1ef633c459dcdbb">show</a> = <span class="keyword">true</span>;
+<a name="l00200"></a>00200     <span class="keywordflow">else</span>
+<a name="l00201"></a>00201         options.<a class="code" href="class_options.html#a0daf1af70609b4d1d1ef633c459dcdbb">show</a> = <span class="keyword">false</span>;
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204     <span class="keywordflow">if</span> (saveFrame == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#a72803ea5d520c02502a72885fc1d7d00">saveAvgFrame</a> = <span class="keyword">true</span>;
+<a name="l00205"></a>00205     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#a72803ea5d520c02502a72885fc1d7d00">saveAvgFrame</a> = <span class="keyword">false</span>;
+<a name="l00206"></a>00206     <span class="keywordflow">if</span> (loadFrame == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#a3a89b79a7b1e423ba934990b182fd887">loadAvgFrame</a> = <span class="keyword">true</span>;
+<a name="l00207"></a>00207     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#a3a89b79a7b1e423ba934990b182fd887">loadAvgFrame</a> = <span class="keyword">false</span>;
+<a name="l00208"></a>00208     <span class="keywordflow">if</span> (saveLanes == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#abbb026b8b9eb99f147913912e6a8b1b9">saveLanes</a> = <span class="keyword">true</span>;
+<a name="l00209"></a>00209     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#abbb026b8b9eb99f147913912e6a8b1b9">saveLanes</a> = <span class="keyword">false</span>;
+<a name="l00210"></a>00210     <span class="keywordflow">if</span> (loadLanes == <span class="stringliteral">&quot;true&quot;</span>) options.<a class="code" href="class_options.html#a07cdcfd5edc191ee49ad01c71688789a">loadLanes</a> = <span class="keyword">true</span>;
+<a name="l00211"></a>00211     <span class="keywordflow">else</span> options.<a class="code" href="class_options.html#a07cdcfd5edc191ee49ad01c71688789a">loadLanes</a> = <span class="keyword">false</span>;
 <a name="l00212"></a>00212 
-<a name="l00213"></a>00213     <span class="comment">//video options</span>
-<a name="l00214"></a>00214     fout &lt;&lt; <span class="stringliteral">&quot;SHOW_VIDEO     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a0daf1af70609b4d1d1ef633c459dcdbb">show</a>) &lt;&lt; endl;
-<a name="l00215"></a>00215     fout &lt;&lt; <span class="stringliteral">&quot;START_FRAME    = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ab9c7cf4df6590dfc009342a9ac562c8e">start_frame</a> &lt;&lt; endl;
-<a name="l00216"></a>00216     fout &lt;&lt; <span class="stringliteral">&quot;STOP_FRAME     = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a45c792c3812d45288b199e7eb8f74400">stop_frame</a> &lt;&lt; endl;
-<a name="l00217"></a>00217     fout &lt;&lt; <span class="stringliteral">&quot;FRAME_RATE     = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a466a2a141ee2c3ecb3082566ede72ad3">frame_rate</a> &lt;&lt; endl;
-<a name="l00218"></a>00218     fout &lt;&lt; endl;
-<a name="l00219"></a>00219 
-<a name="l00220"></a>00220 
-<a name="l00221"></a>00221     fout &lt;&lt; <span class="stringliteral">&quot;VIDEO_FILENAME = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a> &lt;&lt; endl;
-<a name="l00222"></a>00222     fout &lt;&lt; <span class="stringliteral">&quot;VIDEO_OUTPUT_FILENAME = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a13788968dfa22a22acc91a75a7711fe6">video_output_filename</a> &lt;&lt; endl;
-<a name="l00223"></a>00223     fout &lt;&lt; endl;
-<a name="l00224"></a>00224 
-<a name="l00225"></a>00225     <span class="comment">//lane drawing parameters</span>
-<a name="l00226"></a>00226     fout &lt;&lt; <span class="stringliteral">&quot;SAVE_AVERAGE_FRAME     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a72803ea5d520c02502a72885fc1d7d00">saveAvgFrame</a>) &lt;&lt; endl;
-<a name="l00227"></a>00227     fout &lt;&lt; <span class="stringliteral">&quot;LOAD_AVERAGE_FRAME     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a3a89b79a7b1e423ba934990b182fd887">loadAvgFrame</a>) &lt;&lt; endl;
-<a name="l00228"></a>00228     fout &lt;&lt; <span class="stringliteral">&quot;AVERAGE_FRAME_FILENAME = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a3c468be8f4b636ea332fcacac909ee4b">avgFilename</a> &lt;&lt; endl;
-<a name="l00229"></a>00229     fout &lt;&lt; endl;
-<a name="l00230"></a>00230     fout &lt;&lt; <span class="stringliteral">&quot;SAVE_LANES     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#abbb026b8b9eb99f147913912e6a8b1b9">saveLanes</a>) &lt;&lt; endl;
-<a name="l00231"></a>00231     fout &lt;&lt; <span class="stringliteral">&quot;LOAD_LANES     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a07cdcfd5edc191ee49ad01c71688789a">loadLanes</a>) &lt;&lt; endl;
-<a name="l00232"></a>00232     fout &lt;&lt; <span class="stringliteral">&quot;LANE_DATA_FILE = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a635b111055e083a91f228feff6fee1fc">laneFilename</a> &lt;&lt; endl;
-<a name="l00233"></a>00233     fout &lt;&lt; endl;
-<a name="l00234"></a>00234 
-<a name="l00235"></a>00235     <span class="comment">//Interest point parameters</span>
-<a name="l00236"></a>00236     fout &lt;&lt; <span class="stringliteral">&quot;INTEREST_POINT_MAX_FRAME_LIFE = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad83ab0070ddb7097311ee3dd2cecabb3">interest_point_max_life</a> &lt;&lt; endl;
-<a name="l00237"></a>00237     fout &lt;&lt; <span class="stringliteral">&quot;DENSITY_WINDOW_WIDTH          = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#adbdf2cb66ca801f754de4299fb6e499a">density_window</a> &lt;&lt; endl;
-<a name="l00238"></a>00238     fout &lt;&lt; endl &lt;&lt; endl;
-<a name="l00239"></a>00239 
-<a name="l00240"></a>00240     fout &lt;&lt; <span class="stringliteral">&quot;INTEREST_POINT_METHOD = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a> &lt;&lt; endl;
-<a name="l00241"></a>00241 
-<a name="l00242"></a>00242     fout &lt;&lt; endl &lt;&lt; endl;
-<a name="l00243"></a>00243     fout &lt;&lt; <span class="stringliteral">&quot;#SIFT Parameters&quot;</span> &lt;&lt; endl;
-<a name="l00244"></a>00244     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_LANE_CROP           = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a>) &lt;&lt; endl;
-<a name="l00245"></a>00245     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_NUM_OCTAVES         = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaves &lt;&lt; endl;
-<a name="l00246"></a>00246     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_NUM_OCTAVE_LAYERS   = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaveLayers &lt;&lt; endl;
-<a name="l00247"></a>00247     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_FIRST_OCTAVE        = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.firstOctave &lt;&lt; endl;
-<a name="l00248"></a>00248     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_ANGLE_MODE          = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.angleMode &lt;&lt; endl;
-<a name="l00249"></a>00249 
-<a name="l00250"></a>00250     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_ISNORMALIZE         = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.isNormalize &lt;&lt; endl;
-<a name="l00251"></a>00251     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_RECALCULATE_ANGLES  = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.recalculateAngles &lt;&lt; endl;
-<a name="l00252"></a>00252     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_MAGNIFICATION       = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.recalculateAngles &lt;&lt; endl;
-<a name="l00253"></a>00253     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_EDGE_THRESHOLD      = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.edgeThreshold &lt;&lt; endl;
-<a name="l00254"></a>00254     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_THRESHOLD           = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.threshold &lt;&lt; endl;
+<a name="l00213"></a>00213 }
+<a name="l00214"></a>00214 
+<a name="l00224"></a><a class="code" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6">00224</a> <span class="keywordtype">void</span> <a class="code" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6" title="Write config options to file.">Parser::write_configuration</a>(<a class="code" href="class_options.html">Options</a>&amp; options) {
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226     ofstream fout;
+<a name="l00227"></a>00227     fout.open(<span class="stringliteral">&quot;data/_options.cfg&quot;</span>);
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229     <span class="comment">//video options</span>
+<a name="l00230"></a>00230     fout &lt;&lt; <span class="stringliteral">&quot;SHOW_VIDEO     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a0daf1af70609b4d1d1ef633c459dcdbb">show</a>) &lt;&lt; endl;
+<a name="l00231"></a>00231     fout &lt;&lt; <span class="stringliteral">&quot;START_FRAME    = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ab9c7cf4df6590dfc009342a9ac562c8e">start_frame</a> &lt;&lt; endl;
+<a name="l00232"></a>00232     fout &lt;&lt; <span class="stringliteral">&quot;STOP_FRAME     = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a45c792c3812d45288b199e7eb8f74400">stop_frame</a> &lt;&lt; endl;
+<a name="l00233"></a>00233     fout &lt;&lt; <span class="stringliteral">&quot;FRAME_RATE     = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a466a2a141ee2c3ecb3082566ede72ad3">frame_rate</a> &lt;&lt; endl;
+<a name="l00234"></a>00234     fout &lt;&lt; endl;
+<a name="l00235"></a>00235 
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237     fout &lt;&lt; <span class="stringliteral">&quot;VIDEO_FILENAME = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a> &lt;&lt; endl;
+<a name="l00238"></a>00238     fout &lt;&lt; <span class="stringliteral">&quot;VIDEO_OUTPUT_FILENAME = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a13788968dfa22a22acc91a75a7711fe6">video_output_filename</a> &lt;&lt; endl;
+<a name="l00239"></a>00239     fout &lt;&lt; endl;
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241     <span class="comment">//lane drawing parameters</span>
+<a name="l00242"></a>00242     fout &lt;&lt; <span class="stringliteral">&quot;SAVE_AVERAGE_FRAME     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a72803ea5d520c02502a72885fc1d7d00">saveAvgFrame</a>) &lt;&lt; endl;
+<a name="l00243"></a>00243     fout &lt;&lt; <span class="stringliteral">&quot;LOAD_AVERAGE_FRAME     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a3a89b79a7b1e423ba934990b182fd887">loadAvgFrame</a>) &lt;&lt; endl;
+<a name="l00244"></a>00244     fout &lt;&lt; <span class="stringliteral">&quot;AVERAGE_FRAME_FILENAME = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a3c468be8f4b636ea332fcacac909ee4b">avgFilename</a> &lt;&lt; endl;
+<a name="l00245"></a>00245     fout &lt;&lt; endl;
+<a name="l00246"></a>00246     fout &lt;&lt; <span class="stringliteral">&quot;SAVE_LANES     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#abbb026b8b9eb99f147913912e6a8b1b9">saveLanes</a>) &lt;&lt; endl;
+<a name="l00247"></a>00247     fout &lt;&lt; <span class="stringliteral">&quot;LOAD_LANES     = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a07cdcfd5edc191ee49ad01c71688789a">loadLanes</a>) &lt;&lt; endl;
+<a name="l00248"></a>00248     fout &lt;&lt; <span class="stringliteral">&quot;LANE_DATA_FILE = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a635b111055e083a91f228feff6fee1fc">laneFilename</a> &lt;&lt; endl;
+<a name="l00249"></a>00249     fout &lt;&lt; endl;
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251     <span class="comment">//Interest point parameters</span>
+<a name="l00252"></a>00252     fout &lt;&lt; <span class="stringliteral">&quot;INTEREST_POINT_MAX_FRAME_LIFE = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad83ab0070ddb7097311ee3dd2cecabb3">interest_point_max_life</a> &lt;&lt; endl;
+<a name="l00253"></a>00253     fout &lt;&lt; <span class="stringliteral">&quot;DENSITY_WINDOW_WIDTH          = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#adbdf2cb66ca801f754de4299fb6e499a">density_window</a> &lt;&lt; endl;
+<a name="l00254"></a>00254     fout &lt;&lt; endl &lt;&lt; endl;
 <a name="l00255"></a>00255 
-<a name="l00256"></a>00256     fout &lt;&lt; endl &lt;&lt; endl;
-<a name="l00257"></a>00257     fout &lt;&lt; <span class="stringliteral">&quot;#SURF PARAMETERS&quot;</span> &lt;&lt; endl;
-<a name="l00258"></a>00258     fout &lt;&lt; <span class="stringliteral">&quot;SURF_HESSIAN_THRESHOLD    = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a83a24513b75d2b36aeab2f4734e44882">hessianThreshold</a> &lt;&lt; endl;
-<a name="l00259"></a>00259     fout &lt;&lt; <span class="stringliteral">&quot;SURF_NUM_OCTAVES          = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a4c3319c48159907cd93e52f12c5d6610">numOctaves</a> &lt;&lt; endl;
-<a name="l00260"></a>00260     fout &lt;&lt; <span class="stringliteral">&quot;SURF_NUM_OCTAVE_LAYERS    = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#acec977f220c8e2632f7bd5a9761765b3">numOctaveLayers</a> &lt;&lt; endl;
-<a name="l00261"></a>00261     fout &lt;&lt; <span class="stringliteral">&quot;SURF_EXTENDED             = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#aa4fbcc5ff94b76c6e7acf8eff5528f89">extended</a> &lt;&lt; endl;
-<a name="l00262"></a>00262     fout &lt;&lt; <span class="stringliteral">&quot;SURF_UPRIGHT              = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#af8ef2555b3dc9abbd8e151d60e420c7e">upright</a> &lt;&lt; endl;
-<a name="l00263"></a>00263 
-<a name="l00264"></a>00264 
-<a name="l00265"></a>00265     fout.close();
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267 }
-<a name="l00268"></a>00268 
+<a name="l00256"></a>00256     fout &lt;&lt; <span class="stringliteral">&quot;INTEREST_POINT_METHOD = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a6536c55b2f8fc227d0fad5a2bdcf86b9">detector_type</a> &lt;&lt; endl;
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258     fout &lt;&lt; endl &lt;&lt; endl;
+<a name="l00259"></a>00259     fout &lt;&lt; <span class="stringliteral">&quot;#SIFT Parameters&quot;</span> &lt;&lt; endl;
+<a name="l00260"></a>00260     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_LANE_CROP           = &quot;</span> &lt;&lt; <a class="code" href="class_enumerations.html#afbd60a6e41596bdb5e759d4921581d8e">Enumerations::bool2string</a>(options.<a class="code" href="class_options.html#a6c6a59d771c1212823ab5f8ff3852bc8">SIFT_lane_crop</a>) &lt;&lt; endl;
+<a name="l00261"></a>00261     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_NUM_OCTAVES         = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaves &lt;&lt; endl;
+<a name="l00262"></a>00262     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_NUM_OCTAVE_LAYERS   = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.nOctaveLayers &lt;&lt; endl;
+<a name="l00263"></a>00263     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_FIRST_OCTAVE        = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.firstOctave &lt;&lt; endl;
+<a name="l00264"></a>00264     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_ANGLE_MODE          = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>.angleMode &lt;&lt; endl;
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_ISNORMALIZE         = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.isNormalize &lt;&lt; endl;
+<a name="l00267"></a>00267     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_RECALCULATE_ANGLES  = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.recalculateAngles &lt;&lt; endl;
+<a name="l00268"></a>00268     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_MAGNIFICATION       = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>.recalculateAngles &lt;&lt; endl;
+<a name="l00269"></a>00269     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_EDGE_THRESHOLD      = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.edgeThreshold &lt;&lt; endl;
+<a name="l00270"></a>00270     fout &lt;&lt; <span class="stringliteral">&quot;SIFT_THRESHOLD           = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>.threshold &lt;&lt; endl;
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272     fout &lt;&lt; endl &lt;&lt; endl;
+<a name="l00273"></a>00273     fout &lt;&lt; <span class="stringliteral">&quot;#SURF PARAMETERS&quot;</span> &lt;&lt; endl;
+<a name="l00274"></a>00274     fout &lt;&lt; <span class="stringliteral">&quot;SURF_HESSIAN_THRESHOLD    = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a83a24513b75d2b36aeab2f4734e44882">hessianThreshold</a> &lt;&lt; endl;
+<a name="l00275"></a>00275     fout &lt;&lt; <span class="stringliteral">&quot;SURF_NUM_OCTAVES          = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#a4c3319c48159907cd93e52f12c5d6610">numOctaves</a> &lt;&lt; endl;
+<a name="l00276"></a>00276     fout &lt;&lt; <span class="stringliteral">&quot;SURF_NUM_OCTAVE_LAYERS    = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#acec977f220c8e2632f7bd5a9761765b3">numOctaveLayers</a> &lt;&lt; endl;
+<a name="l00277"></a>00277     fout &lt;&lt; <span class="stringliteral">&quot;SURF_EXTENDED             = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#aa4fbcc5ff94b76c6e7acf8eff5528f89">extended</a> &lt;&lt; endl;
+<a name="l00278"></a>00278     fout &lt;&lt; <span class="stringliteral">&quot;SURF_UPRIGHT              = &quot;</span> &lt;&lt; options.<a class="code" href="class_options.html#ad1d83ecaa7c69b9b49e949c4c2f7077a">surfParams</a>.<a class="code" href="class_s_u_r_f___p_a_r_a_m_s.html#af8ef2555b3dc9abbd8e151d60e420c7e">upright</a> &lt;&lt; endl;
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281     fout.close();
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283 }
+<a name="l00284"></a>00284 
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -381,7 +380,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:42 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:06 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

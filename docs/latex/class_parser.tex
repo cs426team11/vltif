@@ -4,21 +4,26 @@
 }
 
 
+\-Container for the various program variables and states.  
+
+
+
+
 {\ttfamily \#include $<$\-Parser.\-h$>$}
 
 \subsection*{\-Static \-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
 static void \hyperlink{class_parser_ac030c871d4f36e475391c0d2c0b204a5}{parse\-\_\-config\-\_\-file} (int argc, char $\ast$$\ast$argv, \hyperlink{class_options}{\-Options} \&options, const string \&filename=\char`\"{}data/options.\-cfg\char`\"{})
-\item 
+\begin{DoxyCompactList}\small\item\em \-Extract program configuration options from the file. \end{DoxyCompactList}\item 
 static void \hyperlink{class_parser_ac37db3a8867432eab2abb457c68a62b6}{write\-\_\-configuration} (\hyperlink{class_options}{\-Options} \&options)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Write config options to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
+\-Container for the various program variables and states. 
 
-
-\-Definition at line 33 of file \-Parser.\-h.
+\-Definition at line 36 of file \-Parser.\-h.
 
 
 
@@ -35,6 +40,21 @@ static void \hyperlink{class_parser_ac37db3a8867432eab2abb457c68a62b6}{write\-\_
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
 \label{class_parser_ac030c871d4f36e475391c0d2c0b204a5}
+
+
+\-Extract program configuration options from the file. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em argc} & number of command line args \\
+\hline
+{\em argv} & array of args \\
+\hline
+{\em options} & structure to hold variables \\
+\hline
+{\em filename} & name of config file \\
+\hline
+\end{DoxyParams}
 \-D\-I\-S\-P\-L\-A\-Y \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S
 
 \-I\-N\-T\-E\-R\-E\-S\-T \-P\-O\-I\-N\-T \-H\-I\-S\-T\-O\-R\-Y \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S
@@ -45,7 +65,7 @@ static void \hyperlink{class_parser_ac37db3a8867432eab2abb457c68a62b6}{write\-\_
 
 \-C\-O\-R\-E \-I\-N\-T\-E\-R\-E\-S\-T \-P\-O\-I\-N\-T \-P\-A\-R\-A\-M\-E\-T\-E\-R\-S 
 
-\-Definition at line 12 of file \-Parser.\-cpp.
+\-Definition at line 19 of file \-Parser.\-cpp.
 
 
 
@@ -305,7 +325,18 @@ static void \hyperlink{class_parser_ac37db3a8867432eab2abb457c68a62b6}{write\-\_
 \label{class_parser_ac37db3a8867432eab2abb457c68a62b6}
 
 
-\-Definition at line 208 of file \-Parser.\-cpp.
+\-Write config options to file. 
+
+\-This is a powerful tool for repeating configurations which you may not know the values being inserted. \-This will write every config option which is required by the program to file.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em options} & config parameters \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 224 of file \-Parser.\-cpp.
 
 
 

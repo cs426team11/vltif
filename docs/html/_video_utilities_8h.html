@@ -110,10 +110,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_video_utilities_8h.html#aacfdd655e380d7e6dd41743752492ca5">median_frame</a> (const string &amp;filename, const size_t start_frame)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_video_utilities_8h.html#a0eaad1680fc55dbc2f9359bf3d4c114e">median_frame</a> (const string &amp;filename, const size_t start_frame, const size_t frame_skip=20, const size_t num_frames=100)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="aacfdd655e380d7e6dd41743752492ca5"></a><!-- doxytag: member="VideoUtilities.h::median_frame" ref="aacfdd655e380d7e6dd41743752492ca5" args="(const string &amp;filename, const size_t start_frame)" -->
+<a class="anchor" id="a0eaad1680fc55dbc2f9359bf3d4c114e"></a><!-- doxytag: member="VideoUtilities.h::median_frame" ref="a0eaad1680fc55dbc2f9359bf3d4c114e" args="(const string &amp;filename, const size_t start_frame, const size_t frame_skip=20, const size_t num_frames=100)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -127,7 +127,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>start_frame</em>&#160;</td>
+          <td class="paramname"><em>start_frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>frame_skip</em> = <code>20</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>num_frames</em> = <code>100</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -140,12 +152,11 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_video_utilities_8cpp_source.html#l00003">3</a> of file <a class="el" href="_video_utilities_8cpp_source.html">VideoUtilities.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_lane_drawing_8cpp_source.html#l00005">lane_manager()</a>.</p>
-<div class="fragment"><pre class="fragment">                                                                    {
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00120">PointTracker::build_background()</a>, and <a class="el" href="_lane_drawing_8cpp_source.html#l00005">lane_manager()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                                                                                      {
 
     <span class="comment">//</span>
-    <span class="keywordtype">size_t</span> frame_skip  = 20;
-    <span class="keywordtype">size_t</span> frame_count = 100;
+    <span class="keywordtype">size_t</span> frame_count = num_frames;
     Mat frameOut;
     <span class="keywordtype">size_t</span> rows, cols;
     
@@ -220,7 +231,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:43 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:06 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -10,36 +10,38 @@
 \subsection*{\-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\-Mat \hyperlink{_video_utilities_8h_aacfdd655e380d7e6dd41743752492ca5}{median\-\_\-frame} (const string \&filename, const size\-\_\-t start\-\_\-frame)
+\-Mat \hyperlink{_video_utilities_8h_a0eaad1680fc55dbc2f9359bf3d4c114e}{median\-\_\-frame} (const string \&filename, const size\-\_\-t start\-\_\-frame, const size\-\_\-t frame\-\_\-skip=20, const size\-\_\-t num\-\_\-frames=100)
 \end{DoxyCompactItemize}
 
 
 \subsection{\-Function \-Documentation}
-\hypertarget{_video_utilities_8h_aacfdd655e380d7e6dd41743752492ca5}{
+\hypertarget{_video_utilities_8h_a0eaad1680fc55dbc2f9359bf3d4c114e}{
 \index{\-Video\-Utilities.\-h@{\-Video\-Utilities.\-h}!median\-\_\-frame@{median\-\_\-frame}}
 \index{median\-\_\-frame@{median\-\_\-frame}!VideoUtilities.h@{\-Video\-Utilities.\-h}}
 \subsubsection[{median\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}\-Mat median\-\_\-frame (
 \begin{DoxyParamCaption}
 \item[{const string \&}]{filename, }
-\item[{const size\-\_\-t}]{start\-\_\-frame}
+\item[{const size\-\_\-t}]{start\-\_\-frame, }
+\item[{const size\-\_\-t}]{frame\-\_\-skip = {\ttfamily 20}, }
+\item[{const size\-\_\-t}]{num\-\_\-frames = {\ttfamily 100}}
 \end{DoxyParamCaption}
 )}}
-\label{_video_utilities_8h_aacfdd655e380d7e6dd41743752492ca5}
+\label{_video_utilities_8h_a0eaad1680fc55dbc2f9359bf3d4c114e}
 
 
 \-Definition at line 3 of file \-Video\-Utilities.\-cpp.
 
 
 
-\-Referenced by lane\-\_\-manager().
+\-Referenced by \-Point\-Tracker\-::build\-\_\-background(), and lane\-\_\-manager().
 
 
 \begin{DoxyCode}
-                                                                    {
+                                                                               
+                                             {
 
     //
-    size_t frame_skip  = 20;
-    size_t frame_count = 100;
+    size_t frame_count = num_frames;
     Mat frameOut;
     size_t rows, cols;
     

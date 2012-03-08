@@ -103,6 +103,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="Parser" -->
+<p>Container for the various program variables and states.  
+ <a href="class_parser.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_parser_8h_source.html">Parser.h</a>&gt;</code></p>
 
 <p><a href="class_parser-members.html">List of all members.</a></p>
@@ -110,11 +113,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5">parse_config_file</a> (int argc, char **argv, <a class="el" href="class_options.html">Options</a> &amp;options, const string &amp;filename=&quot;data/options.cfg&quot;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract program configuration options from the file.  <a href="#ac030c871d4f36e475391c0d2c0b204a5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6">write_configuration</a> (<a class="el" href="class_options.html">Options</a> &amp;options)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write config options to file.  <a href="#ac37db3a8867432eab2abb457c68a62b6"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_parser_8h_source.html#l00033">33</a> of file <a class="el" href="_parser_8h_source.html">Parser.h</a>.</p>
+<div class="textblock"><p>Container for the various program variables and states. </p>
+
+<p>Definition at line <a class="el" href="_parser_8h_source.html#l00036">36</a> of file <a class="el" href="_parser_8h_source.html">Parser.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ac030c871d4f36e475391c0d2c0b204a5"></a><!-- doxytag: member="Parser::parse_config_file" ref="ac030c871d4f36e475391c0d2c0b204a5" args="(int argc, char **argv, Options &amp;options, const string &amp;filename=&quot;data/options.cfg&quot;)" -->
 <div class="memitem">
@@ -152,13 +158,24 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Extract program configuration options from the file. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>number of command line args </td></tr>
+    <tr><td class="paramname">argv</td><td>array of args </td></tr>
+    <tr><td class="paramname">options</td><td>structure to hold variables </td></tr>
+    <tr><td class="paramname">filename</td><td>name of config file </td></tr>
+  </table>
+  </dd>
+</dl>
 <p>DISPLAY PARAMETERS</p>
 <p>INTEREST POINT HISTORY PARAMETERS</p>
 <p>SIFT PARAMETERS</p>
 <p>SURF PARAMETERS</p>
 <p>CORE INTEREST POINT PARAMETERS </p>
 
-<p>Definition at line <a class="el" href="_parser_8cpp_source.html#l00012">12</a> of file <a class="el" href="_parser_8cpp_source.html">Parser.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cpp_source.html#l00019">19</a> of file <a class="el" href="_parser_8cpp_source.html">Parser.cpp</a>.</p>
 
 <p>References <a class="el" href="_options_8h_source.html#l00066">Options::avgFilename</a>, <a class="el" href="_options_8h_source.html#l00079">Options::density_window</a>, <a class="el" href="_options_8h_source.html#l00043">Options::detector</a>, <a class="el" href="_options_8h_source.html#l00042">Options::detector_type</a>, <a class="el" href="_surf_type_8h_source.html#l00029">SURF_PARAMS::extended</a>, <a class="el" href="_options_8h_source.html#l00032">Options::frame_rate</a>, <a class="el" href="_surf_type_8h_source.html#l00026">SURF_PARAMS::hessianThreshold</a>, <a class="el" href="_options_8h_source.html#l00036">Options::interest_point_max_life</a>, <a class="el" href="_options_8h_source.html#l00065">Options::laneFilename</a>, <a class="el" href="_options_8h_source.html#l00064">Options::loadAvgFrame</a>, <a class="el" href="_options_8h_source.html#l00062">Options::loadLanes</a>, <a class="el" href="_surf_type_8h_source.html#l00028">SURF_PARAMS::numOctaveLayers</a>, <a class="el" href="_surf_type_8h_source.html#l00027">SURF_PARAMS::numOctaves</a>, <a class="el" href="_options_8h_source.html#l00063">Options::saveAvgFrame</a>, <a class="el" href="_options_8h_source.html#l00061">Options::saveLanes</a>, <a class="el" href="_options_8h_source.html#l00038">Options::show</a>, <a class="el" href="_options_8h_source.html#l00070">Options::SIFT_lane_crop</a>, <a class="el" href="_options_8h_source.html#l00073">Options::siftCommonParams</a>, <a class="el" href="_options_8h_source.html#l00074">Options::siftDescriptorParams</a>, <a class="el" href="_options_8h_source.html#l00075">Options::siftDetectorParams</a>, <a class="el" href="_options_8h_source.html#l00033">Options::start_frame</a>, <a class="el" href="_options_8h_source.html#l00056">Options::stop_frame</a>, <a class="el" href="_options_8h_source.html#l00072">Options::surfParams</a>, <a class="el" href="_surf_type_8h_source.html#l00030">SURF_PARAMS::upright</a>, <a class="el" href="_options_8h_source.html#l00040">Options::video_filename</a>, and <a class="el" href="_options_8h_source.html#l00041">Options::video_output_filename</a>.</p>
 
@@ -371,7 +388,16 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_parser_8cpp_source.html#l00208">208</a> of file <a class="el" href="_parser_8cpp_source.html">Parser.cpp</a>.</p>
+<p>Write config options to file. </p>
+<p>This is a powerful tool for repeating configurations which you may not know the values being inserted. This will write every config option which is required by the program to file.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>config parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_parser_8cpp_source.html#l00224">224</a> of file <a class="el" href="_parser_8cpp_source.html">Parser.cpp</a>.</p>
 
 <p>References <a class="el" href="_options_8h_source.html#l00066">Options::avgFilename</a>, <a class="el" href="_enumerations_8h_source.html#l00058">Enumerations::bool2string()</a>, <a class="el" href="_options_8h_source.html#l00079">Options::density_window</a>, <a class="el" href="_options_8h_source.html#l00042">Options::detector_type</a>, <a class="el" href="_surf_type_8h_source.html#l00029">SURF_PARAMS::extended</a>, <a class="el" href="_options_8h_source.html#l00032">Options::frame_rate</a>, <a class="el" href="_surf_type_8h_source.html#l00026">SURF_PARAMS::hessianThreshold</a>, <a class="el" href="_options_8h_source.html#l00036">Options::interest_point_max_life</a>, <a class="el" href="_options_8h_source.html#l00065">Options::laneFilename</a>, <a class="el" href="_options_8h_source.html#l00064">Options::loadAvgFrame</a>, <a class="el" href="_options_8h_source.html#l00062">Options::loadLanes</a>, <a class="el" href="_surf_type_8h_source.html#l00028">SURF_PARAMS::numOctaveLayers</a>, <a class="el" href="_surf_type_8h_source.html#l00027">SURF_PARAMS::numOctaves</a>, <a class="el" href="_options_8h_source.html#l00063">Options::saveAvgFrame</a>, <a class="el" href="_options_8h_source.html#l00061">Options::saveLanes</a>, <a class="el" href="_options_8h_source.html#l00038">Options::show</a>, <a class="el" href="_options_8h_source.html#l00070">Options::SIFT_lane_crop</a>, <a class="el" href="_options_8h_source.html#l00073">Options::siftCommonParams</a>, <a class="el" href="_options_8h_source.html#l00074">Options::siftDescriptorParams</a>, <a class="el" href="_options_8h_source.html#l00075">Options::siftDetectorParams</a>, <a class="el" href="_options_8h_source.html#l00033">Options::start_frame</a>, <a class="el" href="_options_8h_source.html#l00056">Options::stop_frame</a>, <a class="el" href="_options_8h_source.html#l00072">Options::surfParams</a>, <a class="el" href="_surf_type_8h_source.html#l00030">SURF_PARAMS::upright</a>, <a class="el" href="_options_8h_source.html#l00040">Options::video_filename</a>, and <a class="el" href="_options_8h_source.html#l00041">Options::video_output_filename</a>.</p>
 
@@ -463,7 +489,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:43 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:07 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

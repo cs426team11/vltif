@@ -103,6 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;cv.h&gt;</code><br/>
 <code>#include &lt;cvaux.h&gt;</code><br/>
 <code>#include &lt;highgui.h&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
 </div>
 <p><a href="_geometry_utilities_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -112,8 +113,112 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_geometry_utilities_8h.html#a55817076dd372ab0b452a9939a4954ce">pointsEqual</a> (KeyPoint const &amp;a, KeyPoint const &amp;b)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_geometry_utilities_8h.html#aa3ed27131855d94c914ae35b8422e8cf">PointDistanceL1</a> (const Point &amp;a, const Point &amp;b)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_geometry_utilities_8h.html#a930d52ae02753728aeccb15ba91c20bd">PointDistanceL2</a> (const Point &amp;a, const Point &amp;b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_geometry_utilities_8h.html#a0da9d2152f180972649505dc90456d5e">DescriptorDistanceL1</a> (const Mat &amp;a, const Mat &amp;b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_geometry_utilities_8h.html#a3b1dca05e7c389d9b3bed9d86ac0d83f">DescriptorDistanceL2</a> (const Mat &amp;a, const Mat &amp;b)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a0da9d2152f180972649505dc90456d5e"></a><!-- doxytag: member="GeometryUtilities.h::DescriptorDistanceL1" ref="a0da9d2152f180972649505dc90456d5e" args="(const Mat &amp;a, const Mat &amp;b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DescriptorDistanceL1 </td>
+          <td>(</td>
+          <td class="paramtype">const Mat &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Mat &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_geometry_utilities_8cpp_source.html#l00031">31</a> of file <a class="el" href="_geometry_utilities_8cpp_source.html">GeometryUtilities.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                                        {
+    <span class="keywordflow">if</span>( a.rows != 1 )
+        <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;Error: First Matrix must only have 1 row&quot;</span>);
+    <span class="keywordflow">if</span>( b.rows != 1 )
+        <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;Error: Second Matrix must only have 1 row&quot;</span>);
+    <span class="keywordflow">if</span>( a.cols != b.cols )
+        <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;Error: Matrices must have equal number of columns&quot;</span>);
+    
+    <span class="keywordflow">if</span>( a.type() == CV_32FC1 )
+        cout &lt;&lt; <span class="stringliteral">&quot;CV_32FC1&quot;</span> &lt;&lt; endl;
+    <span class="keywordflow">if</span>( a.type() == CV_64FC1 )
+        cout &lt;&lt; <span class="stringliteral">&quot;CV_64FC1&quot;</span> &lt;&lt; endl;
+    
+    <span class="keywordtype">double</span> dist = 0;
+    <span class="keywordtype">double</span> va, vb;
+    <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> i=0; i&lt;a.cols; i++)
+        <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> j=0; j&lt;b.cols; j++){
+            va = a.at&lt;<span class="keywordtype">float</span>&gt;(0, i);
+            vb = b.at&lt;<span class="keywordtype">float</span>&gt;(0, j);
+            dist += sqrt((va-vb)*(va-vb));
+        }
+    <span class="keywordflow">return</span> dist;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a3b1dca05e7c389d9b3bed9d86ac0d83f"></a><!-- doxytag: member="GeometryUtilities.h::DescriptorDistanceL2" ref="a3b1dca05e7c389d9b3bed9d86ac0d83f" args="(const Mat &amp;a, const Mat &amp;b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DescriptorDistanceL2 </td>
+          <td>(</td>
+          <td class="paramtype">const Mat &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Mat &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_geometry_utilities_8cpp_source.html#l00055">55</a> of file <a class="el" href="_geometry_utilities_8cpp_source.html">GeometryUtilities.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00120">PointTracker::build_background()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                        {
+    <span class="keywordflow">if</span>( a.rows != 1 )
+        <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;Error: First Matrix must only have 1 row&quot;</span>);
+    <span class="keywordflow">if</span>( b.rows != 1 )
+        <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;Error: Second Matrix must only have 1 row&quot;</span>);
+    <span class="keywordflow">if</span>( a.cols != b.cols )
+        <span class="keywordflow">throw</span> string(<span class="stringliteral">&quot;Error: Matrices must have equal number of columns&quot;</span>);
+    
+    <span class="keywordtype">double</span> dist = 0;
+    <span class="keywordtype">double</span> va, vb;
+    <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> i=0; i&lt;a.cols; i++){
+            va = a.at&lt;<span class="keywordtype">float</span>&gt;(0, i);
+            vb = b.at&lt;<span class="keywordtype">float</span>&gt;(0, i);
+            <span class="comment">//cout &lt;&lt; va &lt;&lt; &quot;, &quot; &lt;&lt; vb &lt;&lt; endl;</span>
+            <span class="comment">//cin.get();</span>
+            dist += std::fabs(va-vb);
+        }
+    
+    <span class="keywordflow">return</span> dist;
+}</pre></div>
+</div>
+</div>
 <a class="anchor" id="a53e15875a9f64159754b6ff47c6fa21d"></a><!-- doxytag: member="GeometryUtilities.h::expandRect" ref="a53e15875a9f64159754b6ff47c6fa21d" args="(const Rect &amp;bbox, size_t const &amp;dist, Size const &amp;imgSize)" -->
 <div class="memitem">
 <div class="memproto">
@@ -189,6 +294,8 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_geometry_utilities_8cpp_source.html#l00023">23</a> of file <a class="el" href="_geometry_utilities_8cpp_source.html">GeometryUtilities.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00120">PointTracker::build_background()</a>.</p>
 <div class="fragment"><pre class="fragment">                                                        {
     <span class="keywordflow">return</span> fabs((a.x-b.x) + (a.y-b.y)); 
 }
@@ -222,10 +329,11 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_geometry_utilities_8cpp_source.html#l00027">27</a> of file <a class="el" href="_geometry_utilities_8cpp_source.html">GeometryUtilities.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00016">PointComp::operator()()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00098">PointTracker::point_match()</a>.</p>
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00016">PointComp::operator()()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00097">PointTracker::point_match()</a>.</p>
 <div class="fragment"><pre class="fragment">                                                        {
     <span class="keywordflow">return</span> sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y)); 
-}</pre></div>
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a55817076dd372ab0b452a9939a4954ce"></a><!-- doxytag: member="GeometryUtilities.h::pointsEqual" ref="a55817076dd372ab0b452a9939a4954ce" args="(KeyPoint const &amp;a, KeyPoint const &amp;b)" -->
@@ -285,7 +393,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:43 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:06 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

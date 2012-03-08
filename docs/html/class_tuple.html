@@ -128,7 +128,7 @@ Public Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Class which contains relevant information for keypoints. The point, if it was detected in the frame, the strength / stability of the point, and the length of time is has existed in the video. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00039">39</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00043">43</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a07c616afb195cf694e8814318fbd2aa8"></a><!-- doxytag: member="Tuple::Tuple" ref="a07c616afb195cf694e8814318fbd2aa8" args="()" -->
 <div class="memitem">
@@ -149,8 +149,8 @@ Public Attributes</h2></td></tr>
 <p>Default Constructor </p>
 
 <p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00025">25</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
-<div class="fragment"><pre class="fragment">            : <a class="code" href="class_tuple.html#ab3df7dd8c3da6e5d69e20492adcfb1ee" title="Center of point.">centroid</a>(Point2f(0,0)), <a class="code" href="class_tuple.html#a29532869144a5cfc2b2eb935d91edcd9" title="Detection Status Code.">found</a>(0), <a class="code" href="class_tuple.html#aa2e3ef0462fe1ffb96028cbe5f8324c9" title="Strength/stability of point.">strength</a>(0), <a class="code" href="class_tuple.html#ae321f88dc0b67f9e0f89e51b25db02c5" title="Number of frames the point has existed.">span</a>(0){
-    
+<div class="fragment"><pre class="fragment">             : <a class="code" href="class_tuple.html#ab3df7dd8c3da6e5d69e20492adcfb1ee" title="Center of point.">centroid</a>(Point2f(0, 0)), <a class="code" href="class_tuple.html#a29532869144a5cfc2b2eb935d91edcd9" title="Detection Status Code.">found</a>(0), <a class="code" href="class_tuple.html#aa2e3ef0462fe1ffb96028cbe5f8324c9" title="Strength/stability of point.">strength</a>(0), <a class="code" href="class_tuple.html#ae321f88dc0b67f9e0f89e51b25db02c5" title="Number of frames the point has existed.">span</a>(0) {
+
 }
 </pre></div>
 </div>
@@ -180,8 +180,8 @@ Public Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00033">33</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
-<div class="fragment"><pre class="fragment">                              : <a class="code" href="class_tuple.html#ab3df7dd8c3da6e5d69e20492adcfb1ee" title="Center of point.">centroid</a>(pt), <a class="code" href="class_tuple.html#a29532869144a5cfc2b2eb935d91edcd9" title="Detection Status Code.">found</a>(1), <a class="code" href="class_tuple.html#aa2e3ef0462fe1ffb96028cbe5f8324c9" title="Strength/stability of point.">strength</a>(0), <a class="code" href="class_tuple.html#ae321f88dc0b67f9e0f89e51b25db02c5" title="Number of frames the point has existed.">span</a>(0){
-    
+<div class="fragment"><pre class="fragment">                              : <a class="code" href="class_tuple.html#ab3df7dd8c3da6e5d69e20492adcfb1ee" title="Center of point.">centroid</a>(pt), <a class="code" href="class_tuple.html#a29532869144a5cfc2b2eb935d91edcd9" title="Detection Status Code.">found</a>(1), <a class="code" href="class_tuple.html#aa2e3ef0462fe1ffb96028cbe5f8324c9" title="Strength/stability of point.">strength</a>(0), <a class="code" href="class_tuple.html#ae321f88dc0b67f9e0f89e51b25db02c5" title="Number of frames the point has existed.">span</a>(0) {
+
 }
 </pre></div>
 </div>
@@ -200,7 +200,7 @@ Public Attributes</h2></td></tr>
 
 <p>Center of point. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00049">49</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00053">53</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
 </div>
 </div>
@@ -217,7 +217,7 @@ Public Attributes</h2></td></tr>
 
 <p>Detection Status Code. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00052">52</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00056">56</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
 </div>
 </div>
@@ -234,7 +234,7 @@ Public Attributes</h2></td></tr>
 
 <p>Number of frames the point has existed. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00058">58</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00062">62</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
 </div>
 </div>
@@ -251,7 +251,7 @@ Public Attributes</h2></td></tr>
 
 <p>Strength/stability of point. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00055">55</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00059">59</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ Public Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:44 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:08 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

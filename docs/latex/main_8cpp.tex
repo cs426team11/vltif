@@ -49,7 +49,7 @@ size\-\_\-t \hyperlink{main_8cpp_ad576244080e8051cc88071f8886b0ca9}{mouse\-\_\-f
 
 
 
-\-References \-Options\-::bout, \-Options\-::cap, \-Options\-::\-D\-E\-B\-U\-G, \-Options\-::dout, \-Options\-::equalize\-Histogram, \-Options\-::frame\-\_\-count, \-Options\-::interest\-\_\-point\-\_\-max\-\_\-life, mouse\-\_\-flag, \-Options\-::point\-History, \-Point\-Tracker\-::set\-\_\-point\-\_\-max\-\_\-life(), \-Options\-::show, \-Options\-::start\-\_\-frame, \-Options\-::video\-\_\-filename, \-Options\-::video\-\_\-output\-\_\-filename, \-Options\-::vout, and \-Options\-::window\-\_\-name.
+\-References \-Options\-::bout, \-Point\-Tracker\-::build\-\_\-background(), \-Options\-::cap, \-Options\-::\-D\-E\-B\-U\-G, \-Options\-::dout, \-Options\-::equalize\-Histogram, \-Options\-::frame\-\_\-count, \-Options\-::interest\-\_\-point\-\_\-max\-\_\-life, mouse\-\_\-flag, \-Options\-::point\-History, \-Point\-Tracker\-::set\-\_\-point\-\_\-max\-\_\-life(), \-Options\-::show, \-Options\-::sift\-Common\-Params, \-Options\-::sift\-Descriptor\-Params, \-Options\-::sift\-Detector\-Params, \-Options\-::start\-\_\-frame, \-Options\-::video\-\_\-filename, \-Options\-::video\-\_\-output\-\_\-filename, \-Options\-::vout, and \-Options\-::window\-\_\-name.
 
 
 
@@ -88,6 +88,15 @@ size\-\_\-t \hyperlink{main_8cpp_ad576244080e8051cc88071f8886b0ca9}{mouse\-\_\-f
       CV_CAP_PROP_FPS) + 5, S, true);
 
     options.pointHistory.set_point_max_life(options.interest_point_max_life);
+    
+    //build the background set of interest points
+    options.pointHistory.build_background( options.video_filename, options.
+      siftCommonParams,
+                                                                   options.
+      siftDescriptorParams, 
+                                                                   options.
+      siftDetectorParams);
+    
 }
 \end{DoxyCode}
 \hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{

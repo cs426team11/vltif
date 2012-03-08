@@ -104,6 +104,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="PointTracker" -->
+<p>Class used to track and monitor the keypoints.  
+ <a href="class_point_tracker.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>&gt;</code></p>
 
 <p><a href="class_point_tracker-members.html">List of all members.</a></p>
@@ -117,10 +120,15 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#ac29873729216df07d202485caaab0f20">point_match</a> (Point2f const &amp;pt)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Point Match.  <a href="#ac29873729216df07d202485caaab0f20"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#a6333fab2cae4b6e140cf99e0159dc5cc">set_point_max_life</a> (const int max_life)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the max lifespan of the frame.  <a href="#a6333fab2cae4b6e140cf99e0159dc5cc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#ad596056cb24f8eb2e2157b3c82d812b3">build_background</a> (string const &amp;filename, SIFT::CommonParams const &amp;cparams, SIFT::DescriptorParams const &amp;dparams, SIFT::DetectorParams const &amp;detparams)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create the history  <a href="#ad596056cb24f8eb2e2157b3c82d812b3"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">set&lt; Point, <a class="el" href="struct_point_comp.html">PointComp</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#a7a1f2bb3c992232a04c886cc5bc6c21f">background_list</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set of background points  <a href="#a7a1f2bb3c992232a04c886cc5bc6c21f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#a104961431d688ff50c5d3627be38a261">video_filename</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">background video file  <a href="#a104961431d688ff50c5d3627be38a261"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::set&lt; Point, <a class="el" href="struct_point_comp.html">PointComp</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#a8004ae283ecebae76ba65cd13106651d">background_list</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set of background points  <a href="#a8004ae283ecebae76ba65cd13106651d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_tuple.html">Tuple</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28">point_list</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set of current points  <a href="#a3c396dbdf7e00c4cce3b371dd5cddd28"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_tracker.html#a3cbc1fe8d39f2c8183654a67f914fa37">MIN_DISTANCE</a></td></tr>
@@ -133,7 +141,7 @@ Private Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Class used to track and monitor the keypoints. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00064">64</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00068">68</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9604754cd19cab5f984e4b861c4049d4"></a><!-- doxytag: member="PointTracker::PointTracker" ref="a9604754cd19cab5f984e4b861c4049d4" args="()" -->
 <div class="memitem">
@@ -154,7 +162,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00040">40</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
 
-<p>References <a class="el" href="_point_tracker_8h_source.html#l00094">MAX_NUM_FRAMES</a>, <a class="el" href="_point_tracker_8h_source.html#l00088">MIN_DISTANCE</a>, and <a class="el" href="_point_tracker_8h_source.html#l00091">num_frames</a>.</p>
+<p>References <a class="el" href="_point_tracker_8h_source.html#l00107">MAX_NUM_FRAMES</a>, <a class="el" href="_point_tracker_8h_source.html#l00101">MIN_DISTANCE</a>, and <a class="el" href="_point_tracker_8h_source.html#l00104">num_frames</a>.</p>
 <div class="fragment"><pre class="fragment">                           {
     <a class="code" href="class_point_tracker.html#a3cbc1fe8d39f2c8183654a67f914fa37" title="Minimum distance for valid point match.">MIN_DISTANCE</a> = 2.5;
     <a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> = 0;
@@ -164,6 +172,113 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ad596056cb24f8eb2e2157b3c82d812b3"></a><!-- doxytag: member="PointTracker::build_background" ref="ad596056cb24f8eb2e2157b3c82d812b3" args="(string const &amp;filename, SIFT::CommonParams const &amp;cparams, SIFT::DescriptorParams const &amp;dparams, SIFT::DetectorParams const &amp;detparams)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PointTracker::build_background </td>
+          <td>(</td>
+          <td class="paramtype">string const &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SIFT::CommonParams const &amp;&#160;</td>
+          <td class="paramname"><em>cparams</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SIFT::DescriptorParams const &amp;&#160;</td>
+          <td class="paramname"><em>dparams</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SIFT::DetectorParams const &amp;&#160;</td>
+          <td class="paramname"><em>detparams</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>create the history </p>
+<p>Build the background keypoints using the same sift features which are used by the algorithm.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>name of video file </td></tr>
+    <tr><td class="paramname">cparams</td><td>SIFT common parameters </td></tr>
+    <tr><td class="paramname">dparams</td><td>SIFT Descriptor parameters </td></tr>
+    <tr><td class="paramname">detparams</td><td>SIFT Detector parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00120">120</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
+
+<p>References <a class="el" href="_enumerations_8h_source.html#l00012">COLOR_GREEN</a>, <a class="el" href="_geometry_utilities_8cpp_source.html#l00055">DescriptorDistanceL2()</a>, <a class="el" href="_video_utilities_8cpp_source.html#l00003">median_frame()</a>, <a class="el" href="_geometry_utilities_8cpp_source.html#l00023">PointDistanceL1()</a>, and <a class="el" href="_point_tracker_8h_source.html#l00092">video_filename</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8cpp_source.html#l00160">init()</a>.</p>
+<div class="fragment"><pre class="fragment">                                             {
+
+    namedWindow(<span class="stringliteral">&quot;A&quot;</span>);
+    <a class="code" href="class_point_tracker.html#a104961431d688ff50c5d3627be38a261" title="background video file">video_filename</a> = filename;
+    <span class="keywordtype">size_t</span> numImg = 2;
+    <span class="keywordtype">size_t</span> startA = 5;
+    <span class="keywordtype">size_t</span> startB = 9;
+    <span class="keywordtype">size_t</span> step = 10;
+    <span class="keywordtype">size_t</span> max = 100;
+    <span class="keywordtype">size_t</span> count = 0;
+
+    <span class="comment">//create median frames</span>
+    Mat imgA = <a class="code" href="_video_utilities_8cpp.html#a8c5d338e7555b7f783714dcab7dd345a">median_frame</a>(filename, startA, step, max);
+    Mat imgB = <a class="code" href="_video_utilities_8cpp.html#a8c5d338e7555b7f783714dcab7dd345a">median_frame</a>(filename, startB, step, max);
+
+    <span class="comment">//compute the sift keypoints for frame</span>
+    SIFT sift(cparams, detparams, dparams);
+
+    vector&lt;KeyPoint&gt; kpA, kpB;
+    Mat descA, descB;
+
+    sift(imgA, Mat(), kpA, descA);
+    sift(imgB, Mat(), kpB, descB);
+
+    cout &lt;&lt; descA.cols &lt;&lt; endl;
+
+    <span class="keywordtype">double</span> minDist = 0.5;
+    <span class="keywordtype">double</span> actDist;
+    <span class="comment">//check and compare keypoints</span>
+    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; kpA.size(); i++) {
+        actDist = <a class="code" href="_geometry_utilities_8cpp.html#aa3ed27131855d94c914ae35b8422e8cf">PointDistanceL1</a>(kpA[i].pt, kpB[i].pt);
+        <span class="keywordflow">if</span> (actDist &lt;= minDist) {
+
+            cout &lt;&lt; i+1 &lt;&lt; <span class="stringliteral">&quot; of &quot;</span> &lt;&lt; kpA.size() &lt;&lt; <span class="stringliteral">&quot; -&gt; &quot;</span> &lt;&lt;  <a class="code" href="_geometry_utilities_8cpp.html#a3b1dca05e7c389d9b3bed9d86ac0d83f">DescriptorDistanceL2</a>(descA.row(i), descB.row(i)) &lt;&lt; endl;
+            <span class="comment">//cin.get();</span>
+            <span class="keywordflow">if</span>( <a class="code" href="_geometry_utilities_8cpp.html#a3b1dca05e7c389d9b3bed9d86ac0d83f">DescriptorDistanceL2</a>(descA.row(i), descB.row(i)) &lt; 10 ){
+                cout &lt;&lt; <span class="stringliteral">&quot;done&quot;</span> &lt;&lt; endl;
+                circle(imgA, kpA[i].pt, 1, <a class="code" href="_enumerations_8h.html#afc9149f5de51bd9ac4f5ebbfa153f018">COLOR_GREEN</a>, 2);
+            }
+
+        }
+    }
+
+    Mat AA = imgA.clone();
+    imshow(<span class="stringliteral">&quot;A&quot;</span>, AA);
+    waitKey(0);
+
+    exit(0);
+
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="ac29873729216df07d202485caaab0f20"></a><!-- doxytag: member="PointTracker::point_match" ref="ac29873729216df07d202485caaab0f20" args="(Point2f const &amp;pt)" -->
 <div class="memitem">
 <div class="memproto">
@@ -189,23 +304,23 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>index of match, -1 if no match found. </dd></dl>
 
-<p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00098">98</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00097">97</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
 
-<p>References <a class="el" href="_point_tracker_8h_source.html#l00088">MIN_DISTANCE</a>, <a class="el" href="_point_tracker_8h_source.html#l00085">point_list</a>, and <a class="el" href="_geometry_utilities_8cpp_source.html#l00027">PointDistanceL2()</a>.</p>
+<p>References <a class="el" href="_point_tracker_8h_source.html#l00101">MIN_DISTANCE</a>, <a class="el" href="_point_tracker_8h_source.html#l00098">point_list</a>, and <a class="el" href="_geometry_utilities_8cpp_source.html#l00027">PointDistanceL2()</a>.</p>
 
 <p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00052">update_points()</a>.</p>
 <div class="fragment"><pre class="fragment">                                               {
-    
+
     <span class="keywordtype">double</span> dist;
-    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.size(); i++){
-        
-        dist = <a class="code" href="_geometry_utilities_8cpp.html#a930d52ae02753728aeccb15ba91c20bd">PointDistanceL2</a>( pt, <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].centroid);
-        
-        <span class="keywordflow">if</span>(dist &lt; <a class="code" href="class_point_tracker.html#a3cbc1fe8d39f2c8183654a67f914fa37" title="Minimum distance for valid point match.">MIN_DISTANCE</a>)
+    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.size(); i++) {
+
+        dist = <a class="code" href="_geometry_utilities_8cpp.html#a930d52ae02753728aeccb15ba91c20bd">PointDistanceL2</a>(pt, <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].centroid);
+
+        <span class="keywordflow">if</span> (dist &lt; <a class="code" href="class_point_tracker.html#a3cbc1fe8d39f2c8183654a67f914fa37" title="Minimum distance for valid point match.">MIN_DISTANCE</a>)
             <span class="keywordflow">return</span> i;
     }
     <span class="keywordflow">return</span> -1;
-    
+
 }
 </pre></div>
 </div>
@@ -219,19 +334,22 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>max_life</em></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00075">75</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Set the max lifespan of the frame. </p>
+
+<p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00173">173</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
+
+<p>References <a class="el" href="_point_tracker_8h_source.html#l00107">MAX_NUM_FRAMES</a>.</p>
 
 <p>Referenced by <a class="el" href="main_8cpp_source.html#l00160">init()</a>.</p>
-<div class="fragment"><pre class="fragment">                                                 {
-        <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a> = max_life;
-    }
-</pre></div>
+<div class="fragment"><pre class="fragment">                                                        {
+    <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a> = max_life;
+}</pre></div>
 </div>
 </div>
 <a class="anchor" id="a48270ad5bc84c22c20d84435f85b63be"></a><!-- doxytag: member="PointTracker::update_points" ref="a48270ad5bc84c22c20d84435f85b63be" args="(vector&lt; KeyPoint &gt;const &amp;list)" -->
@@ -261,59 +379,58 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_point_tracker_8cpp_source.html#l00052">52</a> of file <a class="el" href="_point_tracker_8cpp_source.html">PointTracker.cpp</a>.</p>
 
-<p>References <a class="el" href="_point_tracker_8h_source.html#l00094">MAX_NUM_FRAMES</a>, <a class="el" href="_point_tracker_8h_source.html#l00091">num_frames</a>, <a class="el" href="_point_tracker_8h_source.html#l00085">point_list</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00098">point_match()</a>.</p>
+<p>References <a class="el" href="_point_tracker_8h_source.html#l00107">MAX_NUM_FRAMES</a>, <a class="el" href="_point_tracker_8h_source.html#l00104">num_frames</a>, <a class="el" href="_point_tracker_8h_source.html#l00098">point_list</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00097">point_match()</a>.</p>
 
 <p>Referenced by <a class="el" href="main_8cpp_source.html#l00041">main()</a>.</p>
 <div class="fragment"><pre class="fragment">                                                                     {
-    
+
     <span class="keywordtype">int</span> idx;
-    
+
     <span class="comment">//take the input list and check for collisions</span>
-    <span class="keywordflow">for</span>( <span class="keywordtype">size_t</span> i=0; i&lt;list.size(); i++){
-        
+    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; list.size(); i++) {
+
         <span class="comment">//check to see if a point matches</span>
         idx = <a class="code" href="class_point_tracker.html#ac29873729216df07d202485caaab0f20" title="Point Match.">point_match</a>(list[i].pt);
-        
-        <span class="keywordflow">if</span>( idx &gt;= 0 ){
+
+        <span class="keywordflow">if</span> (idx &gt;= 0) {
             <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].found = <span class="keyword">true</span>;
-            
-            <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.x = ((<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>)/(<span class="keywordtype">double</span>)(<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>+1))*<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.x + (1/(double)(<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>+1))*list[i].pt.x;
-            <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.y = ((<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>)/(double)(<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>+1))*<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.y + (1/(<span class="keywordtype">double</span>)(<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>+1))*list[i].pt.y;
+
+            <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.x = ((<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>) / (<span class="keywordtype">double</span>) (<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> + 1)) * <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.x + (1 / (double) (<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> + 1)) * list[i].pt.x;
+            <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.y = ((<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>) / (double) (<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> + 1)) * <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[idx].centroid.y + (1 / (<span class="keywordtype">double</span>) (<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> + 1)) * list[i].pt.y;
             <span class="keywordflow">continue</span>;
-        }
-        <span class="comment">//otherwise, add it to the list</span>
-        <span class="keywordflow">else</span>{
+        }<span class="comment">//otherwise, add it to the list</span>
+        <span class="keywordflow">else</span> {
             <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.push_back(<a class="code" href="class_tuple.html">Tuple</a>(list[i].pt));
         }
     }
-    
+
     <span class="comment">//iterate through point list, updating the strength of each point</span>
-    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> i=0; i&lt;(int)<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.size(); i++){
-        <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].strength = (<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span*<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].strength + <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].found)/(<span class="keywordtype">double</span>)(<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span+1);
+    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int) <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.size(); i++) {
+        <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].strength = (<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span * <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].strength + <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].found) / (<span class="keywordtype">double</span>) (<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span + 1);
         <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].found = 0;
-        <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span = min( <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span+1, <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a>);
-        
-        
-        <span class="keywordflow">if</span>( <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].strength &lt; 0.3 )
-            <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.erase( <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.begin() + i--);
+        <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span = min(<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].span + 1, <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a>);
+
+
+        <span class="keywordflow">if</span> (<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>[i].strength &lt; 0.3)
+            <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.erase(<a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>.begin() + i--);
     }
-    
+
     <a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a>++;
-    <span class="keywordflow">if</span>(<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> &gt; <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a>)
+    <span class="keywordflow">if</span> (<a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> &gt; <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a>)
         <a class="code" href="class_point_tracker.html#aa32e4991c19d192737ae6d5db32a504a" title="Current number of frames.">num_frames</a> = <a class="code" href="class_point_tracker.html#acb445ed3b433172cb10172db77ed702a" title="Max number of possible frames.">MAX_NUM_FRAMES</a>;
-    
+
     <span class="keywordflow">return</span> <a class="code" href="class_point_tracker.html#a3c396dbdf7e00c4cce3b371dd5cddd28" title="set of current points">point_list</a>;
 }
 </pre></div>
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a7a1f2bb3c992232a04c886cc5bc6c21f"></a><!-- doxytag: member="PointTracker::background_list" ref="a7a1f2bb3c992232a04c886cc5bc6c21f" args="" -->
+<a class="anchor" id="a8004ae283ecebae76ba65cd13106651d"></a><!-- doxytag: member="PointTracker::background_list" ref="a8004ae283ecebae76ba65cd13106651d" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">set&lt;Point, <a class="el" href="struct_point_comp.html">PointComp</a>&gt; <a class="el" href="class_point_tracker.html#a7a1f2bb3c992232a04c886cc5bc6c21f">PointTracker::background_list</a><code> [private]</code></td>
+          <td class="memname">std::set&lt;Point, <a class="el" href="struct_point_comp.html">PointComp</a>&gt; <a class="el" href="class_point_tracker.html#a8004ae283ecebae76ba65cd13106651d">PointTracker::background_list</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -321,7 +438,7 @@ Private Attributes</h2></td></tr>
 
 <p>set of background points </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00082">82</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00095">95</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
 </div>
 </div>
@@ -338,9 +455,9 @@ Private Attributes</h2></td></tr>
 
 <p>Max number of possible frames. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00094">94</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00107">107</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00040">PointTracker()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00052">update_points()</a>.</p>
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00040">PointTracker()</a>, <a class="el" href="_point_tracker_8cpp_source.html#l00173">set_point_max_life()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00052">update_points()</a>.</p>
 
 </div>
 </div>
@@ -357,9 +474,9 @@ Private Attributes</h2></td></tr>
 
 <p>Minimum distance for valid point match. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00088">88</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00101">101</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00098">point_match()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00040">PointTracker()</a>.</p>
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00097">point_match()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00040">PointTracker()</a>.</p>
 
 </div>
 </div>
@@ -376,7 +493,7 @@ Private Attributes</h2></td></tr>
 
 <p>Current number of frames. </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00091">91</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00104">104</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
 <p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00040">PointTracker()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00052">update_points()</a>.</p>
 
@@ -395,9 +512,28 @@ Private Attributes</h2></td></tr>
 
 <p>set of current points </p>
 
-<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00085">85</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00098">98</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00098">point_match()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00052">update_points()</a>.</p>
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00097">point_match()</a>, and <a class="el" href="_point_tracker_8cpp_source.html#l00052">update_points()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a104961431d688ff50c5d3627be38a261"></a><!-- doxytag: member="PointTracker::video_filename" ref="a104961431d688ff50c5d3627be38a261" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string <a class="el" href="class_point_tracker.html#a104961431d688ff50c5d3627be38a261">PointTracker::video_filename</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>background video file </p>
+
+<p>Definition at line <a class="el" href="_point_tracker_8h_source.html#l00092">92</a> of file <a class="el" href="_point_tracker_8h_source.html">PointTracker.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_point_tracker_8cpp_source.html#l00120">build_background()</a>.</p>
 
 </div>
 </div>
@@ -425,7 +561,7 @@ Private Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:43 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:07 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

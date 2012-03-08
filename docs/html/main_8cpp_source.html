@@ -151,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00051"></a>00051     <span class="comment">//parse command-line options</span>
 <a name="l00052"></a>00052     <span class="keywordflow">if</span>( options.<a class="code" href="class_options.html#a22414840e13de871e6182c2b0781ae5b">DEBUG</a> == <span class="keyword">true</span>)
 <a name="l00053"></a>00053         cout &lt;&lt; <span class="stringliteral">&quot;Start of parser&quot;</span> &lt;&lt; endl;
-<a name="l00054"></a>00054     <a class="code" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5">Parser::parse_config_file</a>(argc, argv, options, <span class="stringliteral">&quot;data/options.cfg&quot;</span>);
+<a name="l00054"></a>00054     <a class="code" href="class_parser.html#ac030c871d4f36e475391c0d2c0b204a5" title="Extract program configuration options from the file.">Parser::parse_config_file</a>(argc, argv, options, <span class="stringliteral">&quot;data/options.cfg&quot;</span>);
 <a name="l00055"></a>00055     <span class="keywordflow">if</span>( options.<a class="code" href="class_options.html#a22414840e13de871e6182c2b0781ae5b">DEBUG</a> == <span class="keyword">true</span>)
 <a name="l00056"></a>00056         cout &lt;&lt; <span class="stringliteral">&quot;End of parser&quot;</span> &lt;&lt; endl;
 <a name="l00057"></a>00057     
@@ -235,7 +235,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00152"></a>00152         options.<a class="code" href="class_options.html#a0f0729b7b9d38b511319f89b7daec944">density_frame</a> = Scalar(0, 0, 0, 0);
 <a name="l00153"></a>00153     }
 <a name="l00154"></a>00154     
-<a name="l00155"></a>00155     <a class="code" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6">Parser::write_configuration</a>( options );
+<a name="l00155"></a>00155     <a class="code" href="class_parser.html#ac37db3a8867432eab2abb457c68a62b6" title="Write config options to file.">Parser::write_configuration</a>( options );
 <a name="l00156"></a>00156 
 <a name="l00157"></a>00157     <span class="keywordflow">return</span> 0;
 <a name="l00158"></a>00158 }
@@ -267,8 +267,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00184"></a>00184     options.<a class="code" href="class_options.html#a05a239b7ee3dc2731c2e929af24070ef">bout</a>.open(<span class="stringliteral">&quot;data/black_output.avi&quot;</span>, ex, options.<a class="code" href="class_options.html#a3c6618c646e82eac20efed6796817796">cap</a>.get(CV_CAP_PROP_FPS) + 5, S, <span class="keyword">true</span>);
 <a name="l00185"></a>00185     options.<a class="code" href="class_options.html#ac7d37c6cfee9fe03a81c4f0ee7675c75">dout</a>.open(<span class="stringliteral">&quot;data/density_output.avi&quot;</span>, ex, options.<a class="code" href="class_options.html#a3c6618c646e82eac20efed6796817796">cap</a>.get(CV_CAP_PROP_FPS) + 5, S, <span class="keyword">true</span>);
 <a name="l00186"></a>00186 
-<a name="l00187"></a>00187     options.<a class="code" href="class_options.html#af83140b97a9529d40535a4faac829326">pointHistory</a>.<a class="code" href="class_point_tracker.html#a6333fab2cae4b6e140cf99e0159dc5cc">set_point_max_life</a>(options.<a class="code" href="class_options.html#ad83ab0070ddb7097311ee3dd2cecabb3">interest_point_max_life</a>);
-<a name="l00188"></a>00188 }
+<a name="l00187"></a>00187     options.<a class="code" href="class_options.html#af83140b97a9529d40535a4faac829326">pointHistory</a>.<a class="code" href="class_point_tracker.html#a6333fab2cae4b6e140cf99e0159dc5cc" title="Set the max lifespan of the frame.">set_point_max_life</a>(options.<a class="code" href="class_options.html#ad83ab0070ddb7097311ee3dd2cecabb3">interest_point_max_life</a>);
+<a name="l00188"></a>00188     
+<a name="l00189"></a>00189     <span class="comment">//build the background set of interest points</span>
+<a name="l00190"></a>00190     options.<a class="code" href="class_options.html#af83140b97a9529d40535a4faac829326">pointHistory</a>.<a class="code" href="class_point_tracker.html#ad596056cb24f8eb2e2157b3c82d812b3" title="create the history">build_background</a>( options.<a class="code" href="class_options.html#a9bae124c8f4d7fff8bb26d319967671e">video_filename</a>, options.<a class="code" href="class_options.html#a63c080ac129b8c92ba3cdc9ca07250de">siftCommonParams</a>,
+<a name="l00191"></a>00191                                                                    options.<a class="code" href="class_options.html#a59c9196b898a79ecdda3599f932aba43">siftDescriptorParams</a>, 
+<a name="l00192"></a>00192                                                                    options.<a class="code" href="class_options.html#ae1ba0a4c219005ee896951f047852f12">siftDetectorParams</a>);
+<a name="l00193"></a>00193     
+<a name="l00194"></a>00194 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -289,7 +295,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Mar 7 2012 18:29:43 for VLTIF by
+    <li class="footer">Generated on Thu Mar 8 2012 01:00:06 for VLTIF by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
