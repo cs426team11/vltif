@@ -1,0 +1,117 @@
+\hypertarget{_mouse_8h}{
+\section{src/ui/\-Mouse.h \-File \-Reference}
+\label{_mouse_8h}\index{src/ui/\-Mouse.\-h@{src/ui/\-Mouse.\-h}}
+}
+{\ttfamily \#include $<$cv.\-h$>$}\*
+{\ttfamily \#include $<$cvaux.\-h$>$}\*
+{\ttfamily \#include $<$highgui.\-h$>$}\*
+{\ttfamily \#include $<$iostream$>$}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_mouse_8h_a8cc243cee69fb574de24f9ce74bb18c6}{mouse\-Func} (const int actual\-Event, const int x, const int y, const int flag, void $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_mouse_8h_a80da4669a0af53ce4c51e9433d971955}{p\-X}
+\item 
+int \hyperlink{_mouse_8h_ad64d9918383b922f76bb82d86a641a5e}{p\-Y}
+\item 
+size\-\_\-t \hyperlink{_mouse_8h_ad576244080e8051cc88071f8886b0ca9}{mouse\-\_\-flag}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_mouse_8h_a8cc243cee69fb574de24f9ce74bb18c6}{
+\index{\-Mouse.\-h@{\-Mouse.\-h}!mouse\-Func@{mouse\-Func}}
+\index{mouse\-Func@{mouse\-Func}!Mouse.h@{\-Mouse.\-h}}
+\subsubsection[{mouse\-Func}]{\setlength{\rightskip}{0pt plus 5cm}void mouse\-Func (
+\begin{DoxyParamCaption}
+\item[{const int}]{actual\-Event, }
+\item[{const int}]{x, }
+\item[{const int}]{y, }
+\item[{const int}]{flag, }
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_mouse_8h_a8cc243cee69fb574de24f9ce74bb18c6}
+
+
+\-Definition at line 3 of file \-Mouse.\-cpp.
+
+
+
+\-References mouse\-\_\-flag, p\-X, and p\-Y.
+
+
+
+\-Referenced by draw\-\_\-lanes().
+
+
+\begin{DoxyCode}
+                                                                               
+               {
+
+    // shift+leftclick = rightclick (for MAC users)
+    int event = actualEvent;
+   
+    //only use function if program is in drawing mode
+    if( mouse_flag >= 2 )
+        return;
+    pX = x;
+    pY = y;
+    
+    switch (event){
+        
+      case (CV_EVENT_LBUTTONDOWN):
+         
+          
+          if( mouse_flag == 0 ) mouse_flag = 1;
+          else mouse_flag = 0;
+          
+          break;
+    }
+}\end{DoxyCode}
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{_mouse_8h_ad576244080e8051cc88071f8886b0ca9}{
+\index{\-Mouse.\-h@{\-Mouse.\-h}!mouse\-\_\-flag@{mouse\-\_\-flag}}
+\index{mouse\-\_\-flag@{mouse\-\_\-flag}!Mouse.h@{\-Mouse.\-h}}
+\subsubsection[{mouse\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf mouse\-\_\-flag}}}
+\label{_mouse_8h_ad576244080e8051cc88071f8886b0ca9}
+
+
+\-Definition at line 34 of file main.\-cpp.
+
+
+
+\-Referenced by draw\-\_\-lanes(), init(), main(), and mouse\-Func().
+
+\hypertarget{_mouse_8h_a80da4669a0af53ce4c51e9433d971955}{
+\index{\-Mouse.\-h@{\-Mouse.\-h}!p\-X@{p\-X}}
+\index{p\-X@{p\-X}!Mouse.h@{\-Mouse.\-h}}
+\subsubsection[{p\-X}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf p\-X}}}
+\label{_mouse_8h_a80da4669a0af53ce4c51e9433d971955}
+
+
+\-Definition at line 33 of file main.\-cpp.
+
+
+
+\-Referenced by draw\-\_\-lanes(), and mouse\-Func().
+
+\hypertarget{_mouse_8h_ad64d9918383b922f76bb82d86a641a5e}{
+\index{\-Mouse.\-h@{\-Mouse.\-h}!p\-Y@{p\-Y}}
+\index{p\-Y@{p\-Y}!Mouse.h@{\-Mouse.\-h}}
+\subsubsection[{p\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf p\-Y}}}
+\label{_mouse_8h_ad64d9918383b922f76bb82d86a641a5e}
+
+
+\-Definition at line 33 of file main.\-cpp.
+
+
+
+\-Referenced by draw\-\_\-lanes(), and mouse\-Func().
+

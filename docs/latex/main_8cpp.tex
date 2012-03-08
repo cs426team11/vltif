@@ -1,0 +1,285 @@
+\hypertarget{main_8cpp}{
+\section{src/main.cpp \-File \-Reference}
+\label{main_8cpp}\index{src/main.\-cpp@{src/main.\-cpp}}
+}
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$vector$>$}\*
+{\ttfamily \#include $<$cv.\-h$>$}\*
+{\ttfamily \#include \char`\"{}feature/\-Vehicle\-Detection.\-h\char`\"{}}\*
+{\ttfamily \#include $<$cvaux.\-h$>$}\*
+{\ttfamily \#include $<$highgui.\-h$>$}\*
+{\ttfamily \#include \char`\"{}ui/\-Lane\-Drawing.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}feature/\-Feature\-Point\-Utilities.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}core/\-Enumerations.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}core/\-Options.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}core/\-Parser.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}ui/\-Mouse.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}structures/\-Vehicle.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a8fbde37d3187dd5dc5c091996f428b78}{init} (\hyperlink{class_options}{\-Options} \&options)
+\item 
+int \hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8cpp_a80da4669a0af53ce4c51e9433d971955}{p\-X}
+\item 
+int \hyperlink{main_8cpp_ad64d9918383b922f76bb82d86a641a5e}{p\-Y}
+\item 
+size\-\_\-t \hyperlink{main_8cpp_ad576244080e8051cc88071f8886b0ca9}{mouse\-\_\-flag}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{main_8cpp_a8fbde37d3187dd5dc5c091996f428b78}{
+\index{main.\-cpp@{main.\-cpp}!init@{init}}
+\index{init@{init}!main.cpp@{main.\-cpp}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void init (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Options} \&}]{options}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a8fbde37d3187dd5dc5c091996f428b78}
+
+
+\-Definition at line 160 of file main.\-cpp.
+
+
+
+\-References \-Options\-::bout, \-Point\-Tracker\-::build\-\_\-background(), \-Options\-::cap, \-Options\-::\-D\-E\-B\-U\-G, \-Options\-::dout, \-Options\-::equalize\-Histogram, \-Options\-::frame\-\_\-count, \-Options\-::interest\-\_\-point\-\_\-max\-\_\-life, mouse\-\_\-flag, \-Options\-::point\-History, \-Point\-Tracker\-::set\-\_\-point\-\_\-max\-\_\-life(), \-Options\-::show, \-Options\-::sift\-Common\-Params, \-Options\-::sift\-Descriptor\-Params, \-Options\-::sift\-Detector\-Params, \-Options\-::start\-\_\-frame, \-Options\-::video\-\_\-filename, \-Options\-::video\-\_\-output\-\_\-filename, \-Options\-::vout, and \-Options\-::window\-\_\-name.
+
+
+
+\-Referenced by main().
+
+
+\begin{DoxyCode}
+                            {
+
+    options.DEBUG = true;
+    options.equalizeHistogram = true;
+    
+    options.frame_count = options.start_frame;
+
+    mouse_flag = 0;
+
+    //create window
+    if (options.show == true) {
+        namedWindow(options.window_name.c_str());
+        namedWindow("black frame");
+        namedWindow("density frame");
+    }
+
+    //open video file
+    options.cap.open(options.video_filename);
+
+    int ex = static_cast<int> (options.cap.get(CV_CAP_PROP_FOURCC));
+    Size S = Size(
+            (int) options.cap.get(CV_CAP_PROP_FRAME_WIDTH),
+            (int) options.cap.get(CV_CAP_PROP_FRAME_HEIGHT));
+    options.vout.open(options.video_output_filename.c_str(), ex, options.cap.
+      get(CV_CAP_PROP_FPS) + 5, S, true);
+    options.bout.open("data/black_output.avi", ex, options.cap.get(
+      CV_CAP_PROP_FPS) + 5, S, true);
+    options.dout.open("data/density_output.avi", ex, options.cap.get(
+      CV_CAP_PROP_FPS) + 5, S, true);
+
+    options.pointHistory.set_point_max_life(options.interest_point_max_life);
+    
+    //build the background set of interest points
+    options.pointHistory.build_background( options.video_filename, options.
+      siftCommonParams,
+                                                                   options.
+      siftDescriptorParams, 
+                                                                   options.
+      siftDetectorParams);
+    
+}
+\end{DoxyCode}
+\hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{
+\index{main.\-cpp@{main.\-cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+start lane drawing section
+
+\-E\-N\-D \-O\-F \-L\-A\-N\-E \-D\-R\-A\-W\-I\-N\-G
+
+build interest point background dictionary
+
+compute list of candidates vector$<$\-Vehicle$>$ candidates = \hyperlink{class_vehicle_detection_a6e3b1885268e7c1a9004b94643f0bb8c}{\-Vehicle\-Detection\-::compute\-Candidates}(options.\-density\-\_\-frame);
+
+compute validated list of vehicles vector$<$\-Vehicle$>$ classified\-Vehicles = \hyperlink{class_vehicle_detection_a64f0e8d9af6477caa45729b80b418a02}{\-Vehicle\-Detection\-::classify\-Candidates}(options.\-frame, candidates);
+
+\-Definition at line 41 of file main.\-cpp.
+
+
+
+\-References \-Options\-::black\-\_\-frame, \-Options\-::bout, \-Options\-::cap, \-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E, \-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N, \-Enumerations\-::color\-\_\-interp(), \-C\-O\-L\-O\-R\-\_\-\-R\-E\-D, \-Detector\-Type\-::compute\-\_\-frame(), compute\-\_\-point\-\_\-density(), \-Options\-::\-D\-E\-B\-U\-G, \-Options\-::density\-\_\-frame, \-Options\-::density\-\_\-window, \-Options\-::detector, \-Options\-::dout, \-Options\-::equalize\-Histogram, \-Options\-::frame, \-Options\-::frame\-\_\-count, \-Options\-::frame\-\_\-rate, \-Options\-::gray\-\_\-frame, init(), \-Options\-::key, lane\-\_\-manager(), \-Options\-::lanes, mouse\-\_\-flag, \-Parser\-::parse\-\_\-config\-\_\-file(), \-Options\-::point\-History, \-Options\-::show, \-Options\-::start\-\_\-frame, \-Options\-::stop\-\_\-frame, \-Point\-Tracker\-::update\-\_\-points(), \-Options\-::vout, \-Options\-::window\-\_\-name, and \-Parser\-::write\-\_\-configuration().
+
+
+\begin{DoxyCode}
+                                {
+
+    //create options
+    Options options;
+    options.DEBUG = true;
+    
+    if( options.DEBUG == true)
+        cout << "Start of program" << endl;
+    
+
+    //parse command-line options
+    if( options.DEBUG == true)
+        cout << "Start of parser" << endl;
+    Parser::parse_config_file(argc, argv, options, "data/options.cfg");
+    if( options.DEBUG == true)
+        cout << "End of parser" << endl;
+    
+    //initialize remaining options
+    init(options);
+
+    vector<KeyPoint> points;
+    vector<Tuple> showPoints;
+    
+    lane_manager(options);
+    mouse_flag = 2;
+    //load first frame
+    for (size_t i = 0; i < options.start_frame; i++)
+        options.cap >> options.frame;
+    options.black_frame = Mat(Size(options.frame.cols, options.frame.rows), 
+      CV_8UC3);
+    options.density_frame = Mat(Size(options.frame.cols, options.frame.rows), 
+      CV_8UC3);
+
+    while (options.frame.data && (options.stop_frame == -1 || (int) options.
+      frame_count < options.stop_frame)) {
+
+        //compute keypoints
+        cvtColor(options.frame, options.gray_frame, CV_BGR2GRAY);
+        
+        //
+        if( options.equalizeHistogram == true )
+            equalizeHist( options.gray_frame, options.gray_frame);
+        
+        options.detector->compute_frame(options.gray_frame, points, options.
+      lanes);
+
+        //add keypoints to frame record
+        showPoints = options.pointHistory.update_points(points);
+
+        //compute density image
+        compute_point_density(options.density_frame, showPoints, Size(options.
+      frame.cols, options.frame.rows), Size(options.density_window, options.
+      density_window));
+
+        
+        //track
+        //some tracking functions
+        
+
+        //draw keypoints on frame
+        for (size_t i = 0; i < showPoints.size(); i++)
+            if (showPoints[i].span > 8) {
+                circle(options.frame, Point(showPoints[i].centroid.x, 
+      showPoints[i].centroid.y), 1, Enumerations::color_interp(COLOR_RED, COLOR_GREEN, 
+      showPoints[i].strength), 1);
+                circle(options.black_frame, Point(showPoints[i].centroid.x, 
+      showPoints[i].centroid.y), 1, Enumerations::color_interp(COLOR_RED, COLOR_GREEN, 
+      showPoints[i].strength), 1);
+
+            } else {
+                circle(options.frame, Point(showPoints[i].centroid.x, 
+      showPoints[i].centroid.y), 1, COLOR_BLUE, 1);
+                circle(options.black_frame, Point(showPoints[i].centroid.x, 
+      showPoints[i].centroid.y), 1, COLOR_BLUE, 1);
+            }
+
+        //draw lanes onto images
+        for (size_t z = 0; z < options.lanes.size(); z++) {
+            options.lanes[z].draw(options.density_frame);
+            options.lanes[z].draw(options.black_frame);
+            options.lanes[z].draw(options.frame);
+        }
+
+        if (options.show) {
+
+            imshow(options.window_name.c_str(), options.frame);
+            imshow("black frame", options.black_frame);
+            imshow("density frame", options.density_frame);
+            options.key = waitKey(options.frame_rate);
+        } else {
+            if (options.frame_count % 10 == 0)
+                cout << options.frame_count << endl;
+            options.key = waitKey(1);
+        }
+
+        options.dout << options.density_frame;
+        options.vout << options.frame;
+        options.bout << options.black_frame;
+
+        if (options.key == 27)
+            break;
+
+
+        options.cap >> options.frame;
+        options.frame_count++;
+        options.black_frame = Scalar(0, 0, 0, 0);
+        options.density_frame = Scalar(0, 0, 0, 0);
+    }
+    
+    Parser::write_configuration( options );
+
+    return 0;
+}
+\end{DoxyCode}
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{main_8cpp_ad576244080e8051cc88071f8886b0ca9}{
+\index{main.\-cpp@{main.\-cpp}!mouse\-\_\-flag@{mouse\-\_\-flag}}
+\index{mouse\-\_\-flag@{mouse\-\_\-flag}!main.cpp@{main.\-cpp}}
+\subsubsection[{mouse\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf mouse\-\_\-flag}}}
+\label{main_8cpp_ad576244080e8051cc88071f8886b0ca9}
+
+
+\-Definition at line 34 of file main.\-cpp.
+
+
+
+\-Referenced by draw\-\_\-lanes(), init(), main(), and mouse\-Func().
+
+\hypertarget{main_8cpp_a80da4669a0af53ce4c51e9433d971955}{
+\index{main.\-cpp@{main.\-cpp}!p\-X@{p\-X}}
+\index{p\-X@{p\-X}!main.cpp@{main.\-cpp}}
+\subsubsection[{p\-X}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf p\-X}}}
+\label{main_8cpp_a80da4669a0af53ce4c51e9433d971955}
+
+
+\-Definition at line 33 of file main.\-cpp.
+
+
+
+\-Referenced by draw\-\_\-lanes(), and mouse\-Func().
+
+\hypertarget{main_8cpp_ad64d9918383b922f76bb82d86a641a5e}{
+\index{main.\-cpp@{main.\-cpp}!p\-Y@{p\-Y}}
+\index{p\-Y@{p\-Y}!main.cpp@{main.\-cpp}}
+\subsubsection[{p\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf p\-Y}}}
+\label{main_8cpp_ad64d9918383b922f76bb82d86a641a5e}
+
+
+\-Definition at line 33 of file main.\-cpp.
+
+
+
+\-Referenced by draw\-\_\-lanes(), and mouse\-Func().
+

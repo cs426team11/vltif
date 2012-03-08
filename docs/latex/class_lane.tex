@@ -1,0 +1,544 @@
+\hypertarget{class_lane}{
+\section{\-Lane \-Class \-Reference}
+\label{class_lane}\index{\-Lane@{\-Lane}}
+}
+
+
+\-Structure which stores relevant lane polygon information.  
+
+
+
+
+{\ttfamily \#include $<$\-Lane.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lane_affd642d537d96c03cb7fe8c8d46d37b4}{\-Lane} ()
+\item 
+bool \hyperlink{class_lane_a00ad862ca66e457db8ccca02e9958b02}{is\-Inside} (\-Point pt) const 
+\item 
+void \hyperlink{class_lane_aa5d759585701af3deca218df97d39a57}{draw} (\-Mat \&img) const 
+\item 
+void \hyperlink{class_lane_a2ebccc1c188f1f4509f12f8c26732ed5}{add\-Vertex} (\-Point pt)
+\item 
+void \hyperlink{class_lane_aeb6b7a603dd2967f082741da570d5cd4}{change\-Last} (\-Point pt)
+\item 
+size\-\_\-t \hyperlink{class_lane_a2571564ae2da44202f37d0d4ea3ddabc}{vertex\-\_\-count} () const 
+\item 
+const vector$<$ \-Point $>$ \& \hyperlink{class_lane_a5338ac896ca262bb7ed2ea1b35b764ad}{get\-Vertices} () const 
+\item 
+bool \hyperlink{class_lane_a7efd7d37e4b94e2af27ce8b8b5d344e7}{finalize} ()
+\item 
+void \hyperlink{class_lane_a74015a1138e0cab2fcc8ff4e4dcecc81}{clear} ()
+\item 
+size\-\_\-t \hyperlink{class_lane_a7188a0e8dc49adb19f5a576c98e09742}{size} ()
+\item 
+void \hyperlink{class_lane_a560bf1ab27a296d68d9cd9c0ba7121a4}{pop} ()
+\item 
+\-Rect \hyperlink{class_lane_a766e891d06646b5d4179c1ba8ffe05a1}{bbox} () const 
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{Indent}\paragraph*{\-Drawing \-Parameters}
+\begin{DoxyCompactItemize}
+\item 
+\-Scalar \hyperlink{class_lane_ac3fee6f32d192cb671665b66511a02d0}{color}
+\item 
+int \hyperlink{class_lane_aa614d556df980a9cf8974f77c69a1e10}{thickness}
+\item 
+int \hyperlink{class_lane_a3739821c9f0ac97c302dd05af44d58fd}{line\-Type}
+\item 
+int \hyperlink{class_lane_afd053ab5133d132146bef9f3c7afe92e}{shift}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \-Point $>$ \hyperlink{class_lane_a77c7a2a168f611cebd7a8bccdf17dedb}{vertices}
+\item 
+model\-::polygon\*
+$<$ model\-::d2\-::point\-\_\-xy$<$ int $>$ $>$ \hyperlink{class_lane_a8e0f8b6ff11437a3b16f8e030d1ea271}{poly}
+\item 
+\-Rect \hyperlink{class_lane_a00ae117899030b8d079edb4aba92f86c}{m\-\_\-bbox}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Structure which stores relevant lane polygon information. 
+
+\-Definition at line 35 of file \-Lane.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_lane_affd642d537d96c03cb7fe8c8d46d37b4}{
+\index{\-Lane@{\-Lane}!\-Lane@{\-Lane}}
+\index{\-Lane@{\-Lane}!Lane@{\-Lane}}
+\subsubsection[{\-Lane}]{\setlength{\rightskip}{0pt plus 5cm}\-Lane\-::\-Lane (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_affd642d537d96c03cb7fe8c8d46d37b4}
+\-Default lane constructor 
+
+\-Definition at line 13 of file \-Lane.\-cpp.
+
+
+\begin{DoxyCode}
+           :
+   color(CV_RGB(50,255,50)),
+   thickness(2),
+   lineType(8),
+   shift(0)
+{}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_lane_a2ebccc1c188f1f4509f12f8c26732ed5}{
+\index{\-Lane@{\-Lane}!add\-Vertex@{add\-Vertex}}
+\index{add\-Vertex@{add\-Vertex}!Lane@{\-Lane}}
+\subsubsection[{add\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}void \-Lane\-::add\-Vertex (
+\begin{DoxyParamCaption}
+\item[{\-Point}]{pt}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_a2ebccc1c188f1f4509f12f8c26732ed5}
+\-Add vertex to list 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & new point \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 41 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+
+\-Referenced by draw\-\_\-lanes(), and load\-\_\-lanes().
+
+
+\begin{DoxyCode}
+{
+   vertices.push_back(pt);
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a766e891d06646b5d4179c1ba8ffe05a1}{
+\index{\-Lane@{\-Lane}!bbox@{bbox}}
+\index{bbox@{bbox}!Lane@{\-Lane}}
+\subsubsection[{bbox}]{\setlength{\rightskip}{0pt plus 5cm}\-Rect \-Lane\-::bbox (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{class_lane_a766e891d06646b5d4179c1ba8ffe05a1}
+\-Return the bounding box of the lane \begin{DoxyReturn}{\-Returns}
+lane best fit rectangle 
+\end{DoxyReturn}
+
+
+\-Definition at line 162 of file \-Lane.\-cpp.
+
+
+
+\-References m\-\_\-bbox.
+
+
+\begin{DoxyCode}
+                    {
+    return m_bbox;
+}\end{DoxyCode}
+\hypertarget{class_lane_aeb6b7a603dd2967f082741da570d5cd4}{
+\index{\-Lane@{\-Lane}!change\-Last@{change\-Last}}
+\index{change\-Last@{change\-Last}!Lane@{\-Lane}}
+\subsubsection[{change\-Last}]{\setlength{\rightskip}{0pt plus 5cm}void \-Lane\-::change\-Last (
+\begin{DoxyParamCaption}
+\item[{\-Point}]{pt}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_aeb6b7a603dd2967f082741da570d5cd4}
+\-Adjust the last point 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 50 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+
+\-Referenced by draw\-\_\-lanes().
+
+
+\begin{DoxyCode}
+{
+   vertices.back() = pt;
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a74015a1138e0cab2fcc8ff4e4dcecc81}{
+\index{\-Lane@{\-Lane}!clear@{clear}}
+\index{clear@{clear}!Lane@{\-Lane}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void \-Lane\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_a74015a1138e0cab2fcc8ff4e4dcecc81}
+\-Clear the list of vertices 
+
+\-Definition at line 140 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+
+\-Referenced by draw\-\_\-lanes(), and load\-\_\-lanes().
+
+
+\begin{DoxyCode}
+                {
+    vertices.clear();
+}
+\end{DoxyCode}
+\hypertarget{class_lane_aa5d759585701af3deca218df97d39a57}{
+\index{\-Lane@{\-Lane}!draw@{draw}}
+\index{draw@{draw}!Lane@{\-Lane}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void \-Lane\-::draw (
+\begin{DoxyParamCaption}
+\item[{\-Mat \&}]{img}
+\end{DoxyParamCaption}
+) const}}
+\label{class_lane_aa5d759585701af3deca218df97d39a57}
+\-Draw the lane onto the image 
+\begin{DoxyParams}{\-Parameters}
+{\em img} & image to draw \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 117 of file \-Lane.\-cpp.
+
+
+
+\-References color, line\-Type, shift, size(), thickness, and vertices.
+
+
+
+\-Referenced by draw\-\_\-lanes().
+
+
+\begin{DoxyCode}
+{
+   const int size = static_cast<int>(vertices.size());
+
+   //create a pointer to point to
+   const Point* pts_ptr = &(vertices[0]);
+
+   polylines(
+      img,
+      &pts_ptr,
+      &size,
+      1,
+      true,
+      color,
+      thickness,
+      lineType,
+      shift
+   );
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a7efd7d37e4b94e2af27ce8b8b5d344e7}{
+\index{\-Lane@{\-Lane}!finalize@{finalize}}
+\index{finalize@{finalize}!Lane@{\-Lane}}
+\subsubsection[{finalize}]{\setlength{\rightskip}{0pt plus 5cm}bool \-Lane\-::finalize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_a7efd7d37e4b94e2af27ce8b8b5d344e7}
+\-Call when finished modifying
+
+\-Convert the vertex list into a boost polygon \begin{DoxyReturn}{\-Returns}
+true if successful 
+\end{DoxyReturn}
+
+
+\-Definition at line 77 of file \-Lane.\-cpp.
+
+
+
+\-References m\-\_\-bbox, poly, and vertices.
+
+
+\begin{DoxyCode}
+{
+   if ( vertices.size() < 3 ) return false;
+   
+   using boost::assign::tuple_list_of;
+   using boost::make_tuple;
+   using boost::geometry::append;
+   
+   Point minP = vertices[0], maxP = vertices[0];
+   for( size_t i=1; i<vertices.size(); i++){
+       if( vertices[i].x < minP.x ) minP.x = vertices[i].x;
+       if( vertices[i].y < minP.y ) minP.y = vertices[i].y;
+       if( vertices[i].x > maxP.x ) maxP.x = vertices[i].x;
+       if( vertices[i].y > maxP.y ) maxP.y = vertices[i].y;
+   }
+   m_bbox = Rect(minP.x, minP.y, maxP.x-minP.x, maxP.y-minP.y);
+   
+   //int* points = &(vertices[0]);
+   for ( vector<Point>::iterator i = vertices.begin(); i != vertices.end(); ++i
+       )
+      append(poly, tuple_list_of(i->x,i->y));
+   append(poly, tuple_list_of(vertices[0].x,vertices[0].y));
+   
+   return true;
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a5338ac896ca262bb7ed2ea1b35b764ad}{
+\index{\-Lane@{\-Lane}!get\-Vertices@{get\-Vertices}}
+\index{get\-Vertices@{get\-Vertices}!Lane@{\-Lane}}
+\subsubsection[{get\-Vertices}]{\setlength{\rightskip}{0pt plus 5cm}const vector$<$ \-Point $>$ \& \-Lane\-::get\-Vertices (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{class_lane_a5338ac896ca262bb7ed2ea1b35b764ad}
+\-Get the number of vertices \begin{DoxyReturn}{\-Returns}
+vertex list 
+\end{DoxyReturn}
+
+
+\-Definition at line 68 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+\begin{DoxyCode}
+{
+   return vertices;
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a00ad862ca66e457db8ccca02e9958b02}{
+\index{\-Lane@{\-Lane}!is\-Inside@{is\-Inside}}
+\index{is\-Inside@{is\-Inside}!Lane@{\-Lane}}
+\subsubsection[{is\-Inside}]{\setlength{\rightskip}{0pt plus 5cm}bool \-Lane\-::is\-Inside (
+\begin{DoxyParamCaption}
+\item[{\-Point}]{pt}
+\end{DoxyParamCaption}
+) const}}
+\label{class_lane_a00ad862ca66e457db8ccca02e9958b02}
+\-Check if point is inside lane 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & point to test \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the point is inside the polygon 
+\end{DoxyReturn}
+
+
+\-Definition at line 107 of file \-Lane.\-cpp.
+
+
+
+\-References poly.
+
+
+\begin{DoxyCode}
+{
+   boost::tuple<int,int> p = boost::make_tuple(pt.x,pt.y);
+   return within(p,poly);
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a560bf1ab27a296d68d9cd9c0ba7121a4}{
+\index{\-Lane@{\-Lane}!pop@{pop}}
+\index{pop@{pop}!Lane@{\-Lane}}
+\subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}void \-Lane\-::pop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_a560bf1ab27a296d68d9cd9c0ba7121a4}
+\-Pop the last vertex 
+
+\-Definition at line 154 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+\begin{DoxyCode}
+              {
+    vertices.pop_back();
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a7188a0e8dc49adb19f5a576c98e09742}{
+\index{\-Lane@{\-Lane}!size@{size}}
+\index{size@{size}!Lane@{\-Lane}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t \-Lane\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_lane_a7188a0e8dc49adb19f5a576c98e09742}
+\-Return the size of the vertex list 
+
+\-Definition at line 147 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+
+\-Referenced by draw(), and draw\-\_\-lanes().
+
+
+\begin{DoxyCode}
+                 {
+    return vertices.size();
+}
+\end{DoxyCode}
+\hypertarget{class_lane_a2571564ae2da44202f37d0d4ea3ddabc}{
+\index{\-Lane@{\-Lane}!vertex\-\_\-count@{vertex\-\_\-count}}
+\index{vertex\-\_\-count@{vertex\-\_\-count}!Lane@{\-Lane}}
+\subsubsection[{vertex\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t \-Lane\-::vertex\-\_\-count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{class_lane_a2571564ae2da44202f37d0d4ea3ddabc}
+\-Return the number of vertices \begin{DoxyReturn}{\-Returns}
+size of vertex list 
+\end{DoxyReturn}
+
+
+\-Definition at line 59 of file \-Lane.\-cpp.
+
+
+
+\-References vertices.
+
+
+\begin{DoxyCode}
+{
+   return vertices.size();
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_lane_ac3fee6f32d192cb671665b66511a02d0}{
+\index{\-Lane@{\-Lane}!color@{color}}
+\index{color@{color}!Lane@{\-Lane}}
+\subsubsection[{color}]{\setlength{\rightskip}{0pt plus 5cm}\-Scalar {\bf \-Lane\-::color}}}
+\label{class_lane_ac3fee6f32d192cb671665b66511a02d0}
+\-Use \-C\-V\-\_\-\-R\-G\-B(r,g,b) macro where r,g,b are \mbox{[}0,255\mbox{]} for uchar images and \mbox{[}0.\-0, 1.\-0\mbox{]} for floating point images 
+
+\-Definition at line 61 of file \-Lane.\-h.
+
+
+
+\-Referenced by draw().
+
+\hypertarget{class_lane_a3739821c9f0ac97c302dd05af44d58fd}{
+\index{\-Lane@{\-Lane}!line\-Type@{line\-Type}}
+\index{line\-Type@{line\-Type}!Lane@{\-Lane}}
+\subsubsection[{line\-Type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Lane\-::line\-Type}}}
+\label{class_lane_a3739821c9f0ac97c302dd05af44d58fd}
+8 or 4 for 4-\/connected or 8-\/connected \-Bresenham algorithm or \-C\-V\-\_\-\-A\-A for anti-\/aliased lines using \-Gaussian filtering 
+
+\-Definition at line 64 of file \-Lane.\-h.
+
+
+
+\-Referenced by draw().
+
+\hypertarget{class_lane_a00ae117899030b8d079edb4aba92f86c}{
+\index{\-Lane@{\-Lane}!m\-\_\-bbox@{m\-\_\-bbox}}
+\index{m\-\_\-bbox@{m\-\_\-bbox}!Lane@{\-Lane}}
+\subsubsection[{m\-\_\-bbox}]{\setlength{\rightskip}{0pt plus 5cm}\-Rect {\bf \-Lane\-::m\-\_\-bbox}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_lane_a00ae117899030b8d079edb4aba92f86c}
+
+
+\-Definition at line 75 of file \-Lane.\-h.
+
+
+
+\-Referenced by bbox(), and finalize().
+
+\hypertarget{class_lane_a8e0f8b6ff11437a3b16f8e030d1ea271}{
+\index{\-Lane@{\-Lane}!poly@{poly}}
+\index{poly@{poly}!Lane@{\-Lane}}
+\subsubsection[{poly}]{\setlength{\rightskip}{0pt plus 5cm}model\-::polygon$<$model\-::d2\-::point\-\_\-xy$<$int$>$ $>$ {\bf \-Lane\-::poly}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_lane_a8e0f8b6ff11437a3b16f8e030d1ea271}
+
+
+\-Definition at line 74 of file \-Lane.\-h.
+
+
+
+\-Referenced by finalize(), and is\-Inside().
+
+\hypertarget{class_lane_afd053ab5133d132146bef9f3c7afe92e}{
+\index{\-Lane@{\-Lane}!shift@{shift}}
+\index{shift@{shift}!Lane@{\-Lane}}
+\subsubsection[{shift}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Lane\-::shift}}}
+\label{class_lane_afd053ab5133d132146bef9f3c7afe92e}
+\-Number of fractional bits to shift in the point coordinates (probably want to leave 0) 
+
+\-Definition at line 66 of file \-Lane.\-h.
+
+
+
+\-Referenced by draw().
+
+\hypertarget{class_lane_aa614d556df980a9cf8974f77c69a1e10}{
+\index{\-Lane@{\-Lane}!thickness@{thickness}}
+\index{thickness@{thickness}!Lane@{\-Lane}}
+\subsubsection[{thickness}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Lane\-::thickness}}}
+\label{class_lane_aa614d556df980a9cf8974f77c69a1e10}
+\-In pixels 
+
+\-Definition at line 63 of file \-Lane.\-h.
+
+
+
+\-Referenced by draw().
+
+\hypertarget{class_lane_a77c7a2a168f611cebd7a8bccdf17dedb}{
+\index{\-Lane@{\-Lane}!vertices@{vertices}}
+\index{vertices@{vertices}!Lane@{\-Lane}}
+\subsubsection[{vertices}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$\-Point$>$ {\bf \-Lane\-::vertices}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_lane_a77c7a2a168f611cebd7a8bccdf17dedb}
+
+
+\-Definition at line 73 of file \-Lane.\-h.
+
+
+
+\-Referenced by add\-Vertex(), change\-Last(), clear(), draw(), finalize(), get\-Vertices(), pop(), size(), and vertex\-\_\-count().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/structures/\hyperlink{_lane_8h}{\-Lane.\-h}\item 
+src/structures/\hyperlink{_lane_8cpp}{\-Lane.\-cpp}\end{DoxyCompactItemize}

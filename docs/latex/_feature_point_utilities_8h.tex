@@ -1,0 +1,166 @@
+\hypertarget{_feature_point_utilities_8h}{
+\section{src/feature/\-Feature\-Point\-Utilities.h \-File \-Reference}
+\label{_feature_point_utilities_8h}\index{src/feature/\-Feature\-Point\-Utilities.\-h@{src/feature/\-Feature\-Point\-Utilities.\-h}}
+}
+{\ttfamily \#include $<$cv.\-h$>$}\*
+{\ttfamily \#include $<$cvaux.\-h$>$}\*
+{\ttfamily \#include $<$highgui.\-h$>$}\*
+{\ttfamily \#include $<$vector$>$}\*
+{\ttfamily \#include \char`\"{}../core/\-Point\-Tracker.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}../core/\-Enumerations.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t \hyperlink{_feature_point_utilities_8h_a7a6cfdc97189f0d8e0c38122f7ea365c}{compute\-\_\-area} (size\-\_\-t i, size\-\_\-t j, \-Size bbox)
+\item 
+void \hyperlink{_feature_point_utilities_8h_a6f637efb6500edf669aefb519d880687}{compute\-\_\-point\-\_\-density} (\-Mat \&image\-Out, vector$<$ \hyperlink{class_tuple}{\-Tuple} $>$ \&keypoints, \-Size img\-Size, \-Size bbox)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_feature_point_utilities_8h_a7a6cfdc97189f0d8e0c38122f7ea365c}{
+\index{\-Feature\-Point\-Utilities.\-h@{\-Feature\-Point\-Utilities.\-h}!compute\-\_\-area@{compute\-\_\-area}}
+\index{compute\-\_\-area@{compute\-\_\-area}!FeaturePointUtilities.h@{\-Feature\-Point\-Utilities.\-h}}
+\subsubsection[{compute\-\_\-area}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t compute\-\_\-area (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{i, }
+\item[{size\-\_\-t}]{j, }
+\item[{\-Size}]{bbox}
+\end{DoxyParamCaption}
+)}}
+\label{_feature_point_utilities_8h_a7a6cfdc97189f0d8e0c38122f7ea365c}
+
+
+\-Definition at line 110 of file \-Feature\-Point\-Utilities.\-h.
+
+
+\begin{DoxyCode}
+                                                   {
+    
+    size_t area = 0;
+    for( size_t i=0; i<bbox.width; i++){
+        for( size_t j=0; j<bbox.height; j++){
+            if( i >= 0 && j >= 0 )
+                area += 1;
+        }
+    }
+    
+    return area;
+}
+\end{DoxyCode}
+\hypertarget{_feature_point_utilities_8h_a6f637efb6500edf669aefb519d880687}{
+\index{\-Feature\-Point\-Utilities.\-h@{\-Feature\-Point\-Utilities.\-h}!compute\-\_\-point\-\_\-density@{compute\-\_\-point\-\_\-density}}
+\index{compute\-\_\-point\-\_\-density@{compute\-\_\-point\-\_\-density}!FeaturePointUtilities.h@{\-Feature\-Point\-Utilities.\-h}}
+\subsubsection[{compute\-\_\-point\-\_\-density}]{\setlength{\rightskip}{0pt plus 5cm}void compute\-\_\-point\-\_\-density (
+\begin{DoxyParamCaption}
+\item[{\-Mat \&}]{image\-Out, }
+\item[{vector$<$ {\bf \-Tuple} $>$ \&}]{keypoints, }
+\item[{\-Size}]{img\-Size, }
+\item[{\-Size}]{bbox}
+\end{DoxyParamCaption}
+)}}
+\label{_feature_point_utilities_8h_a6f637efb6500edf669aefb519d880687}
+
+
+\-Definition at line 29 of file \-Feature\-Point\-Utilities.\-h.
+
+
+
+\-References \-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N, \-Enumerations\-::color\-\_\-interp(), \-C\-O\-L\-O\-R\-\_\-\-R\-E\-D, and \-Enumerations\-::\-Scalar2\-Vec().
+
+
+
+\-Referenced by main().
+
+
+\begin{DoxyCode}
+                                                                               
+                    {
+    
+    Enumerations REF;
+    
+    
+    Mat integralImage = Mat(Size(imageOut.cols, imageOut.rows), CV_32FC1);
+    Mat integralImage2= Mat(Size(imageOut.cols, imageOut.rows), CV_32FC1);
+    Mat densityImage  = Mat(Size(imageOut.cols, imageOut.rows), CV_32FC1);
+    double area;
+    int xmin, xmax, ymin, ymax;
+    int count;
+    Scalar val;
+    int half = bbox.height/2;
+    
+    imageOut = Scalar(0,0,0,0);
+    integralImage = Scalar(0,0,0,0);
+    integralImage2 = Scalar(0,0,0,0);
+    densityImage = Scalar(0,0,0,0);
+    
+    //iterate through points, incrementing the count
+    for(size_t i=0; i<keypoints.size(); i++){
+        if( keypoints[i].strength < 0.4 || keypoints[i].span < 5)
+            integralImage.at<float>(keypoints[i].centroid) += .11;
+        else if( keypoints[i].strength >= 0.4 )
+            integralImage.at<float>(keypoints[i].centroid) -= .1;
+    }
+    
+    //build the integral image
+    for(int i=0; i<integralImage.cols; i++)
+        for(int j=0; j<integralImage.rows; j++){
+            
+            xmin = max( i-1, 0);
+            ymin = max( j-1, 0);
+            
+            if( i == 0 && j == 0 ) 
+                integralImage2.at<float>(j,i) = integralImage.at<float>(j,i);
+            else if( i == 0 )
+                integralImage2.at<float>(j,i) = integralImage2.at<float>(j-1, i
+      )
+                                              + integralImage.at<float>(j,i);
+            else if( j == 0 )
+                integralImage2.at<float>(j,i) = integralImage2.at<float>(j, i-1
+      )
+                                              + integralImage.at<float>(j,i);
+            else
+                integralImage2.at<float>(j,i) = integralImage.at<float>(j,i) + 
+                                                integralImage2.at<float>(ymin, 
+      i) + 
+                                                integralImage2.at<float>(j, 
+      xmin) - 
+                                                integralImage2.at<float>(ymin,
+      xmin);
+        }
+    
+    //compute the density map
+    for(int i=1; i<integralImage.cols; i++)
+        for(int j=0; j<integralImage.rows; j++){
+            
+            xmin = max(i-half-1, 0);
+            ymin = max(j-half-1, 0);
+            xmax = min(i+half  , integralImage.cols-1);
+            ymax = min(j+half  , integralImage.rows-1);
+            
+            //iterate over map
+            densityImage.at<float>(j,i) = integralImage2.at<float>( ymax, xmax)
+       
+                                        - integralImage2.at<float>( ymin, xmax)
+                                        - integralImage2.at<float>( ymax, xmin)
+                                        + integralImage2.at<float>( ymin, xmin)
+      ;
+            //densityImage.at<float>(j,i) /= (xmax-xmin-1)*(ymax-ymin-1);
+        }
+    
+    for(int i=1; i<integralImage.cols; i++)
+        for(int j=0; j<integralImage.rows; j++){
+            if( densityImage.at<float>(j,i) < 0 )
+                densityImage.at<float>(j,i) = 0;
+            if( densityImage.at<float>(j,i) > 1)
+                densityImage.at<float>(j,i) = 1;
+        }
+    
+    normalize( densityImage, densityImage, 0, 1, CV_MINMAX);
+    for(int i=1; i<integralImage.cols; i++)
+        for(int j=0; j<integralImage.rows; j++){
+            imageOut.at<Vec3b>(j,i) = REF.Scalar2Vec(REF.color_interp(COLOR_RED
+      , COLOR_GREEN, densityImage.at<float>(j,i)));
+        }
+}
+\end{DoxyCode}

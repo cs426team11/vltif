@@ -1,0 +1,52 @@
+\hypertarget{_lane_8cpp}{
+\section{src/structures/\-Lane.cpp \-File \-Reference}
+\label{_lane_8cpp}\index{src/structures/\-Lane.\-cpp@{src/structures/\-Lane.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}\-Lane.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_lane_8cpp_a7414a02f0330b3938cea503a4379cde8}{inside\-Lane} (\-Point2f const \&pt, vector$<$ \hyperlink{class_lane}{\-Lane} $>$const \&lanes)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_lane_8cpp_a7414a02f0330b3938cea503a4379cde8}{
+\index{\-Lane.\-cpp@{\-Lane.\-cpp}!inside\-Lane@{inside\-Lane}}
+\index{inside\-Lane@{inside\-Lane}!Lane.cpp@{\-Lane.\-cpp}}
+\subsubsection[{inside\-Lane}]{\setlength{\rightskip}{0pt plus 5cm}bool inside\-Lane (
+\begin{DoxyParamCaption}
+\item[{\-Point2f const \&}]{pt, }
+\item[{vector$<$ {\bf \-Lane} $>$const \&}]{lanes}
+\end{DoxyParamCaption}
+)}}
+\label{_lane_8cpp_a7414a02f0330b3938cea503a4379cde8}
+\-Return true if the point is inside the lane 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & \-Point to check \\
+\hline
+{\em list} & of lanes to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if point is inside lane 
+\end{DoxyReturn}
+
+
+\-Definition at line 27 of file \-Lane.\-cpp.
+
+
+
+\-Referenced by \-Sift\-Type\-::compute\-\_\-frame(), and \-Surf\-Type\-::compute\-\_\-frame().
+
+
+\begin{DoxyCode}
+                                                              {
+    
+    for( size_t i=0; i<lanes.size(); i++){
+        if(lanes[i].isInside(pt) == true)
+            return true;
+    }
+    return false;
+}
+\end{DoxyCode}

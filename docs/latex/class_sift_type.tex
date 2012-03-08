@@ -1,0 +1,350 @@
+\hypertarget{class_sift_type}{
+\section{\-Sift\-Type \-Class \-Reference}
+\label{class_sift_type}\index{\-Sift\-Type@{\-Sift\-Type}}
+}
+
+
+{\ttfamily \#include $<$\-Sift\-Type.\-h$>$}
+
+\-Inheritance diagram for \-Sift\-Type\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sift_type}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_sift_type_a8b39ad71da09d08c722e328f3c106a49}{\-Sift\-Type} ()
+\item 
+\hyperlink{class_sift_type_a9743d0d22ab134c2b8e677b1c7d7faf1}{\-Sift\-Type} (const bool \&lc, \-S\-I\-F\-T\-::\-Common\-Params const \&cp, \-S\-I\-F\-T\-::\-Detector\-Params const \&detp, \-S\-I\-F\-T\-::\-Descriptor\-Params const \&desp)
+\item 
+\hyperlink{class_sift_type_a628125d62cb5b2b3d90abe4218eefcbe}{\-Sift\-Type} (const \hyperlink{class_sift_type}{\-Sift\-Type} \&orig)
+\item 
+virtual \hyperlink{class_sift_type_a27bd3cb125c6042e0c78563388de784f}{$\sim$\-Sift\-Type} ()
+\item 
+virtual string \hyperlink{class_sift_type_a792597ebf8e051e9fe9581bd95aff535}{is\-Type} () const 
+\item 
+virtual void \hyperlink{class_sift_type_a642677043736bdfae4f8712235c427c8}{compute\-\_\-frame} (const \-Mat \&img, vector$<$ \-Key\-Point $>$ \&keypoints, vector$<$ \hyperlink{class_lane}{\-Lane} $>$const \&lanes) const 
+\item 
+virtual void \hyperlink{class_sift_type_a5a114bb493bb7fd4d2ed7cfd8201a59c}{reset\-\_\-detector} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\-S\-I\-F\-T \hyperlink{class_sift_type_a85fc34654bce309e88865979e2076eb3}{sift}
+\item 
+bool \hyperlink{class_sift_type_a95e6ce70f1e21aca352be83a46b8eefa}{crop\-\_\-lanes}
+\item 
+\-S\-I\-F\-T\-::\-Common\-Params \hyperlink{class_sift_type_a06fea1d279898aeb11162fcc3a7c6888}{common\-Params}
+\item 
+\-S\-I\-F\-T\-::\-Descriptor\-Params \hyperlink{class_sift_type_a78c132604daeaedb318e9e41a9e968b0}{descriptor\-Params}
+\item 
+\-S\-I\-F\-T\-::\-Detector\-Params \hyperlink{class_sift_type_ae75dfe4dae3528a272cff29c04723dc9}{detector\-Params}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 26 of file \-Sift\-Type.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_sift_type_a8b39ad71da09d08c722e328f3c106a49}{
+\index{\-Sift\-Type@{\-Sift\-Type}!\-Sift\-Type@{\-Sift\-Type}}
+\index{\-Sift\-Type@{\-Sift\-Type}!SiftType@{\-Sift\-Type}}
+\subsubsection[{\-Sift\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Sift\-Type\-::\-Sift\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_sift_type_a8b39ad71da09d08c722e328f3c106a49}
+
+
+\-Definition at line 10 of file \-Sift\-Type.\-cpp.
+
+
+
+\-References common\-Params, descriptor\-Params, detector\-Params, and sift.
+
+
+\begin{DoxyCode}
+                   {
+    
+    commonParams = sift.getCommonParams();
+    detectorParams = sift.getDetectorParams();
+    descriptorParams = sift.getDescriptorParams();
+    
+}
+\end{DoxyCode}
+\hypertarget{class_sift_type_a9743d0d22ab134c2b8e677b1c7d7faf1}{
+\index{\-Sift\-Type@{\-Sift\-Type}!\-Sift\-Type@{\-Sift\-Type}}
+\index{\-Sift\-Type@{\-Sift\-Type}!SiftType@{\-Sift\-Type}}
+\subsubsection[{\-Sift\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Sift\-Type\-::\-Sift\-Type (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{lc, }
+\item[{\-S\-I\-F\-T\-::\-Common\-Params const \&}]{cp, }
+\item[{\-S\-I\-F\-T\-::\-Detector\-Params const \&}]{detp, }
+\item[{\-S\-I\-F\-T\-::\-Descriptor\-Params const \&}]{desp}
+\end{DoxyParamCaption}
+)}}
+\label{class_sift_type_a9743d0d22ab134c2b8e677b1c7d7faf1}
+
+
+\-Definition at line 18 of file \-Sift\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                                    : crop_lanes(lc), detectorParams(detp), 
+      descriptorParams(desp){
+    
+}
+\end{DoxyCode}
+\hypertarget{class_sift_type_a628125d62cb5b2b3d90abe4218eefcbe}{
+\index{\-Sift\-Type@{\-Sift\-Type}!\-Sift\-Type@{\-Sift\-Type}}
+\index{\-Sift\-Type@{\-Sift\-Type}!SiftType@{\-Sift\-Type}}
+\subsubsection[{\-Sift\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Sift\-Type\-::\-Sift\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sift\-Type} \&}]{orig}
+\end{DoxyParamCaption}
+)}}
+\label{class_sift_type_a628125d62cb5b2b3d90abe4218eefcbe}
+
+
+\-Definition at line 25 of file \-Sift\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                                       {
+}
+\end{DoxyCode}
+\hypertarget{class_sift_type_a27bd3cb125c6042e0c78563388de784f}{
+\index{\-Sift\-Type@{\-Sift\-Type}!$\sim$\-Sift\-Type@{$\sim$\-Sift\-Type}}
+\index{$\sim$\-Sift\-Type@{$\sim$\-Sift\-Type}!SiftType@{\-Sift\-Type}}
+\subsubsection[{$\sim$\-Sift\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Sift\-Type\-::$\sim$\-Sift\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_sift_type_a27bd3cb125c6042e0c78563388de784f}
+
+
+\-Definition at line 28 of file \-Sift\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                    {
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_sift_type_a642677043736bdfae4f8712235c427c8}{
+\index{\-Sift\-Type@{\-Sift\-Type}!compute\-\_\-frame@{compute\-\_\-frame}}
+\index{compute\-\_\-frame@{compute\-\_\-frame}!SiftType@{\-Sift\-Type}}
+\subsubsection[{compute\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sift\-Type\-::compute\-\_\-frame (
+\begin{DoxyParamCaption}
+\item[{const \-Mat \&}]{img, }
+\item[{vector$<$ \-Key\-Point $>$ \&}]{keypoints, }
+\item[{vector$<$ {\bf \-Lane} $>$const \&}]{lanes}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_sift_type_a642677043736bdfae4f8712235c427c8}
+\-Run sift on the current frame and output the keypoints and their descriptors
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+\mbox{\tt in}  & {\em img} & \-Image to be evaluated \\
+\hline
+\mbox{\tt out}  & {\em keypoints} & \-Keypoints to be shown \\
+\hline
+\end{DoxyParams}
+
+
+\-Implements \hyperlink{class_detector_type_ad147fbbe562819244a3c92cf4dc5d999}{\-Detector\-Type}.
+
+
+
+\-Definition at line 35 of file \-Sift\-Type.\-cpp.
+
+
+
+\-References crop\-\_\-lanes, crop\-Sub\-Image(), expand\-Rect(), inside\-Lane(), points\-Equal(), and sift.
+
+
+\begin{DoxyCode}
+                                                                               
+                               {
+        
+    keypoints.clear();
+    vector<KeyPoint> points, tpoints;
+    
+    //crop lane image
+    if( crop_lanes == true ){
+        
+        Rect bbox;
+        Mat subImg;
+        
+        //iterate over each crop, computing the sub-image, then sift
+        for( size_t i=0; i<lanes.size(); i++){
+            tpoints.clear();
+            
+            bbox = expandRect(lanes[i].bbox(), 50, Size(img.cols, img.rows));
+            subImg = cropSubImage(img, bbox);
+            
+            
+            sift(subImg, Mat(), tpoints);
+            
+            //append points to list
+            for(size_t k=0; k<tpoints.size(); k++){
+                Point2f tp = Point2f(tpoints[k].pt.x+bbox.x, tpoints[k].pt.y+
+      bbox.y);
+                tpoints[k].pt = tp;
+                points.push_back(tpoints[k]);
+            }
+        }
+        
+        //remove unique points
+        unique(points.begin(), points.end(), pointsEqual);
+        
+    }
+    else{
+    
+        sift(img, Mat(), points);
+        
+    }
+    
+    for( size_t i=0; i<points.size(); i++)
+        if( insideLane(points[i].pt, lanes) == true ){
+            keypoints.push_back(points[i]);
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_sift_type_a792597ebf8e051e9fe9581bd95aff535}{
+\index{\-Sift\-Type@{\-Sift\-Type}!is\-Type@{is\-Type}}
+\index{is\-Type@{is\-Type}!SiftType@{\-Sift\-Type}}
+\subsubsection[{is\-Type}]{\setlength{\rightskip}{0pt plus 5cm}string \-Sift\-Type\-::is\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_sift_type_a792597ebf8e051e9fe9581bd95aff535}
+
+
+\-Reimplemented from \hyperlink{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}{\-Detector\-Type}.
+
+
+
+\-Definition at line 31 of file \-Sift\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                             {
+    return "SiftType";
+}
+\end{DoxyCode}
+\hypertarget{class_sift_type_a5a114bb493bb7fd4d2ed7cfd8201a59c}{
+\index{\-Sift\-Type@{\-Sift\-Type}!reset\-\_\-detector@{reset\-\_\-detector}}
+\index{reset\-\_\-detector@{reset\-\_\-detector}!SiftType@{\-Sift\-Type}}
+\subsubsection[{reset\-\_\-detector}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sift\-Type\-::reset\-\_\-detector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_sift_type_a5a114bb493bb7fd4d2ed7cfd8201a59c}
+
+
+\-Implements \hyperlink{class_detector_type_a1115eaed51cec6ea0d4183edba767da0}{\-Detector\-Type}.
+
+
+
+\-Definition at line 80 of file \-Sift\-Type.\-cpp.
+
+
+
+\-References common\-Params, descriptor\-Params, detector\-Params, and sift.
+
+
+\begin{DoxyCode}
+                             {
+    
+    sift = SIFT(commonParams, detectorParams, descriptorParams );
+    
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_sift_type_a06fea1d279898aeb11162fcc3a7c6888}{
+\index{\-Sift\-Type@{\-Sift\-Type}!common\-Params@{common\-Params}}
+\index{common\-Params@{common\-Params}!SiftType@{\-Sift\-Type}}
+\subsubsection[{common\-Params}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-I\-F\-T\-::\-Common\-Params {\bf \-Sift\-Type\-::common\-Params}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_sift_type_a06fea1d279898aeb11162fcc3a7c6888}
+
+
+\-Definition at line 52 of file \-Sift\-Type.\-h.
+
+
+
+\-Referenced by reset\-\_\-detector(), and \-Sift\-Type().
+
+\hypertarget{class_sift_type_a95e6ce70f1e21aca352be83a46b8eefa}{
+\index{\-Sift\-Type@{\-Sift\-Type}!crop\-\_\-lanes@{crop\-\_\-lanes}}
+\index{crop\-\_\-lanes@{crop\-\_\-lanes}!SiftType@{\-Sift\-Type}}
+\subsubsection[{crop\-\_\-lanes}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sift\-Type\-::crop\-\_\-lanes}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_sift_type_a95e6ce70f1e21aca352be83a46b8eefa}
+
+
+\-Definition at line 51 of file \-Sift\-Type.\-h.
+
+
+
+\-Referenced by compute\-\_\-frame().
+
+\hypertarget{class_sift_type_a78c132604daeaedb318e9e41a9e968b0}{
+\index{\-Sift\-Type@{\-Sift\-Type}!descriptor\-Params@{descriptor\-Params}}
+\index{descriptor\-Params@{descriptor\-Params}!SiftType@{\-Sift\-Type}}
+\subsubsection[{descriptor\-Params}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-I\-F\-T\-::\-Descriptor\-Params {\bf \-Sift\-Type\-::descriptor\-Params}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_sift_type_a78c132604daeaedb318e9e41a9e968b0}
+
+
+\-Definition at line 53 of file \-Sift\-Type.\-h.
+
+
+
+\-Referenced by reset\-\_\-detector(), and \-Sift\-Type().
+
+\hypertarget{class_sift_type_ae75dfe4dae3528a272cff29c04723dc9}{
+\index{\-Sift\-Type@{\-Sift\-Type}!detector\-Params@{detector\-Params}}
+\index{detector\-Params@{detector\-Params}!SiftType@{\-Sift\-Type}}
+\subsubsection[{detector\-Params}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-I\-F\-T\-::\-Detector\-Params {\bf \-Sift\-Type\-::detector\-Params}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_sift_type_ae75dfe4dae3528a272cff29c04723dc9}
+
+
+\-Definition at line 54 of file \-Sift\-Type.\-h.
+
+
+
+\-Referenced by reset\-\_\-detector(), and \-Sift\-Type().
+
+\hypertarget{class_sift_type_a85fc34654bce309e88865979e2076eb3}{
+\index{\-Sift\-Type@{\-Sift\-Type}!sift@{sift}}
+\index{sift@{sift}!SiftType@{\-Sift\-Type}}
+\subsubsection[{sift}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-I\-F\-T {\bf \-Sift\-Type\-::sift}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{class_sift_type_a85fc34654bce309e88865979e2076eb3}
+
+
+\-Definition at line 49 of file \-Sift\-Type.\-h.
+
+
+
+\-Referenced by compute\-\_\-frame(), reset\-\_\-detector(), and \-Sift\-Type().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/structures/\hyperlink{_sift_type_8h}{\-Sift\-Type.\-h}\item 
+src/structures/\hyperlink{_sift_type_8cpp}{\-Sift\-Type.\-cpp}\end{DoxyCompactItemize}

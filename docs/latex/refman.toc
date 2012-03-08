@@ -1,0 +1,284 @@
+\contentsline {chapter}{\numberline {1}\discretionary {-}{}{}Directory \discretionary {-}{}{}Hierarchy}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}\discretionary {-}{}{}Directories}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}\discretionary {-}{}{}Class \discretionary {-}{}{}Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}\discretionary {-}{}{}Class \discretionary {-}{}{}Hierarchy}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}\discretionary {-}{}{}Class \discretionary {-}{}{}Index}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}\discretionary {-}{}{}Class \discretionary {-}{}{}List}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}\discretionary {-}{}{}File \discretionary {-}{}{}Index}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}\discretionary {-}{}{}File \discretionary {-}{}{}List}{7}{section.4.1}
+\contentsline {chapter}{\numberline {5}\discretionary {-}{}{}Directory \discretionary {-}{}{}Documentation}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}src/core/ \discretionary {-}{}{}Directory \discretionary {-}{}{}Reference}{9}{section.5.1}
+\contentsline {section}{\numberline {5.2}src/feature/ \discretionary {-}{}{}Directory \discretionary {-}{}{}Reference}{9}{section.5.2}
+\contentsline {section}{\numberline {5.3}src/ \discretionary {-}{}{}Directory \discretionary {-}{}{}Reference}{10}{section.5.3}
+\contentsline {section}{\numberline {5.4}src/structures/ \discretionary {-}{}{}Directory \discretionary {-}{}{}Reference}{10}{section.5.4}
+\contentsline {section}{\numberline {5.5}src/ui/ \discretionary {-}{}{}Directory \discretionary {-}{}{}Reference}{10}{section.5.5}
+\contentsline {chapter}{\numberline {6}\discretionary {-}{}{}Class \discretionary {-}{}{}Documentation}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}\discretionary {-}{}{}Detector\discretionary {-}{}{}Type \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{11}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{11}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{11}{subsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.2.1}\discretionary {-}{}{}Detector\discretionary {-}{}{}Type}{12}{subsubsection.6.1.2.1}
+\contentsline {subsubsection}{\numberline {6.1.2.2}\discretionary {-}{}{}Detector\discretionary {-}{}{}Type}{12}{subsubsection.6.1.2.2}
+\contentsline {subsubsection}{\numberline {6.1.2.3}$\sim $\discretionary {-}{}{}Detector\discretionary {-}{}{}Type}{12}{subsubsection.6.1.2.3}
+\contentsline {subsection}{\numberline {6.1.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{12}{subsection.6.1.3}
+\contentsline {subsubsection}{\numberline {6.1.3.1}compute\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{12}{subsubsection.6.1.3.1}
+\contentsline {subsubsection}{\numberline {6.1.3.2}is\discretionary {-}{}{}Type}{12}{subsubsection.6.1.3.2}
+\contentsline {subsubsection}{\numberline {6.1.3.3}reset\discretionary {-}{}{}\_\discretionary {-}{}{}detector}{12}{subsubsection.6.1.3.3}
+\contentsline {section}{\numberline {6.2}\discretionary {-}{}{}Enumerations \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{13}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{13}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{13}{subsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.1}\discretionary {-}{}{}Enumerations}{13}{subsubsection.6.2.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2.2}\discretionary {-}{}{}Enumerations}{14}{subsubsection.6.2.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.3}$\sim $\discretionary {-}{}{}Enumerations}{14}{subsubsection.6.2.2.3}
+\contentsline {subsection}{\numberline {6.2.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{14}{subsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.3.1}bool2string}{14}{subsubsection.6.2.3.1}
+\contentsline {subsubsection}{\numberline {6.2.3.2}color\discretionary {-}{}{}\_\discretionary {-}{}{}interp}{14}{subsubsection.6.2.3.2}
+\contentsline {subsubsection}{\numberline {6.2.3.3}\discretionary {-}{}{}Scalar2\discretionary {-}{}{}Vec}{15}{subsubsection.6.2.3.3}
+\contentsline {subsection}{\numberline {6.2.4}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{15}{subsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.4.1}\discretionary {-}{}{}B\discretionary {-}{}{}L\discretionary {-}{}{}U\discretionary {-}{}{}E}{15}{subsubsection.6.2.4.1}
+\contentsline {subsubsection}{\numberline {6.2.4.2}\discretionary {-}{}{}G\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}E\discretionary {-}{}{}N}{15}{subsubsection.6.2.4.2}
+\contentsline {subsubsection}{\numberline {6.2.4.3}\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}D}{16}{subsubsection.6.2.4.3}
+\contentsline {section}{\numberline {6.3}\discretionary {-}{}{}Lane \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{16}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{17}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{17}{subsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.2.1}\discretionary {-}{}{}Lane}{17}{subsubsection.6.3.2.1}
+\contentsline {subsection}{\numberline {6.3.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{17}{subsection.6.3.3}
+\contentsline {subsubsection}{\numberline {6.3.3.1}add\discretionary {-}{}{}Vertex}{17}{subsubsection.6.3.3.1}
+\contentsline {subsubsection}{\numberline {6.3.3.2}bbox}{17}{subsubsection.6.3.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3.3}change\discretionary {-}{}{}Last}{17}{subsubsection.6.3.3.3}
+\contentsline {subsubsection}{\numberline {6.3.3.4}clear}{18}{subsubsection.6.3.3.4}
+\contentsline {subsubsection}{\numberline {6.3.3.5}draw}{18}{subsubsection.6.3.3.5}
+\contentsline {subsubsection}{\numberline {6.3.3.6}finalize}{18}{subsubsection.6.3.3.6}
+\contentsline {subsubsection}{\numberline {6.3.3.7}get\discretionary {-}{}{}Vertices}{19}{subsubsection.6.3.3.7}
+\contentsline {subsubsection}{\numberline {6.3.3.8}is\discretionary {-}{}{}Inside}{19}{subsubsection.6.3.3.8}
+\contentsline {subsubsection}{\numberline {6.3.3.9}pop}{19}{subsubsection.6.3.3.9}
+\contentsline {subsubsection}{\numberline {6.3.3.10}size}{20}{subsubsection.6.3.3.10}
+\contentsline {subsubsection}{\numberline {6.3.3.11}vertex\discretionary {-}{}{}\_\discretionary {-}{}{}count}{20}{subsubsection.6.3.3.11}
+\contentsline {subsection}{\numberline {6.3.4}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{20}{subsection.6.3.4}
+\contentsline {subsubsection}{\numberline {6.3.4.1}color}{20}{subsubsection.6.3.4.1}
+\contentsline {subsubsection}{\numberline {6.3.4.2}line\discretionary {-}{}{}Type}{20}{subsubsection.6.3.4.2}
+\contentsline {subsubsection}{\numberline {6.3.4.3}m\discretionary {-}{}{}\_\discretionary {-}{}{}bbox}{20}{subsubsection.6.3.4.3}
+\contentsline {subsubsection}{\numberline {6.3.4.4}poly}{21}{subsubsection.6.3.4.4}
+\contentsline {subsubsection}{\numberline {6.3.4.5}shift}{21}{subsubsection.6.3.4.5}
+\contentsline {subsubsection}{\numberline {6.3.4.6}thickness}{21}{subsubsection.6.3.4.6}
+\contentsline {subsubsection}{\numberline {6.3.4.7}vertices}{21}{subsubsection.6.3.4.7}
+\contentsline {section}{\numberline {6.4}\discretionary {-}{}{}Options \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{21}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{22}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{23}{subsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.2.1}\discretionary {-}{}{}Options}{23}{subsubsection.6.4.2.1}
+\contentsline {subsubsection}{\numberline {6.4.2.2}\discretionary {-}{}{}Options}{23}{subsubsection.6.4.2.2}
+\contentsline {subsubsection}{\numberline {6.4.2.3}$\sim $\discretionary {-}{}{}Options}{23}{subsubsection.6.4.2.3}
+\contentsline {subsection}{\numberline {6.4.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{23}{subsection.6.4.3}
+\contentsline {subsubsection}{\numberline {6.4.3.1}avg\discretionary {-}{}{}Filename}{23}{subsubsection.6.4.3.1}
+\contentsline {subsubsection}{\numberline {6.4.3.2}black\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{23}{subsubsection.6.4.3.2}
+\contentsline {subsubsection}{\numberline {6.4.3.3}bout}{24}{subsubsection.6.4.3.3}
+\contentsline {subsubsection}{\numberline {6.4.3.4}cap}{24}{subsubsection.6.4.3.4}
+\contentsline {subsubsection}{\numberline {6.4.3.5}\discretionary {-}{}{}D\discretionary {-}{}{}E\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}G}{24}{subsubsection.6.4.3.5}
+\contentsline {subsubsection}{\numberline {6.4.3.6}density\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{24}{subsubsection.6.4.3.6}
+\contentsline {subsubsection}{\numberline {6.4.3.7}density\discretionary {-}{}{}\_\discretionary {-}{}{}window}{24}{subsubsection.6.4.3.7}
+\contentsline {subsubsection}{\numberline {6.4.3.8}detector}{24}{subsubsection.6.4.3.8}
+\contentsline {subsubsection}{\numberline {6.4.3.9}detector\discretionary {-}{}{}\_\discretionary {-}{}{}type}{24}{subsubsection.6.4.3.9}
+\contentsline {subsubsection}{\numberline {6.4.3.10}dout}{24}{subsubsection.6.4.3.10}
+\contentsline {subsubsection}{\numberline {6.4.3.11}equalize\discretionary {-}{}{}Histogram}{25}{subsubsection.6.4.3.11}
+\contentsline {subsubsection}{\numberline {6.4.3.12}frame}{25}{subsubsection.6.4.3.12}
+\contentsline {subsubsection}{\numberline {6.4.3.13}frame\discretionary {-}{}{}\_\discretionary {-}{}{}count}{25}{subsubsection.6.4.3.13}
+\contentsline {subsubsection}{\numberline {6.4.3.14}frame\discretionary {-}{}{}\_\discretionary {-}{}{}rate}{25}{subsubsection.6.4.3.14}
+\contentsline {subsubsection}{\numberline {6.4.3.15}gray\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{25}{subsubsection.6.4.3.15}
+\contentsline {subsubsection}{\numberline {6.4.3.16}interest\discretionary {-}{}{}\_\discretionary {-}{}{}point\discretionary {-}{}{}\_\discretionary {-}{}{}max\discretionary {-}{}{}\_\discretionary {-}{}{}life}{25}{subsubsection.6.4.3.16}
+\contentsline {subsubsection}{\numberline {6.4.3.17}key}{25}{subsubsection.6.4.3.17}
+\contentsline {subsubsection}{\numberline {6.4.3.18}lane\discretionary {-}{}{}Filename}{25}{subsubsection.6.4.3.18}
+\contentsline {subsubsection}{\numberline {6.4.3.19}lanes}{26}{subsubsection.6.4.3.19}
+\contentsline {subsubsection}{\numberline {6.4.3.20}load\discretionary {-}{}{}Avg\discretionary {-}{}{}Frame}{26}{subsubsection.6.4.3.20}
+\contentsline {subsubsection}{\numberline {6.4.3.21}load\discretionary {-}{}{}Lanes}{26}{subsubsection.6.4.3.21}
+\contentsline {subsubsection}{\numberline {6.4.3.22}point\discretionary {-}{}{}History}{26}{subsubsection.6.4.3.22}
+\contentsline {subsubsection}{\numberline {6.4.3.23}save\discretionary {-}{}{}Avg\discretionary {-}{}{}Frame}{26}{subsubsection.6.4.3.23}
+\contentsline {subsubsection}{\numberline {6.4.3.24}save\discretionary {-}{}{}Lanes}{26}{subsubsection.6.4.3.24}
+\contentsline {subsubsection}{\numberline {6.4.3.25}show}{26}{subsubsection.6.4.3.25}
+\contentsline {subsubsection}{\numberline {6.4.3.26}\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}F\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}lane\discretionary {-}{}{}\_\discretionary {-}{}{}crop}{27}{subsubsection.6.4.3.26}
+\contentsline {subsubsection}{\numberline {6.4.3.27}sift\discretionary {-}{}{}Common\discretionary {-}{}{}Params}{27}{subsubsection.6.4.3.27}
+\contentsline {subsubsection}{\numberline {6.4.3.28}sift\discretionary {-}{}{}Descriptor\discretionary {-}{}{}Params}{27}{subsubsection.6.4.3.28}
+\contentsline {subsubsection}{\numberline {6.4.3.29}sift\discretionary {-}{}{}Detector\discretionary {-}{}{}Params}{27}{subsubsection.6.4.3.29}
+\contentsline {subsubsection}{\numberline {6.4.3.30}start\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{27}{subsubsection.6.4.3.30}
+\contentsline {subsubsection}{\numberline {6.4.3.31}stop\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{27}{subsubsection.6.4.3.31}
+\contentsline {subsubsection}{\numberline {6.4.3.32}surf\discretionary {-}{}{}Params}{27}{subsubsection.6.4.3.32}
+\contentsline {subsubsection}{\numberline {6.4.3.33}video\discretionary {-}{}{}\_\discretionary {-}{}{}filename}{27}{subsubsection.6.4.3.33}
+\contentsline {subsubsection}{\numberline {6.4.3.34}video\discretionary {-}{}{}\_\discretionary {-}{}{}output\discretionary {-}{}{}\_\discretionary {-}{}{}filename}{28}{subsubsection.6.4.3.34}
+\contentsline {subsubsection}{\numberline {6.4.3.35}vout}{28}{subsubsection.6.4.3.35}
+\contentsline {subsubsection}{\numberline {6.4.3.36}window\discretionary {-}{}{}\_\discretionary {-}{}{}name}{28}{subsubsection.6.4.3.36}
+\contentsline {section}{\numberline {6.5}\discretionary {-}{}{}Parser \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{28}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{28}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{28}{subsection.6.5.2}
+\contentsline {subsubsection}{\numberline {6.5.2.1}parse\discretionary {-}{}{}\_\discretionary {-}{}{}config\discretionary {-}{}{}\_\discretionary {-}{}{}file}{28}{subsubsection.6.5.2.1}
+\contentsline {subsubsection}{\numberline {6.5.2.2}write\discretionary {-}{}{}\_\discretionary {-}{}{}configuration}{33}{subsubsection.6.5.2.2}
+\contentsline {section}{\numberline {6.6}\discretionary {-}{}{}Point\discretionary {-}{}{}Comp \discretionary {-}{}{}Struct \discretionary {-}{}{}Reference}{35}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{35}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{35}{subsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.2.1}operator()}{35}{subsubsection.6.6.2.1}
+\contentsline {section}{\numberline {6.7}\discretionary {-}{}{}Point\discretionary {-}{}{}Tracker \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{36}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{36}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{36}{subsection.6.7.2}
+\contentsline {subsubsection}{\numberline {6.7.2.1}\discretionary {-}{}{}Point\discretionary {-}{}{}Tracker}{36}{subsubsection.6.7.2.1}
+\contentsline {subsection}{\numberline {6.7.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{37}{subsection.6.7.3}
+\contentsline {subsubsection}{\numberline {6.7.3.1}point\discretionary {-}{}{}\_\discretionary {-}{}{}match}{37}{subsubsection.6.7.3.1}
+\contentsline {subsubsection}{\numberline {6.7.3.2}set\discretionary {-}{}{}\_\discretionary {-}{}{}point\discretionary {-}{}{}\_\discretionary {-}{}{}max\discretionary {-}{}{}\_\discretionary {-}{}{}life}{37}{subsubsection.6.7.3.2}
+\contentsline {subsubsection}{\numberline {6.7.3.3}update\discretionary {-}{}{}\_\discretionary {-}{}{}points}{38}{subsubsection.6.7.3.3}
+\contentsline {subsection}{\numberline {6.7.4}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{39}{subsection.6.7.4}
+\contentsline {subsubsection}{\numberline {6.7.4.1}background\discretionary {-}{}{}\_\discretionary {-}{}{}list}{39}{subsubsection.6.7.4.1}
+\contentsline {subsubsection}{\numberline {6.7.4.2}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}X\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}U\discretionary {-}{}{}M\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}M\discretionary {-}{}{}E\discretionary {-}{}{}S}{39}{subsubsection.6.7.4.2}
+\contentsline {subsubsection}{\numberline {6.7.4.3}\discretionary {-}{}{}M\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}D\discretionary {-}{}{}I\discretionary {-}{}{}S\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}N\discretionary {-}{}{}C\discretionary {-}{}{}E}{39}{subsubsection.6.7.4.3}
+\contentsline {subsubsection}{\numberline {6.7.4.4}num\discretionary {-}{}{}\_\discretionary {-}{}{}frames}{39}{subsubsection.6.7.4.4}
+\contentsline {subsubsection}{\numberline {6.7.4.5}point\discretionary {-}{}{}\_\discretionary {-}{}{}list}{39}{subsubsection.6.7.4.5}
+\contentsline {section}{\numberline {6.8}\discretionary {-}{}{}Sift\discretionary {-}{}{}Type \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{39}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{40}{subsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{40}{subsection.6.8.2}
+\contentsline {subsubsection}{\numberline {6.8.2.1}\discretionary {-}{}{}Sift\discretionary {-}{}{}Type}{40}{subsubsection.6.8.2.1}
+\contentsline {subsubsection}{\numberline {6.8.2.2}\discretionary {-}{}{}Sift\discretionary {-}{}{}Type}{41}{subsubsection.6.8.2.2}
+\contentsline {subsubsection}{\numberline {6.8.2.3}\discretionary {-}{}{}Sift\discretionary {-}{}{}Type}{41}{subsubsection.6.8.2.3}
+\contentsline {subsubsection}{\numberline {6.8.2.4}$\sim $\discretionary {-}{}{}Sift\discretionary {-}{}{}Type}{41}{subsubsection.6.8.2.4}
+\contentsline {subsection}{\numberline {6.8.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{41}{subsection.6.8.3}
+\contentsline {subsubsection}{\numberline {6.8.3.1}compute\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{41}{subsubsection.6.8.3.1}
+\contentsline {subsubsection}{\numberline {6.8.3.2}is\discretionary {-}{}{}Type}{42}{subsubsection.6.8.3.2}
+\contentsline {subsubsection}{\numberline {6.8.3.3}reset\discretionary {-}{}{}\_\discretionary {-}{}{}detector}{42}{subsubsection.6.8.3.3}
+\contentsline {subsection}{\numberline {6.8.4}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{43}{subsection.6.8.4}
+\contentsline {subsubsection}{\numberline {6.8.4.1}common\discretionary {-}{}{}Params}{43}{subsubsection.6.8.4.1}
+\contentsline {subsubsection}{\numberline {6.8.4.2}crop\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{43}{subsubsection.6.8.4.2}
+\contentsline {subsubsection}{\numberline {6.8.4.3}descriptor\discretionary {-}{}{}Params}{43}{subsubsection.6.8.4.3}
+\contentsline {subsubsection}{\numberline {6.8.4.4}detector\discretionary {-}{}{}Params}{43}{subsubsection.6.8.4.4}
+\contentsline {subsubsection}{\numberline {6.8.4.5}sift}{43}{subsubsection.6.8.4.5}
+\contentsline {section}{\numberline {6.9}\discretionary {-}{}{}S\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}F\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}A\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}M\discretionary {-}{}{}S \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{43}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{44}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{44}{subsection.6.9.2}
+\contentsline {subsubsection}{\numberline {6.9.2.1}extended}{44}{subsubsection.6.9.2.1}
+\contentsline {subsubsection}{\numberline {6.9.2.2}hessian\discretionary {-}{}{}Threshold}{44}{subsubsection.6.9.2.2}
+\contentsline {subsubsection}{\numberline {6.9.2.3}num\discretionary {-}{}{}Octave\discretionary {-}{}{}Layers}{44}{subsubsection.6.9.2.3}
+\contentsline {subsubsection}{\numberline {6.9.2.4}num\discretionary {-}{}{}Octaves}{44}{subsubsection.6.9.2.4}
+\contentsline {subsubsection}{\numberline {6.9.2.5}upright}{44}{subsubsection.6.9.2.5}
+\contentsline {section}{\numberline {6.10}\discretionary {-}{}{}Surf\discretionary {-}{}{}Type \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{45}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{45}{subsection.6.10.1}
+\contentsline {subsection}{\numberline {6.10.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{45}{subsection.6.10.2}
+\contentsline {subsubsection}{\numberline {6.10.2.1}\discretionary {-}{}{}Surf\discretionary {-}{}{}Type}{45}{subsubsection.6.10.2.1}
+\contentsline {subsubsection}{\numberline {6.10.2.2}\discretionary {-}{}{}Surf\discretionary {-}{}{}Type}{46}{subsubsection.6.10.2.2}
+\contentsline {subsubsection}{\numberline {6.10.2.3}\discretionary {-}{}{}Surf\discretionary {-}{}{}Type}{46}{subsubsection.6.10.2.3}
+\contentsline {subsubsection}{\numberline {6.10.2.4}\discretionary {-}{}{}Surf\discretionary {-}{}{}Type}{46}{subsubsection.6.10.2.4}
+\contentsline {subsubsection}{\numberline {6.10.2.5}$\sim $\discretionary {-}{}{}Surf\discretionary {-}{}{}Type}{47}{subsubsection.6.10.2.5}
+\contentsline {subsection}{\numberline {6.10.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{47}{subsection.6.10.3}
+\contentsline {subsubsection}{\numberline {6.10.3.1}compute\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{47}{subsubsection.6.10.3.1}
+\contentsline {subsubsection}{\numberline {6.10.3.2}is\discretionary {-}{}{}Type}{47}{subsubsection.6.10.3.2}
+\contentsline {subsubsection}{\numberline {6.10.3.3}reset\discretionary {-}{}{}\_\discretionary {-}{}{}detector}{47}{subsubsection.6.10.3.3}
+\contentsline {subsection}{\numberline {6.10.4}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{48}{subsection.6.10.4}
+\contentsline {subsubsection}{\numberline {6.10.4.1}extended}{48}{subsubsection.6.10.4.1}
+\contentsline {subsubsection}{\numberline {6.10.4.2}hessian\discretionary {-}{}{}Threshold}{48}{subsubsection.6.10.4.2}
+\contentsline {subsubsection}{\numberline {6.10.4.3}num\discretionary {-}{}{}Octave\discretionary {-}{}{}Layers}{48}{subsubsection.6.10.4.3}
+\contentsline {subsubsection}{\numberline {6.10.4.4}num\discretionary {-}{}{}Octaves}{48}{subsubsection.6.10.4.4}
+\contentsline {subsubsection}{\numberline {6.10.4.5}surf}{48}{subsubsection.6.10.4.5}
+\contentsline {subsubsection}{\numberline {6.10.4.6}upright}{48}{subsubsection.6.10.4.6}
+\contentsline {section}{\numberline {6.11}\discretionary {-}{}{}Tuple \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{49}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{49}{subsection.6.11.1}
+\contentsline {subsection}{\numberline {6.11.2}\discretionary {-}{}{}Constructor \& \discretionary {-}{}{}Destructor \discretionary {-}{}{}Documentation}{49}{subsection.6.11.2}
+\contentsline {subsubsection}{\numberline {6.11.2.1}\discretionary {-}{}{}Tuple}{49}{subsubsection.6.11.2.1}
+\contentsline {subsubsection}{\numberline {6.11.2.2}\discretionary {-}{}{}Tuple}{50}{subsubsection.6.11.2.2}
+\contentsline {subsection}{\numberline {6.11.3}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{50}{subsection.6.11.3}
+\contentsline {subsubsection}{\numberline {6.11.3.1}centroid}{50}{subsubsection.6.11.3.1}
+\contentsline {subsubsection}{\numberline {6.11.3.2}found}{50}{subsubsection.6.11.3.2}
+\contentsline {subsubsection}{\numberline {6.11.3.3}span}{50}{subsubsection.6.11.3.3}
+\contentsline {subsubsection}{\numberline {6.11.3.4}strength}{50}{subsubsection.6.11.3.4}
+\contentsline {section}{\numberline {6.12}\discretionary {-}{}{}Vehicle \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{51}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{51}{subsection.6.12.1}
+\contentsline {subsection}{\numberline {6.12.2}\discretionary {-}{}{}Member \discretionary {-}{}{}Data \discretionary {-}{}{}Documentation}{51}{subsection.6.12.2}
+\contentsline {subsubsection}{\numberline {6.12.2.1}points}{51}{subsubsection.6.12.2.1}
+\contentsline {section}{\numberline {6.13}\discretionary {-}{}{}Vehicle\discretionary {-}{}{}Detection \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{51}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}\discretionary {-}{}{}Detailed \discretionary {-}{}{}Description}{51}{subsection.6.13.1}
+\contentsline {subsection}{\numberline {6.13.2}\discretionary {-}{}{}Member \discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{51}{subsection.6.13.2}
+\contentsline {subsubsection}{\numberline {6.13.2.1}classify\discretionary {-}{}{}Candidates}{51}{subsubsection.6.13.2.1}
+\contentsline {subsubsection}{\numberline {6.13.2.2}compute\discretionary {-}{}{}Candidates}{52}{subsubsection.6.13.2.2}
+\contentsline {chapter}{\numberline {7}\discretionary {-}{}{}File \discretionary {-}{}{}Documentation}{53}{chapter.7}
+\contentsline {section}{\numberline {7.1}src/core/\discretionary {-}{}{}Enumerations.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{53}{section.7.1}
+\contentsline {section}{\numberline {7.2}src/core/\discretionary {-}{}{}Enumerations.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{53}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}\discretionary {-}{}{}Define \discretionary {-}{}{}Documentation}{53}{subsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.1.1}\discretionary {-}{}{}C\discretionary {-}{}{}O\discretionary {-}{}{}L\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}L\discretionary {-}{}{}U\discretionary {-}{}{}E}{53}{subsubsection.7.2.1.1}
+\contentsline {subsubsection}{\numberline {7.2.1.2}\discretionary {-}{}{}C\discretionary {-}{}{}O\discretionary {-}{}{}L\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}G\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}E\discretionary {-}{}{}N}{54}{subsubsection.7.2.1.2}
+\contentsline {subsubsection}{\numberline {7.2.1.3}\discretionary {-}{}{}C\discretionary {-}{}{}O\discretionary {-}{}{}L\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}D}{54}{subsubsection.7.2.1.3}
+\contentsline {section}{\numberline {7.3}src/core/\discretionary {-}{}{}Geometry\discretionary {-}{}{}Utilities.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{54}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{54}{subsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.1.1}expand\discretionary {-}{}{}Rect}{54}{subsubsection.7.3.1.1}
+\contentsline {subsubsection}{\numberline {7.3.1.2}\discretionary {-}{}{}Point\discretionary {-}{}{}Distance\discretionary {-}{}{}L1}{54}{subsubsection.7.3.1.2}
+\contentsline {subsubsection}{\numberline {7.3.1.3}\discretionary {-}{}{}Point\discretionary {-}{}{}Distance\discretionary {-}{}{}L2}{55}{subsubsection.7.3.1.3}
+\contentsline {subsubsection}{\numberline {7.3.1.4}points\discretionary {-}{}{}Equal}{55}{subsubsection.7.3.1.4}
+\contentsline {section}{\numberline {7.4}src/core/\discretionary {-}{}{}Geometry\discretionary {-}{}{}Utilities.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{55}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{55}{subsection.7.4.1}
+\contentsline {subsubsection}{\numberline {7.4.1.1}expand\discretionary {-}{}{}Rect}{55}{subsubsection.7.4.1.1}
+\contentsline {subsubsection}{\numberline {7.4.1.2}\discretionary {-}{}{}Point\discretionary {-}{}{}Distance\discretionary {-}{}{}L1}{56}{subsubsection.7.4.1.2}
+\contentsline {subsubsection}{\numberline {7.4.1.3}\discretionary {-}{}{}Point\discretionary {-}{}{}Distance\discretionary {-}{}{}L2}{56}{subsubsection.7.4.1.3}
+\contentsline {subsubsection}{\numberline {7.4.1.4}points\discretionary {-}{}{}Equal}{56}{subsubsection.7.4.1.4}
+\contentsline {section}{\numberline {7.5}src/core/\discretionary {-}{}{}Mat\discretionary {-}{}{}Utilities.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{56}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{57}{subsection.7.5.1}
+\contentsline {subsubsection}{\numberline {7.5.1.1}crop\discretionary {-}{}{}Sub\discretionary {-}{}{}Image}{57}{subsubsection.7.5.1.1}
+\contentsline {section}{\numberline {7.6}src/core/\discretionary {-}{}{}Mat\discretionary {-}{}{}Utilities.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{57}{section.7.6}
+\contentsline {subsection}{\numberline {7.6.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{57}{subsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.1.1}crop\discretionary {-}{}{}Sub\discretionary {-}{}{}Image}{57}{subsubsection.7.6.1.1}
+\contentsline {section}{\numberline {7.7}src/core/\discretionary {-}{}{}Options.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{58}{section.7.7}
+\contentsline {section}{\numberline {7.8}src/core/\discretionary {-}{}{}Options.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{58}{section.7.8}
+\contentsline {section}{\numberline {7.9}src/core/\discretionary {-}{}{}Parser.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{58}{section.7.9}
+\contentsline {section}{\numberline {7.10}src/core/\discretionary {-}{}{}Parser.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{58}{section.7.10}
+\contentsline {section}{\numberline {7.11}src/core/\discretionary {-}{}{}Point\discretionary {-}{}{}Tracker.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{59}{section.7.11}
+\contentsline {section}{\numberline {7.12}src/core/\discretionary {-}{}{}Point\discretionary {-}{}{}Tracker.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{59}{section.7.12}
+\contentsline {section}{\numberline {7.13}src/core/\discretionary {-}{}{}Video\discretionary {-}{}{}Utilities.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{59}{section.7.13}
+\contentsline {subsection}{\numberline {7.13.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{59}{subsection.7.13.1}
+\contentsline {subsubsection}{\numberline {7.13.1.1}median\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{59}{subsubsection.7.13.1.1}
+\contentsline {section}{\numberline {7.14}src/core/\discretionary {-}{}{}Video\discretionary {-}{}{}Utilities.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{60}{section.7.14}
+\contentsline {subsection}{\numberline {7.14.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{61}{subsection.7.14.1}
+\contentsline {subsubsection}{\numberline {7.14.1.1}median\discretionary {-}{}{}\_\discretionary {-}{}{}frame}{61}{subsubsection.7.14.1.1}
+\contentsline {section}{\numberline {7.15}src/feature/\discretionary {-}{}{}Feature\discretionary {-}{}{}Point\discretionary {-}{}{}Utilities.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{62}{section.7.15}
+\contentsline {subsection}{\numberline {7.15.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{62}{subsection.7.15.1}
+\contentsline {subsubsection}{\numberline {7.15.1.1}compute\discretionary {-}{}{}\_\discretionary {-}{}{}area}{62}{subsubsection.7.15.1.1}
+\contentsline {subsubsection}{\numberline {7.15.1.2}compute\discretionary {-}{}{}\_\discretionary {-}{}{}point\discretionary {-}{}{}\_\discretionary {-}{}{}density}{62}{subsubsection.7.15.1.2}
+\contentsline {section}{\numberline {7.16}src/feature/\discretionary {-}{}{}Vehicle\discretionary {-}{}{}Detection.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{64}{section.7.16}
+\contentsline {section}{\numberline {7.17}src/feature/\discretionary {-}{}{}Vehicle\discretionary {-}{}{}Detection.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{64}{section.7.17}
+\contentsline {section}{\numberline {7.18}src/main.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{64}{section.7.18}
+\contentsline {subsection}{\numberline {7.18.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{65}{subsection.7.18.1}
+\contentsline {subsubsection}{\numberline {7.18.1.1}init}{65}{subsubsection.7.18.1.1}
+\contentsline {subsubsection}{\numberline {7.18.1.2}main}{66}{subsubsection.7.18.1.2}
+\contentsline {subsection}{\numberline {7.18.2}\discretionary {-}{}{}Variable \discretionary {-}{}{}Documentation}{68}{subsection.7.18.2}
+\contentsline {subsubsection}{\numberline {7.18.2.1}mouse\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{68}{subsubsection.7.18.2.1}
+\contentsline {subsubsection}{\numberline {7.18.2.2}p\discretionary {-}{}{}X}{68}{subsubsection.7.18.2.2}
+\contentsline {subsubsection}{\numberline {7.18.2.3}p\discretionary {-}{}{}Y}{68}{subsubsection.7.18.2.3}
+\contentsline {section}{\numberline {7.19}src/structures/\discretionary {-}{}{}Detector\discretionary {-}{}{}Type.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{68}{section.7.19}
+\contentsline {section}{\numberline {7.20}src/structures/\discretionary {-}{}{}Detector\discretionary {-}{}{}Type.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{69}{section.7.20}
+\contentsline {section}{\numberline {7.21}src/structures/\discretionary {-}{}{}Lane.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{69}{section.7.21}
+\contentsline {subsection}{\numberline {7.21.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{69}{subsection.7.21.1}
+\contentsline {subsubsection}{\numberline {7.21.1.1}inside\discretionary {-}{}{}Lane}{69}{subsubsection.7.21.1.1}
+\contentsline {section}{\numberline {7.22}src/structures/\discretionary {-}{}{}Lane.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{69}{section.7.22}
+\contentsline {subsection}{\numberline {7.22.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{70}{subsection.7.22.1}
+\contentsline {subsubsection}{\numberline {7.22.1.1}\discretionary {-}{}{}B\discretionary {-}{}{}O\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}O\discretionary {-}{}{}M\discretionary {-}{}{}E\discretionary {-}{}{}T\discretionary {-}{}{}R\discretionary {-}{}{}Y\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}G\discretionary {-}{}{}I\discretionary {-}{}{}S\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}O\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}P\discretionary {-}{}{}L\discretionary {-}{}{}E\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}S}{70}{subsubsection.7.22.1.1}
+\contentsline {subsubsection}{\numberline {7.22.1.2}inside\discretionary {-}{}{}Lane}{70}{subsubsection.7.22.1.2}
+\contentsline {section}{\numberline {7.23}src/structures/\discretionary {-}{}{}Sift\discretionary {-}{}{}Type.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{70}{section.7.23}
+\contentsline {section}{\numberline {7.24}src/structures/\discretionary {-}{}{}Sift\discretionary {-}{}{}Type.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{70}{section.7.24}
+\contentsline {section}{\numberline {7.25}src/structures/\discretionary {-}{}{}Surf\discretionary {-}{}{}Type.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{71}{section.7.25}
+\contentsline {section}{\numberline {7.26}src/structures/\discretionary {-}{}{}Surf\discretionary {-}{}{}Type.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{71}{section.7.26}
+\contentsline {section}{\numberline {7.27}src/structures/\discretionary {-}{}{}Vehicle.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{71}{section.7.27}
+\contentsline {section}{\numberline {7.28}src/structures/\discretionary {-}{}{}Vehicle.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{71}{section.7.28}
+\contentsline {section}{\numberline {7.29}src/ui/\discretionary {-}{}{}Lane\discretionary {-}{}{}Drawing.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{71}{section.7.29}
+\contentsline {subsection}{\numberline {7.29.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{72}{subsection.7.29.1}
+\contentsline {subsubsection}{\numberline {7.29.1.1}draw\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{72}{subsubsection.7.29.1.1}
+\contentsline {subsubsection}{\numberline {7.29.1.2}lane\discretionary {-}{}{}\_\discretionary {-}{}{}manager}{73}{subsubsection.7.29.1.2}
+\contentsline {subsubsection}{\numberline {7.29.1.3}load\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{75}{subsubsection.7.29.1.3}
+\contentsline {subsubsection}{\numberline {7.29.1.4}save\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{75}{subsubsection.7.29.1.4}
+\contentsline {section}{\numberline {7.30}src/ui/\discretionary {-}{}{}Lane\discretionary {-}{}{}Drawing.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{76}{section.7.30}
+\contentsline {subsection}{\numberline {7.30.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{77}{subsection.7.30.1}
+\contentsline {subsubsection}{\numberline {7.30.1.1}draw\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{77}{subsubsection.7.30.1.1}
+\contentsline {subsubsection}{\numberline {7.30.1.2}lane\discretionary {-}{}{}\_\discretionary {-}{}{}manager}{78}{subsubsection.7.30.1.2}
+\contentsline {subsubsection}{\numberline {7.30.1.3}load\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{80}{subsubsection.7.30.1.3}
+\contentsline {subsubsection}{\numberline {7.30.1.4}save\discretionary {-}{}{}\_\discretionary {-}{}{}lanes}{80}{subsubsection.7.30.1.4}
+\contentsline {subsection}{\numberline {7.30.2}\discretionary {-}{}{}Variable \discretionary {-}{}{}Documentation}{81}{subsection.7.30.2}
+\contentsline {subsubsection}{\numberline {7.30.2.1}mouse\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{81}{subsubsection.7.30.2.1}
+\contentsline {subsubsection}{\numberline {7.30.2.2}p\discretionary {-}{}{}X}{81}{subsubsection.7.30.2.2}
+\contentsline {subsubsection}{\numberline {7.30.2.3}p\discretionary {-}{}{}Y}{81}{subsubsection.7.30.2.3}
+\contentsline {section}{\numberline {7.31}src/ui/\discretionary {-}{}{}Mouse.cpp \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{81}{section.7.31}
+\contentsline {subsection}{\numberline {7.31.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{82}{subsection.7.31.1}
+\contentsline {subsubsection}{\numberline {7.31.1.1}mouse\discretionary {-}{}{}Func}{82}{subsubsection.7.31.1.1}
+\contentsline {section}{\numberline {7.32}src/ui/\discretionary {-}{}{}Mouse.h \discretionary {-}{}{}File \discretionary {-}{}{}Reference}{82}{section.7.32}
+\contentsline {subsection}{\numberline {7.32.1}\discretionary {-}{}{}Function \discretionary {-}{}{}Documentation}{83}{subsection.7.32.1}
+\contentsline {subsubsection}{\numberline {7.32.1.1}mouse\discretionary {-}{}{}Func}{83}{subsubsection.7.32.1.1}
+\contentsline {subsection}{\numberline {7.32.2}\discretionary {-}{}{}Variable \discretionary {-}{}{}Documentation}{83}{subsection.7.32.2}
+\contentsline {subsubsection}{\numberline {7.32.2.1}mouse\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{83}{subsubsection.7.32.2.1}
+\contentsline {subsubsection}{\numberline {7.32.2.2}p\discretionary {-}{}{}X}{83}{subsubsection.7.32.2.2}
+\contentsline {subsubsection}{\numberline {7.32.2.3}p\discretionary {-}{}{}Y}{83}{subsubsection.7.32.2.3}

@@ -1,0 +1,150 @@
+\hypertarget{class_tuple}{
+\section{\-Tuple \-Class \-Reference}
+\label{class_tuple}\index{\-Tuple@{\-Tuple}}
+}
+
+
+{\ttfamily \#include $<$\-Point\-Tracker.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tuple_a07c616afb195cf694e8814318fbd2aa8}{\-Tuple} ()
+\begin{DoxyCompactList}\small\item\em \-Default \-Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_tuple_a0d7fe15e31536827168d2133c4060bbe}{\-Tuple} (const \-Point2f \&pt)
+\begin{DoxyCompactList}\small\item\em \-Parameterized \-Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\-Point2f \hyperlink{class_tuple_ab3df7dd8c3da6e5d69e20492adcfb1ee}{centroid}
+\begin{DoxyCompactList}\small\item\em \-Center of point. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{class_tuple_a29532869144a5cfc2b2eb935d91edcd9}{found}
+\begin{DoxyCompactList}\small\item\em \-Detection \-Status \-Code. \end{DoxyCompactList}\item 
+double \hyperlink{class_tuple_aa2e3ef0462fe1ffb96028cbe5f8324c9}{strength}
+\begin{DoxyCompactList}\small\item\em \-Strength/stability of point. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{class_tuple_ae321f88dc0b67f9e0f89e51b25db02c5}{span}
+\begin{DoxyCompactList}\small\item\em \-Number of frames the point has existed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class which contains relevant information for keypoints. \-The point, if it was detected in the frame, the strength / stability of the point, and the length of time is has existed in the video. 
+
+\-Definition at line 43 of file \-Point\-Tracker.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_tuple_a07c616afb195cf694e8814318fbd2aa8}{
+\index{\-Tuple@{\-Tuple}!\-Tuple@{\-Tuple}}
+\index{\-Tuple@{\-Tuple}!Tuple@{\-Tuple}}
+\subsubsection[{\-Tuple}]{\setlength{\rightskip}{0pt plus 5cm}\-Tuple\-::\-Tuple (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_tuple_a07c616afb195cf694e8814318fbd2aa8}
+
+
+\-Default \-Constructor. 
+
+\-Sets the centroid to the origin with no strengh.
+
+\-Default \-Constructor 
+
+\-Definition at line 25 of file \-Point\-Tracker.\-cpp.
+
+
+\begin{DoxyCode}
+             : centroid(Point2f(0, 0)), found(0), strength(0), span(0) {
+
+}
+\end{DoxyCode}
+\hypertarget{class_tuple_a0d7fe15e31536827168d2133c4060bbe}{
+\index{\-Tuple@{\-Tuple}!\-Tuple@{\-Tuple}}
+\index{\-Tuple@{\-Tuple}!Tuple@{\-Tuple}}
+\subsubsection[{\-Tuple}]{\setlength{\rightskip}{0pt plus 5cm}\-Tuple\-::\-Tuple (
+\begin{DoxyParamCaption}
+\item[{const \-Point2f \&}]{pt}
+\end{DoxyParamCaption}
+)}}
+\label{class_tuple_a0d7fe15e31536827168d2133c4060bbe}
+
+
+\-Parameterized \-Constructor. 
+
+\-Create a default point with no strength 
+\begin{DoxyParams}{\-Parameters}
+{\em pt} & \-Point \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 33 of file \-Point\-Tracker.\-cpp.
+
+
+\begin{DoxyCode}
+                              : centroid(pt), found(1), strength(0), span(0) {
+
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_tuple_ab3df7dd8c3da6e5d69e20492adcfb1ee}{
+\index{\-Tuple@{\-Tuple}!centroid@{centroid}}
+\index{centroid@{centroid}!Tuple@{\-Tuple}}
+\subsubsection[{centroid}]{\setlength{\rightskip}{0pt plus 5cm}\-Point2f {\bf \-Tuple\-::centroid}}}
+\label{class_tuple_ab3df7dd8c3da6e5d69e20492adcfb1ee}
+
+
+\-Center of point. 
+
+
+
+\-Definition at line 53 of file \-Point\-Tracker.\-h.
+
+\hypertarget{class_tuple_a29532869144a5cfc2b2eb935d91edcd9}{
+\index{\-Tuple@{\-Tuple}!found@{found}}
+\index{found@{found}!Tuple@{\-Tuple}}
+\subsubsection[{found}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf \-Tuple\-::found}}}
+\label{class_tuple_a29532869144a5cfc2b2eb935d91edcd9}
+
+
+\-Detection \-Status \-Code. 
+
+
+
+\-Definition at line 56 of file \-Point\-Tracker.\-h.
+
+\hypertarget{class_tuple_ae321f88dc0b67f9e0f89e51b25db02c5}{
+\index{\-Tuple@{\-Tuple}!span@{span}}
+\index{span@{span}!Tuple@{\-Tuple}}
+\subsubsection[{span}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf \-Tuple\-::span}}}
+\label{class_tuple_ae321f88dc0b67f9e0f89e51b25db02c5}
+
+
+\-Number of frames the point has existed. 
+
+
+
+\-Definition at line 62 of file \-Point\-Tracker.\-h.
+
+\hypertarget{class_tuple_aa2e3ef0462fe1ffb96028cbe5f8324c9}{
+\index{\-Tuple@{\-Tuple}!strength@{strength}}
+\index{strength@{strength}!Tuple@{\-Tuple}}
+\subsubsection[{strength}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Tuple\-::strength}}}
+\label{class_tuple_aa2e3ef0462fe1ffb96028cbe5f8324c9}
+
+
+\-Strength/stability of point. 
+
+
+
+\-Definition at line 59 of file \-Point\-Tracker.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{_point_tracker_8h}{\-Point\-Tracker.\-h}\item 
+src/core/\hyperlink{_point_tracker_8cpp}{\-Point\-Tracker.\-cpp}\end{DoxyCompactItemize}

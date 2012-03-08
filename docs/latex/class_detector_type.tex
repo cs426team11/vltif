@@ -1,0 +1,157 @@
+\hypertarget{class_detector_type}{
+\section{\-Detector\-Type \-Class \-Reference}
+\label{class_detector_type}\index{\-Detector\-Type@{\-Detector\-Type}}
+}
+
+
+{\ttfamily \#include $<$\-Detector\-Type.\-h$>$}
+
+\-Inheritance diagram for \-Detector\-Type\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_detector_type}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_detector_type_ad3e2ed33c53955544f26ca824de8db98}{\-Detector\-Type} ()
+\item 
+\hyperlink{class_detector_type_ab8366f3bbc11aa3e9cd70c97cd2a27ac}{\-Detector\-Type} (const \hyperlink{class_detector_type}{\-Detector\-Type} \&orig)
+\item 
+virtual \hyperlink{class_detector_type_a66361aaca00c82124170556b3c487279}{$\sim$\-Detector\-Type} ()
+\item 
+virtual string \hyperlink{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}{is\-Type} () const 
+\item 
+virtual void \hyperlink{class_detector_type_ad147fbbe562819244a3c92cf4dc5d999}{compute\-\_\-frame} (const \-Mat \&img, vector$<$ \-Key\-Point $>$ \&keypoints, vector$<$ \hyperlink{class_lane}{\-Lane} $>$const \&lanes) const =0
+\item 
+virtual void \hyperlink{class_detector_type_a1115eaed51cec6ea0d4183edba767da0}{reset\-\_\-detector} ()=0
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 22 of file \-Detector\-Type.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_detector_type_ad3e2ed33c53955544f26ca824de8db98}{
+\index{\-Detector\-Type@{\-Detector\-Type}!\-Detector\-Type@{\-Detector\-Type}}
+\index{\-Detector\-Type@{\-Detector\-Type}!DetectorType@{\-Detector\-Type}}
+\subsubsection[{\-Detector\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Detector\-Type\-::\-Detector\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_detector_type_ad3e2ed33c53955544f26ca824de8db98}
+
+
+\-Definition at line 10 of file \-Detector\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                           {
+}
+\end{DoxyCode}
+\hypertarget{class_detector_type_ab8366f3bbc11aa3e9cd70c97cd2a27ac}{
+\index{\-Detector\-Type@{\-Detector\-Type}!\-Detector\-Type@{\-Detector\-Type}}
+\index{\-Detector\-Type@{\-Detector\-Type}!DetectorType@{\-Detector\-Type}}
+\subsubsection[{\-Detector\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Detector\-Type\-::\-Detector\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Detector\-Type} \&}]{orig}
+\end{DoxyParamCaption}
+)}}
+\label{class_detector_type_ab8366f3bbc11aa3e9cd70c97cd2a27ac}
+
+
+\-Definition at line 13 of file \-Detector\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                                                   {
+}
+\end{DoxyCode}
+\hypertarget{class_detector_type_a66361aaca00c82124170556b3c487279}{
+\index{\-Detector\-Type@{\-Detector\-Type}!$\sim$\-Detector\-Type@{$\sim$\-Detector\-Type}}
+\index{$\sim$\-Detector\-Type@{$\sim$\-Detector\-Type}!DetectorType@{\-Detector\-Type}}
+\subsubsection[{$\sim$\-Detector\-Type}]{\setlength{\rightskip}{0pt plus 5cm}\-Detector\-Type\-::$\sim$\-Detector\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_detector_type_a66361aaca00c82124170556b3c487279}
+
+
+\-Definition at line 16 of file \-Detector\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                            {
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_detector_type_ad147fbbe562819244a3c92cf4dc5d999}{
+\index{\-Detector\-Type@{\-Detector\-Type}!compute\-\_\-frame@{compute\-\_\-frame}}
+\index{compute\-\_\-frame@{compute\-\_\-frame}!DetectorType@{\-Detector\-Type}}
+\subsubsection[{compute\-\_\-frame}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-Detector\-Type\-::compute\-\_\-frame (
+\begin{DoxyParamCaption}
+\item[{const \-Mat \&}]{img, }
+\item[{vector$<$ \-Key\-Point $>$ \&}]{keypoints, }
+\item[{vector$<$ {\bf \-Lane} $>$const \&}]{lanes}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_detector_type_ad147fbbe562819244a3c92cf4dc5d999}
+
+
+\-Implemented in \hyperlink{class_surf_type_a1acaf574d9ea2aeaac266a3b73ec4416}{\-Surf\-Type}, and \hyperlink{class_sift_type_a642677043736bdfae4f8712235c427c8}{\-Sift\-Type}.
+
+
+
+\-Referenced by main().
+
+\hypertarget{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}{
+\index{\-Detector\-Type@{\-Detector\-Type}!is\-Type@{is\-Type}}
+\index{is\-Type@{is\-Type}!DetectorType@{\-Detector\-Type}}
+\subsubsection[{is\-Type}]{\setlength{\rightskip}{0pt plus 5cm}string \-Detector\-Type\-::is\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_detector_type_a2a8cfc2d84b8dbade17548be48d1498f}
+
+
+\-Reimplemented in \hyperlink{class_sift_type_a792597ebf8e051e9fe9581bd95aff535}{\-Sift\-Type}.
+
+
+
+\-Definition at line 19 of file \-Detector\-Type.\-cpp.
+
+
+\begin{DoxyCode}
+                                 {
+    return "DetectorType";
+}
+\end{DoxyCode}
+\hypertarget{class_detector_type_a1115eaed51cec6ea0d4183edba767da0}{
+\index{\-Detector\-Type@{\-Detector\-Type}!reset\-\_\-detector@{reset\-\_\-detector}}
+\index{reset\-\_\-detector@{reset\-\_\-detector}!DetectorType@{\-Detector\-Type}}
+\subsubsection[{reset\-\_\-detector}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-Detector\-Type\-::reset\-\_\-detector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_detector_type_a1115eaed51cec6ea0d4183edba767da0}
+
+
+\-Implemented in \hyperlink{class_surf_type_a0385dc741fabe0e8e2f5f2171f8807d6}{\-Surf\-Type}, and \hyperlink{class_sift_type_a5a114bb493bb7fd4d2ed7cfd8201a59c}{\-Sift\-Type}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/structures/\hyperlink{_detector_type_8h}{\-Detector\-Type.\-h}\item 
+src/structures/\hyperlink{_detector_type_8cpp}{\-Detector\-Type.\-cpp}\end{DoxyCompactItemize}

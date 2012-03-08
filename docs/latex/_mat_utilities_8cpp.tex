@@ -1,0 +1,55 @@
+\hypertarget{_mat_utilities_8cpp}{
+\section{src/core/\-Mat\-Utilities.cpp \-File \-Reference}
+\label{_mat_utilities_8cpp}\index{src/core/\-Mat\-Utilities.\-cpp@{src/core/\-Mat\-Utilities.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}\-Mat\-Utilities.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Mat \hyperlink{_mat_utilities_8cpp_af9b235c6cce03c3503af841f107bedf5}{crop\-Sub\-Image} (\-Mat const \&img, \-Rect const \&bbox)
+\begin{DoxyCompactList}\small\item\em \-Crop \-Image into clone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_mat_utilities_8cpp_af9b235c6cce03c3503af841f107bedf5}{
+\index{\-Mat\-Utilities.\-cpp@{\-Mat\-Utilities.\-cpp}!crop\-Sub\-Image@{crop\-Sub\-Image}}
+\index{crop\-Sub\-Image@{crop\-Sub\-Image}!MatUtilities.cpp@{\-Mat\-Utilities.\-cpp}}
+\subsubsection[{crop\-Sub\-Image}]{\setlength{\rightskip}{0pt plus 5cm}\-Mat crop\-Sub\-Image (
+\begin{DoxyParamCaption}
+\item[{\-Mat const \&}]{img, }
+\item[{\-Rect const \&}]{bbox}
+\end{DoxyParamCaption}
+)}}
+\label{_mat_utilities_8cpp_af9b235c6cce03c3503af841f107bedf5}
+
+
+\-Crop \-Image into clone. 
+
+
+
+\-Definition at line 4 of file \-Mat\-Utilities.\-cpp.
+
+
+
+\-Referenced by \-Sift\-Type\-::compute\-\_\-frame().
+
+
+\begin{DoxyCode}
+                                                    {
+    
+    //create new image
+    Mat newImg(Size(bbox.width, bbox.height), img.type());
+    
+    //move pixels over
+    for(size_t i=0; i<bbox.width; i++)
+        for(size_t j=0; j<bbox.height; j++){
+            if(img.type() == CV_8UC1){
+                newImg.at<uchar>(j,i) = img.at<uchar>(j+bbox.y, i+bbox.x);
+            }
+            else{
+                throw string("ERROR: type not supported");
+            }
+        }
+    
+    return newImg.clone();
+}\end{DoxyCode}
