@@ -85,7 +85,6 @@
          <h2 style="margin-bottom: 3px;">Ground Truth Files: </h2>
          <ul>
             </br><li><a href="groundtruth/CH01-20120303085911-20120303102856_raw_720x480_nf_41963.txt" target="_blank">VINE STREET & 6TH STREET OVERPASS : DAYTIME </a></li>
-            </br><li><a href="groundtruth/" target="_blank">VINE STREET & 6TH STREET OVERPASS : DAYTIME Part 2</a></li>
             </br><li><a href="groundtruth/CH01-20120304184500-20120304190440_raw_720x480_nf_25601.txt" target="_blank">VINE STREET & 6TH STREET OVERPASS : NIGHTTIME Part 1</a></li>
             </br><li><a href="groundtruth/CH01-20120304184500-20120304190440_2_raw_720x480_nf_9795.txt" target="_blank">VINE STREET & 6TH STREET OVERPASS : NIGHTTIME Part 2</a></li>
             </br><li><a href="groundtruth/CH01-20120303103500-20120303104030_raw_720x480_nf_9900.txt" target="_blank">ROBB DRIVE & I-80 OVERPASS : DAYTIME Part 1</a></br>
